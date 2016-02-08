@@ -24,16 +24,17 @@ public class BackwardBigramModel extends BigramModel{
         // Test on test data using test and test2
         model.test(data.testSentences);
         model.test2(data.testSentences);
-
-        System.out.println("----------------------------------\nForward BigramModel");
-        BigramModel forward = new BigramModel();
-        System.out.println("Training...");
-        forward.train(data.trainSentences);
-        forward.test(data.trainSentences);
-        forward.test2(data.trainSentences);
-        System.out.println("Testing...");
-        forward.test(data.testSentences);
-        forward.test2(data.testSentences);
+        System.out.println("----------------------------------");
+        
+        // System.out.println("----------------------------------\nForward BigramModel");
+        // BigramModel forward = new BigramModel();
+        // System.out.println("Training...");
+        // forward.train(data.trainSentences);
+        // forward.test(data.trainSentences);
+        // forward.test2(data.trainSentences);
+        // System.out.println("Testing...");
+        // forward.test(data.testSentences);
+        // forward.test2(data.testSentences);
     }
 
 }

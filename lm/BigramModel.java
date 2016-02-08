@@ -323,18 +323,19 @@ public void print() {
      */
     public static void main(String[] args) throws IOException {
     	DataManager data = new DataManager(args);
-
-	// Create a bigram model and train it.
-    	BigramModel model = new BigramModel();
-    	System.out.println("Training...");
-    	model.train(data.trainSentences);
-	// Test on training data using test and test2
-    	model.test(data.trainSentences);
-    	model.test2(data.trainSentences);
-    	System.out.println("Testing...");
-	// Test on test data using test and test2
-    	model.test(data.testSentences);
-    	model.test2(data.testSentences);
+        System.out.println("----------------------------------\nForward BigramModel");
+    // Create a bigram model and train it.
+        BigramModel model = new BigramModel();
+        System.out.println("Training...");
+        model.train(data.trainSentences);
+    // Test on training data using test and test2
+        model.test(data.trainSentences);
+        model.test2(data.trainSentences);
+        System.out.println("Testing...");
+    // Test on test data using test and test2
+        model.test(data.testSentences);
+        model.test2(data.testSentences);
+        System.out.println("----------------------------------");
     }
 
 }

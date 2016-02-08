@@ -1,1 +1,1 @@
-java -cp ../ nlp.lm.BidirectionalBigramModel data/pos/brown/ 0.1
+java -cp ../ nlp.lm.BackwardBigramModel data/pos/brown/ 0.1

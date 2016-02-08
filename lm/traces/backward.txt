@@ -1,0 +1,38 @@
+rh:nlp$ java -cp ../ nlp.lm.BackwardBigramModel data/pos/atis/ 0.1
+# Train Sentences = 519 (# words = 3922) 
+# Test Sentences = 58 (# words = 431)
+----------------------------------
+Backward BigramModel
+Training...
+Perplexity = 7.834480535825138
+Word Perplexity = 6.218535675206033
+Testing...
+Perplexity = 17.888058129824785
+Word Perplexity = 16.51242573140529
+----------------------------------
+
+rh:nlp$ java -cp ../ nlp.lm.BackwardBigramModel data/pos/wsj/ 0.1
+# Train Sentences = 43820 (# words = 996418) 
+# Test Sentences = 4869 (# words = 110926)
+----------------------------------
+Backward BigramModel
+Training...
+Perplexity = 47.07514278199608
+Word Perplexity = 54.68731804362917
+Testing...
+Perplexity = 162.83396230330374
+Word Perplexity = 199.8074365914613
+----------------------------------
+
+rh:nlp$ java -cp ../ nlp.lm.BackwardBigramModel data/pos/brown/ 0.1
+# Train Sentences = 47207 (# words = 1062447) 
+# Test Sentences = 5245 (# words = 110523)
+----------------------------------
+Backward BigramModel
+Training...
+Perplexity = 52.21923865929414
+Word Perplexity = 61.27540823371907
+Testing...
+Perplexity = 244.7537140697072
+Word Perplexity = 311.539364714314
+----------------------------------
