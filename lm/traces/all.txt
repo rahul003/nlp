@@ -1,0 +1,84 @@
+rh:nlp$ java -cp ../ nlp.lm.BidirectionalBigramModel data/pos/atis/ 0.1
+# Train Sentences = 519 (# words = 3922) 
+# Test Sentences = 58 (# words = 431)
+----------------------------------
+BidirectionalBigramModel
+Training...
+Double unigram Word Perplexity = 8.988894323588182
+Word Perplexity = 7.338123360651225
+Testing...
+Double unigram Word Perplexity = 20.276560446413843
+Word Perplexity = 13.470497721982733
+----------------------------------
+Backward BigramModel
+Training...
+Perplexity = 7.834480535825138
+Word Perplexity = 6.218535675206033
+Testing...
+Perplexity = 17.888058129824785
+Word Perplexity = 16.51242573140529
+----------------------------------
+Forward BigramModel
+Training...
+Perplexity = 9.043192013019798
+Word Perplexity = 10.5919539986291
+Testing...
+Perplexity = 19.341388622483773
+Word Perplexity = 24.053999598153656
+----------------------------------
+rh:nlp$ java -cp ../ nlp.lm.BidirectionalBigramModel data/pos/wsj/ 0.1
+# Train Sentences = 43820 (# words = 996418) 
+# Test Sentences = 4869 (# words = 110926)
+----------------------------------
+BidirectionalBigramModel
+Training...
+Double unigram Word Perplexity = 57.29286741012693
+Word Perplexity = 46.79711907445166
+Testing...
+Double unigram Word Perplexity = 172.6526981264391
+Word Perplexity = 140.51336225051588
+----------------------------------
+Backward BigramModel
+Training...
+Perplexity = 47.07514278199608
+Word Perplexity = 54.68731804362917
+Testing...
+Perplexity = 162.83396230330374
+Word Perplexity = 199.8074365914613
+----------------------------------
+Forward BigramModel
+Training...
+Perplexity = 73.9483923189533
+Word Perplexity = 88.47240730096729
+Testing...
+Perplexity = 234.07965011179772
+Word Perplexity = 294.52021253256413
+----------------------------------
+rh:nlp$ java -cp ../ nlp.lm.BidirectionalBigramModel data/pos/brown/ 0.1
+# Train Sentences = 47207 (# words = 1062447) 
+# Test Sentences = 5245 (# words = 110523)
+----------------------------------
+BidirectionalBigramModel
+Training...
+Double unigram Word Perplexity = 69.99953202882602
+Word Perplexity = 60.75974852775778
+Testing...
+Double unigram Word Perplexity = 285.5273512048214
+Word Perplexity = 277.3811621038459
+----------------------------------
+Backward BigramModel
+Training...
+Perplexity = 52.21923865929414
+Word Perplexity = 61.27540823371907
+Testing...
+Perplexity = 244.7537140697072
+Word Perplexity = 311.539364714314
+----------------------------------
+Forward BigramModel
+Training...
+Perplexity = 90.98253155662894
+Word Perplexity = 110.47387795072683
+Testing...
+Perplexity = 386.9621221186537
+Word Perplexity = 509.6864163268459
+----------------------------------

@@ -1,0 +1,38 @@
+rh:nlp$ java -cp ../ nlp.lm.BidirectionalBigramModel data/pos/atis/ 0.1
+# Train Sentences = 519 (# words = 3922) 
+# Test Sentences = 58 (# words = 431)
+----------------------------------
+BidirectionalBigramModel
+Training...
+Double unigram Word Perplexity = 8.988894323588182
+Word Perplexity = 7.338123360651225
+Testing...
+Double unigram Word Perplexity = 20.276560446413843
+Word Perplexity = 13.470497721982733
+----------------------------------
+
+rh:nlp$ java -cp ../ nlp.lm.BidirectionalBigramModel data/pos/wsj/ 0.1
+# Train Sentences = 43820 (# words = 996418) 
+# Test Sentences = 4869 (# words = 110926)
+----------------------------------
+BidirectionalBigramModel
+Training...
+Double unigram Word Perplexity = 57.29286741012693
+Word Perplexity = 46.79711907445166
+Testing...
+Double unigram Word Perplexity = 172.6526981264391
+Word Perplexity = 140.51336225051588
+----------------------------------
+
+rh:nlp$ java -cp ../ nlp.lm.BidirectionalBigramModel data/pos/brown/ 0.1
+# Train Sentences = 47207 (# words = 1062447) 
+# Test Sentences = 5245 (# words = 110523)
+----------------------------------
+BidirectionalBigramModel
+Training...
+Double unigram Word Perplexity = 69.99953202882602
+Word Perplexity = 60.75974852775778
+Testing...
+Double unigram Word Perplexity = 285.5273512048214
+Word Perplexity = 277.3811621038459
+----------------------------------

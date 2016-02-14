@@ -1,0 +1,1 @@
+java -cp ../.. nlp.lm.BigramModel ../data/brown/ 0.1

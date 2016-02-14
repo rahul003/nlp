@@ -1,0 +1,156 @@
+\documentclass{article}
+\usepackage[margin=0.8in]{geometry} 
+%\documentclass[journal]{IEEEtran}
+%\documentclass{report}
+%\documentclass{ActaOulu}
+\usepackage{graphicx, wrapfig}
+\usepackage{palatino}
+\usepackage{subcaption}
+\begin{document}
+\title{HW1: Eigendigits}
+\author{Rahul R Huilgol (rrh2226)}
+\maketitle
+
+\begin{abstract}
+In this homework, the computer vision problem of classification of handwritten digits is studied using an approach based on reducing the dimensionality of images using eigenvectors and then classifying using k-nearest neighbors classifier. Results and effects of different parameters are then presented.
+\end{abstract}
+
+\section{Introduction}
+\begin{wrapfigure}{r}{0.3\textwidth}
+  \begin{center}
+    \includegraphics[width=0.25\textwidth]{img/data.png}
+  \end{center}
+  \caption{Accuracy versus number of eigenvalues considered}
+  \label{fig:data}
+\end{wrapfigure}The problem of image classification is a high-dimensional problem. Especially these days, with higher and higher resolutions of images, the  number of dimensions used to represent an image are very high. This calls for effective representations and methods to classify them. In this homework, I study how Eigendecomposition (Principal component analysis) can help. The main idea behind this approach is to reduce the dimensionality of an image by projecting it to an eigenspace which describes most of the variance of such images. 
+The classification can then be carried out in this lower dimensional space. The data used in this work was originally a set of images of handwritten digits, each of which has dimensions of 28x28. These images were flattened into column vectors of 784 dimensions. There are 60000 training samples and 10000 test samples. The test samples are further divided into two classes, Easy set and Hard set, each with 5000 samples.
+
+% \begin{figure}[h]
+% \centering\includegraphics[width=0.2\linewidth]{img/data.png}
+% \caption{Some image samples in data}
+% \end{figure}
+\section{Eigendigits}
+Eigenvectors are the directions of highest variation in the data. The top few eigenvectors capture most of the variation in the data. Using the directions of these top eigenvectors, we can reduce the dimension of data. To find the eigenvectors, the following steps are followed.
+\begin{enumerate}
+  \item Let $N=100$ samples from the training dataset be represented in the form of a matrix A with dimensions 784 x 100. Note that each column of this matrix is an image sample
+  \item Find the mean image from data  \[I_{ave} = \frac{1}{N}\Sigma_{n=1}^{N}I_n \]
+  \item Subract mean from each image in $A$, \[ A - I_{ave} \]
+  \item Find $A^TA$ matrix
+  \item Find eigenvectors of $A^TA$. Let them be $V$ $(NxN)$, with each of the $N$ colums being an eigenvector of dimension $N$. Sort them by decreasing order of eigenvalues
+  \item Find eigenvectors of $AA^T$ by multiplying A by each of the eigenvectors of $A^TA$, $AV$. Normalize these eigenvectors.
+\end{enumerate}
+ The eigendigits of the data are the eigenvectors of the covariance matrix. The covariance matrix of A is $AA^T$, after each column has the mean subtracted. The covariance matrix has dimensions 784x784. This is a large matrix, and can potentially be even larger for bigger images. To decrease the compuatation involved the above procedure first finds the eigenvectors of $A^T A$ matrix (100x100). If $v$ is an eigenvector of this matrix, the $Av$ is an eigenvector of $AA^T$ with the same eigenvalue. We can see this from the below equations. 
+\[ A^T A = \mu \textbf{v} \]
+\[ AA^T A = \mu \textbf{Av}\]
+By doing so we obtain the top N eigenvectors of the covariance matrix, each of which has dimension 784. 
+\begin{figure}[h]
+\begin{subfigure}{0.5\textwidth}
+  \centering
+    \includegraphics[width=0.7\textwidth]{img/eigv20.png}
+    \caption{Top 16 Eigendigits with N=20}
+    \label{fig:}
+\end{subfigure}
+\begin{subfigure}{0.5\textwidth}
+\centering
+    \includegraphics[width=0.7\textwidth]{img/eigv500.png}
+    \caption{Top 16 Eigendigits with N=500}
+    \label{fig:}
+\end{subfigure}  
+\end{figure}
+
+Once we find the eigenvectors, all further calculations are done in eigenspace. To do this, we need to project our data to eigenspace. We can pick the top $P$ eigenvectors, which can be all the eigenvectors in which case $P = N$. Projection is done by first subtracting mean, and multiplying transpose of the eigenvectors matrix to the data. Both training and test data are projected to eigenspace in this manner. The projected data is of dimension $P$. 
+\[Projection of A = V^T A\]
+\section{Classifier}
+In this homework, a simple k Nearest neighbors (knn) classifier was used. knn classifier predicts the class of a sample as the majority of classes of k neighbors in training data nearest to a test sample. Note that this computation can be very expensive because the space in which these points are located is very high, equal to the number of features of each image. In our case, this is a 784 dimensional. By combining this classifier with eigenspace projections, we reduce the dimensions of all points to $P$. This should speed up our computation. 
+Accuracy of the method is measured by calculating what percentage of samples were predicted to have the correct class.
+\section{Results}
+\subsection{Reconstruction of images}
+Projection always comes with a loss of information. Projection only preserves information in the directions of eigenvectors chosen for projection. The rest of the directions denoted by other vectors complete the information. So the more eigenvectors we choose for projection, the more information we can preserve. But picking all eigenvectors for projection doesn't make sense because we would end up with all dimensions of original data. To see how much information was lost by projection, we can reconstruct projected data and compare it with the original data. Below are reconstructions of image from projection of Fig \ref{fig:data} formed by using different number of eigenvectors.
+\begin{figure}[h]
+\begin{subfigure}{0.33\textwidth}
+    \includegraphics[width=\textwidth]{img/recon20.png}
+    \caption{Projection with 20 eigenvectors}
+    \label{fig:rec20}
+\end{subfigure}
+\begin{subfigure}{0.33\textwidth}
+    \includegraphics[width=\textwidth]{img/recon100.png}
+    \caption{Projection with 100 eigenvectors}
+    \label{fig:rec100}
+\end{subfigure}
+\begin{subfigure}{0.33\textwidth}
+    \includegraphics[width=\textwidth]{img/recon500.png}
+    \caption{Projection with 500 eigenvectors}
+    \label{fig:rec500}
+\end{subfigure}
+\caption{Reconstruction of image from projection}  
+\label{fig:eigvals}
+\end{figure}
+Using lower number of eigenvectors means that a lot of information is lost in the unused directions. We see here how using more eigenvectors for projection greatly improves the reconstruction of images.
+\subsection{Change in accuracy with Training data size}
+\begin{figure}[h]
+\centering
+    \includegraphics[width=0.6\textwidth]{img/acc_trainsize.png}
+  \caption{Accuracy versus training data size}
+  \label{fig:acc_trainsize}
+\end{figure}
+We can see from Fig \ref{fig:acc_trainsize} that increase in training data sharpy increases accuracy of the model upto a point. After that point, it barely makes any difference whether or not new data is provided. We can also see that the Hard test set, denoted by red color line in the figure is significantly less steep than the Easy test set. The hard set required lot more data to reach similar levels of accuracy.
+\subsection{Number of samples taken to find eigenvectors to be able to classify accurately}
+Above, we referred to the number of samples taken to find eigenvectors as N. I was curious about whether this has a say in the accuracy of the model. We see from Fig \ref{fig:acc_N}, that small samples of around 100 are enough to get eigenvectors which lead to good accuracy. It is surprising though how there is a slight drop in accuracy on Hard set when N becomes more than 100. I guess this is just because of the distribution of training set samples.
+\begin{figure}[h]
+\centering
+    \includegraphics[width=0.6\textwidth]{img/acc_N.png}
+  \caption{Accuracy versus number of samples taken to find eigenvectors}
+  \label{fig:acc_N}
+\end{figure}
+\subsection{Number of eigenvectors needed to classify accurately}
+\begin{figure}[h]
+\begin{subfigure}{0.5\textwidth}
+    \includegraphics[width=\textwidth]{img/eigvals.png}
+    \caption{Percentage of variance captured by eigenvalues}
+    \label{fig:variance}
+\end{subfigure}
+\begin{subfigure}{0.5\textwidth}
+    \includegraphics[width=\textwidth]{img/eigvals_cum.png}
+    \caption{Cumulative percentage of variance captured}
+    \label{fig:cum}
+\end{subfigure}
+\caption{Variance captured by eigenvalues}  
+\label{fig:eigvals}
+\end{figure}
+
+We can see from Fig \ref{fig:variance} the top few eigenvectors capture most of the variance of data. After roughly 20 eigenvectors, the rest of the eigenvalues capture very low percentage of variance. Fig \ref{fig:cum} plots the cumulative variance captured by a particular eigenvalue and all eigenvalues prior to it. Here too we see that the curve flattens after a point. From then on, considering more eigenvectors is not worth it. This is because increasing eigenvectors increases the dimension of the problem and hence computation. But since they capture very little variance, they should not help increase accuracy by much. This is validated in results shown in Fig \ref{fig:acc}.
+\begin{figure}[h]
+\centering
+    \includegraphics[width=0.6\textwidth]{img/eigvals_acc.png}
+  \caption{Accuracy versus number of eigenvectors considered}
+  \label{fig:acc}
+\end{figure}
+\subsection{Effect of number of nearest neighbors $k$ for classifier}
+\begin{figure}[h]
+\centering
+    \includegraphics[width=0.6\textwidth]{img/knn.png}
+  \caption{Effect of number of nearest neighbors $k$ for classifier}
+  \label{fig:knn}
+\end{figure}
+The number of nearest neighbors that a knn classifier considers in its prediction is referred to as $k$ here. Fig \ref{fig:knn} seems to indicate that, for the most part, the choice of k does not have any effect on the accuracy of the model. Interestingly though, k=2 has a slight dip when compared to other k. I guess this is because k=2 leads to some confusion if both neighboring samples have different classes. More samples balances out this issue by majority polling.
+\subsection{Simple knn vs knn in eigenspace}
+Here, we are looking at the difference of accuracy of a simple knn model which predicts by plotting points in original dimensions versus our model which predicts in eigenspace. As Fig \ref{fig:eigenvknn} shows, there is virtually no difference in accuracy, whether prediction in eigenspace or in original dimension space. This might lead us to question the usefulness of eigenvector based approach. But we discuss in \ref{ssec:time}, how eigendecomposition still helps us.
+\begin{figure}[h]
+\centering
+    \includegraphics[width=0.6\textwidth]{img/acc_knnveigen.png}
+  \caption{Accuracy of Simple knn vs knn in eigenspace}
+  \label{fig:eigenvknn}
+\end{figure}
+\subsection{Time taken by Simple knn and knn in eigenspace} \label{ssec:time}
+\begin{figure}[h]
+\centering
+    \includegraphics[width=0.6\textwidth]{img/time.png}
+  \caption{Time taken for training and prediction by Simple knn and knn in eigenspace}
+  \label{fig:time}
+\end{figure}
+Fig \ref{fig:time} shows us how drastically prediction using knn in eigenspace reduces time as compared to the naive way of Simple knn. When training data is small, Simple knn does take lower time. But it is not scalable and takes really long as training data size increases. This is because it has to calculate distances of test sample with every sample in training set, when both points are in high dimensional space. In Fig \ref{fig:time}, 100 eigenvectors were considered. So the space of computation for knn in eigenspace is only 100 compared to 784 for Simple knn. Even for a small problem with 784 dimensions, there was a noticeable difference in time. For larger problems with even higher dimensions, knn in eigenspace is even more valuable.
+
+\section{Conclusion}
+So we see eigenvectors greatly help.
+
+\end{document}
