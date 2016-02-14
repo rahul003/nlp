@@ -5,23 +5,24 @@ import java.util.*;
 import java.io.*;
 import nlp.lm.DataManager;
 
-public class BidirectionalBigramModel extends BigramModel{
+public class BidirectionalBigramModel{
     /** Unigram model that maps a token to its unigram probability */
     public BackwardBigramModel backward = null;
-
+    public BigramModel forward = null;
     /** Interpolation weight for forward model */
     public double lambdaf = 0.45;
     /** Interpolation weight for backward model */
     public double lambdab = 0.45;
     public double lambdau = 0.1;
 
+
     public BidirectionalBigramModel() {
-        super();
         backward = new BackwardBigramModel();
+        forward = new BigramModel();
     }
 
     public void train (List<List<String>> sentences) {
-        super.train(sentences);
+        forward.train(sentences);
         backward.train(sentences);
     }
 

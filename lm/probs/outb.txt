@@ -1,0 +1,1532 @@
+# Train Sentences = 519 (# words = 3922) 
+# Test Sentences = 58 (# words = 431)
+Backward BigramModel
+Training...
+Perplexity = 7.834480535825138
+Word Perplexity = 6.218535675206033
+Testing...
+Perplexity = 17.888058129824785
+Word Perplexity = 16.51242573140529
+----------------------------------
+Unigram probs:
+Milwaukee : 0.0038306451612903224
+fare : 0.0032258064516129032
+fifty : 2.0161290322580645E-4
+via : 4.032258064516129E-4
+these : 0.004233870967741936
+trip : 0.0036290322580645163
+would : 0.0024193548387096775
+July : 8.064516129032258E-4
+ten : 0.0018145161290322581
+you : 0.0012096774193548388
+departing : 4.032258064516129E-4
+Seattle : 0.0010080645161290322
+Nashville : 0.0038306451612903224
+How : 0.0016129032258064516
+as : 2.0161290322580645E-4
+at : 0.0020161290322580645
+stop : 0.0024193548387096775
+eleven : 8.064516129032258E-4
+Where : 2.0161290322580645E-4
+much : 8.064516129032258E-4
+arrives : 2.0161290322580645E-4
+flight : 0.018145161290322582
+A : 0.002217741935483871
+C : 0.0012096774193548388
+be : 4.032258064516129E-4
+D : 0.0012096774193548388
+F : 0.0010080645161290322
+least : 4.032258064516129E-4
+I : 0.010483870967741936
+Angeles : 0.002217741935483871
+J : 6.048387096774194E-4
+K : 6.048387096774194E-4
+N : 4.032258064516129E-4
+The : 0.0010080645161290322
+P : 4.032258064516129E-4
+Salt : 0.0012096774193548388
+S : 6.048387096774194E-4
+T : 2.0161290322580645E-4
+U : 8.064516129032258E-4
+W : 6.048387096774194E-4
+by : 4.032258064516129E-4
+after : 0.004032258064516129
+a : 0.0068548387096774195
+business : 2.0161290322580645E-4
+Burbank : 0.0012096774193548388
+the : 0.022983870967741935
+fly : 0.0018145161290322581
+Thursday : 0.0020161290322580645
+Orlando : 0.0030241935483870967
+Delta : 4.032258064516129E-4
+Montreal : 0.0018145161290322581
+nine : 0.001411290322580645
+Monday : 0.002217741935483871
+do : 0.0010080645161290322
+Oakland : 0.001411290322580645
+Friday : 0.0024193548387096775
+leave : 0.0038306451612903224
+airlines : 4.032258064516129E-4
+List : 8.064516129032258E-4
+<UNK> : 0.07943548387096774
+need : 0.0030241935483870967
+weekdays : 4.032258064516129E-4
+airfare : 0.0010080645161290322
+Do : 4.032258064516129E-4
+list : 6.048387096774194E-4
+for : 0.0012096774193548388
+With : 2.0161290322580645E-4
+Minneapolis : 0.0018145161290322581
+Flights : 0.01028225806451613
+Shortest : 4.032258064516129E-4
+airline : 6.048387096774194E-4
+class : 0.0024193548387096775
+forty : 2.0161290322580645E-4
+</S> : 0.10463709677419354
+six : 0.002217741935483871
+Return : 4.032258064516129E-4
+go : 0.0020161290322580645
+dinner : 0.004435483870967742
+better : 2.0161290322580645E-4
+with : 4.032258064516129E-4
+there : 0.005241935483870968
+Ohio : 2.0161290322580645E-4
+Westchester : 0.001411290322580645
+lunch : 6.048387096774194E-4
+Flight : 0.001411290322580645
+Which : 0.008467741935483872
+number : 8.064516129032258E-4
+four : 6.048387096774194E-4
+reservation : 2.0161290322580645E-4
+'d : 0.0024193548387096775
+in : 0.010887096774193548
+tomorrow : 0.002217741935483871
+is : 0.007661290322580645
+it : 4.032258064516129E-4
+Air : 6.048387096774194E-4
+'s : 0.0010080645161290322
+Florida : 2.0161290322580645E-4
+Cheapest : 0.00282258064516129
+served : 4.032258064516129E-4
+Columbus : 0.0016129032258064516
+coach : 2.0161290322580645E-4
+Toronto : 0.0024193548387096775
+Vegas : 0.00564516129032258
+other : 8.064516129032258E-4
+hundred : 6.048387096774194E-4
+American : 0.00282258064516129
+serves : 4.032258064516129E-4
+Is : 0.0012096774193548388
+eight : 8.064516129032258E-4
+stopovers : 4.032258064516129E-4
+have : 0.002217741935483871
+Denver : 0.0036290322580645163
+twenty : 6.048387096774194E-4
+within : 2.0161290322580645E-4
+o'clock : 0.0010080645161290322
+evening : 0.0024193548387096775
+return : 4.032258064516129E-4
+Las : 0.00564516129032258
+All : 4.032258064516129E-4
+New : 0.005846774193548387
+serve : 0.0030241935483870967
+Lake : 0.0012096774193548388
+Departing : 0.0010080645161290322
+that : 0.005040322580645161
+Petersburg : 8.064516129032258E-4
+La : 6.048387096774194E-4
+find : 4.032258064516129E-4
+than : 6.048387096774194E-4
+me : 0.012298387096774194
+Pittsburgh : 0.0030241935483870967
+all : 0.0016129032258064516
+City : 0.007459677419354839
+less : 6.048387096774194E-4
+Price : 0.001411290322580645
+Sunday : 0.002217741935483871
+Wednesday : 0.0030241935483870967
+Tampa : 0.0034274193548387098
+Ontario : 0.0018145161290322581
+code : 4.032258064516129E-4
+around : 0.0016129032258064516
+Any : 2.0161290322580645E-4
+County : 0.0010080645161290322
+and : 0.0068548387096774195
+of : 0.009274193548387096
+today : 2.0161290322580645E-4
+oh : 2.0161290322580645E-4
+Round : 4.032258064516129E-4
+make : 4.032258064516129E-4
+on : 0.014919354838709677
+or : 0.0010080645161290322
+aircraft : 0.0010080645161290322
+any : 0.0010080645161290322
+Nonstop : 4.032258064516129E-4
+Houston : 0.0038306451612903224
+On : 0.0012096774193548388
+Ground : 4.032258064516129E-4
+United : 0.0010080645161290322
+about : 0.0010080645161290322
+Cincinnati : 0.0016129032258064516
+Saturday : 0.0018145161290322581
+leg : 2.0161290322580645E-4
+Francisco : 0.0018145161290322581
+Thank : 2.0161290322580645E-4
+a.m : 0.0018145161290322581
+want : 6.048387096774194E-4
+night : 2.0161290322580645E-4
+each : 2.0161290322580645E-4
+morning : 0.0038306451612903224
+Are : 8.064516129032258E-4
+twelve : 8.064516129032258E-4
+Newark : 0.007056451612903226
+stops : 4.032258064516129E-4
+thirty : 0.0024193548387096775
+Wednesdays : 4.032258064516129E-4
+two : 6.048387096774194E-4
+Washington : 0.0018145161290322581
+Jose : 0.001411290322580645
+are : 0.00625
+does : 2.0161290322580645E-4
+Dallas : 0.002217741935483871
+latest : 0.0016129032258064516
+apart : 6.048387096774194E-4
+one : 0.004435483870967742
+many : 4.032258064516129E-4
+p.m : 0.004637096774193548
+transportation : 0.0012096774193548388
+Baltimore : 0.004032258064516129
+to : 0.05766129032258065
+Saint : 0.001411290322580645
+Philadelphia : 0.0010080645161290322
+Charlotte : 0.0020161290322580645
+Detroit : 0.001411290322580645
+numbers : 4.032258064516129E-4
+seven : 0.0024193548387096775
+arriving : 0.0030241935483870967
+Beach : 6.048387096774194E-4
+Last : 2.0161290322580645E-4
+leaves : 6.048387096774194E-4
+Jersey : 6.048387096774194E-4
+First : 8.064516129032258E-4
+five : 0.004233870967741936
+those : 0.001411290322580645
+last : 0.0010080645161290322
+Diego : 6.048387096774194E-4
+this : 0.001411290322580645
+Airports : 2.0161290322580645E-4
+please : 2.0161290322580645E-4
+Kansas : 0.0036290322580645163
+Please : 4.032258064516129E-4
+Now : 2.0161290322580645E-4
+Long : 6.048387096774194E-4
+Does : 0.001411290322580645
+leaving : 0.0016129032258064516
+Indianapolis : 0.002620967741935484
+next : 0.0012096774193548388
+show : 2.0161290322580645E-4
+What : 0.025
+nonstop : 0.00282258064516129
+arrive : 0.0016129032258064516
+Phoenix : 0.004233870967741936
+Alaska : 2.0161290322580645E-4
+Tuesday : 0.0012096774193548388
+early : 2.0161290322580645E-4
+hours : 6.048387096774194E-4
+earliest : 6.048387096774194E-4
+way : 0.001411290322580645
+Miami : 0.0032258064516129032
+what : 2.0161290322580645E-4
+ones : 8.064516129032258E-4
+time : 2.0161290322580645E-4
+type : 6.048387096774194E-4
+three : 6.048387096774194E-4
+Okay : 2.0161290322580645E-4
+price : 0.002620967741935484
+between : 0.002620967741935484
+Boston : 0.0012096774193548388
+lives : 2.0161290322580645E-4
+lowest : 2.0161290322580645E-4
+Los : 0.002217741935483871
+Show : 0.013911290322580646
+breakfast : 2.0161290322580645E-4
+meals : 2.0161290322580645E-4
+Guardia : 6.048387096774194E-4
+Airlines : 0.00282258064516129
+noon : 0.001411290322580645
+travel : 6.048387096774194E-4
+first : 0.0016129032258064516
+before : 0.0020161290322580645
+<S> : 0.10463709677419354
+used : 2.0161290322580645E-4
+should : 0.0010080645161290322
+from : 0.05060483870967742
+Memphis : 0.0038306451612903224
+depart : 0.0010080645161290322
+day : 6.048387096774194E-4
+like : 0.004637096774193548
+goes : 2.0161290322580645E-4
+minutes : 0.0010080645161290322
+Can : 2.0161290322580645E-4
+daily : 8.064516129032258E-4
+ground : 8.064516129032258E-4
+Louis : 2.0161290322580645E-4
+here : 2.0161290322580645E-4
+San : 0.004233870967741936
+York : 0.005040322580645161
+Cleveland : 0.007056451612903226
+fares : 0.002217741935483871
+Tacoma : 0.0020161290322580645
+Atlanta : 0.0016129032258064516
+Leaving : 6.048387096774194E-4
+Thanks : 4.032258064516129E-4
+cost : 0.0010080645161290322
+Chicago : 0.0018145161290322581
+Only : 2.0161290322580645E-4
+From : 0.0012096774193548388
+afternoon : 0.0018145161290322581
+round : 0.0030241935483870967
+mean : 2.0161290322580645E-4
+slash : 2.0161290322580645E-4
+visit : 2.0161290322580645E-4
+flights : 0.03770161290322581
+
+Bigram probs:
+go given from : 0.035856573705179286
+<UNK> given I : 0.15384615384615385
+Nashville given on : 0.013513513513513514
+in given Washington : 0.1111111111111111
+<UNK> given D : 0.16666666666666666
+W given A : 0.09090909090909091
+Thanks given </S> : 0.0038535645472061657
+<UNK> given a : 0.20588235294117646
+What given is : 0.5526315789473685
+fares given </S> : 0.01348747591522158
+What given 's : 0.6
+W given N : 1.0
+<UNK> given Newark : 0.02857142857142857
+on given Friday : 0.75
+to given visit : 1.0
+<S> given Thanks : 1.0
+on given Wednesday : 0.5333333333333333
+thirty given </S> : 0.0038535645472061657
+the given day : 0.3333333333333333
+served given on : 0.02702702702702703
+these given are : 0.06451612903225806
+that given serves : 0.5
+Price given of : 0.10869565217391304
+San given <UNK> : 0.005076142131979695
+leaving given after : 0.05
+airline given F : 0.2
+Leaving given after : 0.05
+<UNK> given A : 0.09090909090909091
+Angeles given on : 0.013513513513513514
+the given aircraft : 0.4
+tomorrow given from : 0.00796812749003984
+Francisco given at : 0.1
+List given nonstop : 0.07142857142857142
+one given a : 0.029411764705882353
+show given me : 0.01639344262295082
+from given Long : 0.6666666666666666
+<S> given Newark : 0.11428571428571428
+from given Columbus : 0.75
+leave given Monday : 0.09090909090909091
+flight given four : 0.3333333333333333
+six given thirty : 0.16666666666666666
+departing given five : 0.047619047619047616
+La given Guardia : 1.0
+with given lowest : 1.0
+and given Orlando : 0.06666666666666667
+and given Tampa : 0.058823529411764705
+nine given hours : 0.3333333333333333
+flight given that : 0.28
+F given F : 0.2
+via given Dallas : 0.09090909090909091
+Salt given Lake : 1.0
+F given K : 1.0
+between given Houston : 0.05263157894736842
+Which given is : 0.18421052631578946
+<S> given Airports : 1.0
+ten given thirty : 0.16666666666666666
+and given leave : 0.05263157894736842
+of given <UNK> : 0.012690355329949238
+Tuesday given from : 0.00398406374501992
+there given </S> : 0.0019267822736030828
+<S> given Ground : 1.0
+to given Indianapolis : 0.3076923076923077
+after given nine : 0.14285714285714285
+Philadelphia given <UNK> : 0.0025380710659898475
+Memphis given less : 1.0
+from given Westchester : 0.2857142857142857
+Memphis given to : 0.017482517482517484
+all given <UNK> : 0.0025380710659898475
+Ontario given <UNK> : 0.0025380710659898475
+Angeles given leaving : 0.125
+after given twelve : 0.75
+stopovers given </S> : 0.0019267822736030828
+p.m given </S> : 0.038535645472061654
+Petersburg given </S> : 0.005780346820809248
+twelve given hundred : 0.6666666666666666
+nonstop given </S> : 0.007707129094412331
+flights given </S> : 0.030828516377649325
+around given six : 0.09090909090909091
+to given go : 0.1
+from given Memphis : 0.42105263157894735
+about given in : 0.018518518518518517
+the given next : 0.3333333333333333
+seven given one : 0.045454545454545456
+U given A : 0.09090909090909091
+July given <UNK> : 0.0025380710659898475
+this given is : 0.02631578947368421
+Houston given on : 0.013513513513513514
+is given airline : 0.3333333333333333
+about given after : 0.05
+via given Minneapolis : 0.1111111111111111
+that given arrives : 1.0
+U given S : 1.0
+five given o'clock : 0.8
+price given of : 0.043478260869565216
+City given round : 0.13333333333333333
+much given would : 0.08333333333333333
+flight given tomorrow : 0.2727272727272727
+Tuesday given after : 0.05
+the given first : 0.5
+from given Burbank : 0.6666666666666666
+one given that : 0.04
+the given ground : 0.25
+first given around : 0.125
+lunch given time : 1.0
+Delta given seven : 0.08333333333333333
+Toronto given </S> : 0.01348747591522158
+these given flights : 0.06951871657754011
+flight given should : 1.0
+it given </S> : 0.0038535645472061657
+way given <UNK> : 0.0025380710659898475
+is given it : 1.0
+Is given United : 0.2
+and given arriving : 0.06666666666666667
+<UNK> given round : 0.13333333333333333
+that given <UNK> : 0.02284263959390863
+D given C : 0.8333333333333334
+from given Milwaukee : 0.42105263157894735
+Memphis given </S> : 0.009633911368015413
+Angeles given </S> : 0.0019267822736030828
+on given Tuesday : 0.3333333333333333
+Cincinnati given and : 0.029411764705882353
+Monday given <UNK> : 0.0025380710659898475
+lives given in : 0.018518518518518517
+<UNK> given trip : 0.05555555555555555
+the given afternoon : 0.3333333333333333
+Air given </S> : 0.0019267822736030828
+Nashville given tomorrow : 0.09090909090909091
+much given is : 0.05263157894736842
+arriving given after : 0.05
+Orlando given that : 0.04
+arriving given in : 0.05555555555555555
+<UNK> given you : 0.3333333333333333
+to given Baltimore : 0.15
+leaving given on : 0.02702702702702703
+C given <UNK> : 0.0025380710659898475
+<UNK> given thirty : 0.25
+should given be : 0.5
+and given seven : 0.08333333333333333
+hundred given <UNK> : 0.0025380710659898475
+<S> given How : 1.0
+Charlotte given <UNK> : 0.0025380710659898475
+does given that : 0.04
+arrive given in : 0.07407407407407407
+Nashville given to : 0.027972027972027972
+arriving given <UNK> : 0.005076142131979695
+flights given depart : 0.8
+Phoenix given and : 0.029411764705882353
+that given would : 0.08333333333333333
+List given all : 0.25
+Ground given transportation : 0.3333333333333333
+<UNK> given airline : 0.3333333333333333
+Wednesday given before : 0.1
+leg given </S> : 0.0019267822736030828
+C given to : 0.01048951048951049
+from given Montreal : 0.1111111111111111
+a given stop : 0.25
+would given the : 0.008771929824561403
+<S> given Denver : 0.05555555555555555
+to given Memphis : 0.2631578947368421
+flights given cost : 0.2
+the given United : 0.2
+me given these : 0.047619047619047616
+nonstop given nonstop : 0.07142857142857142
+six given from : 0.00398406374501992
+between given Tampa : 0.058823529411764705
+number given C : 0.16666666666666666
+<UNK> given seven : 0.08333333333333333
+flight given for : 0.16666666666666666
+three given hundred : 0.3333333333333333
+Minneapolis given to : 0.006993006993006993
+arriving given within : 1.0
+flights given are : 0.6451612903225806
+find given a : 0.029411764705882353
+Louis given </S> : 0.0019267822736030828
+Does given that : 0.08
+<UNK> given Ontario : 0.1111111111111111
+to given make : 0.5
+on given American : 0.7142857142857143
+flights given from : 0.3386454183266932
+minutes given of : 0.043478260869565216
+stop given </S> : 0.007707129094412331
+Tuesday given </S> : 0.0019267822736030828
+<S> given With : 1.0
+five given <UNK> : 0.0025380710659898475
+like given a : 0.11764705882352941
+Houston given in : 0.037037037037037035
+Denver given and : 0.029411764705882353
+Departing given Wednesday : 0.06666666666666667
+weekdays given </S> : 0.0038535645472061657
+about given the : 0.008771929824561403
+after given noon : 0.42857142857142855
+that given goes : 1.0
+aircraft given <UNK> : 0.0025380710659898475
+<UNK> given nonstop : 0.21428571428571427
+four given p.m : 0.043478260869565216
+Friday given night : 1.0
+Indianapolis given </S> : 0.007707129094412331
+Tacoma given </S> : 0.0019267822736030828
+Flights given between : 0.23076923076923078
+airfare given from : 0.0199203187250996
+way given from : 0.00796812749003984
+List given American : 0.07142857142857142
+Air given seven : 0.08333333333333333
+to given to : 0.006993006993006993
+The given return : 0.5
+the given latest : 0.625
+Flight given from : 0.01593625498007968
+are given there : 0.8461538461538461
+class given round : 0.13333333333333333
+<UNK> given that : 0.12
+<S> given List : 1.0
+to given Dallas : 0.45454545454545453
+York given </S> : 0.009633911368015413
+in given a : 0.029411764705882353
+What given type : 1.0
+<UNK> given morning : 0.10526315789473684
+to given find : 1.0
+flights given stop : 0.16666666666666666
+serves given dinner : 0.045454545454545456
+<UNK> given p.m : 0.08695652173913043
+Which given serve : 0.06666666666666667
+Cleveland given after : 0.05
+five given </S> : 0.0038535645472061657
+United given flight : 0.011111111111111112
+Cleveland given <UNK> : 0.0025380710659898475
+o'clock given </S> : 0.0019267822736030828
+'s given flights : 0.0053475935828877
+nine given o'clock : 0.2
+fares given are : 0.06451612903225806
+Milwaukee given on : 0.06756756756756757
+hours given before : 0.1
+from given one : 0.045454545454545456
+Burbank given to : 0.013986013986013986
+number given </S> : 0.0038535645472061657
+Wednesday given arriving : 0.06666666666666667
+there given a : 0.058823529411764705
+Miami given <UNK> : 0.0025380710659898475
+<S> given Now : 1.0
+first given flight : 0.011111111111111112
+Tuesday given evening : 0.08333333333333333
+Last given nonstop : 0.07142857142857142
+me given all : 0.375
+six given oh : 1.0
+Montreal given on : 0.013513513513513514
+six given on : 0.013513513513513514
+a given morning : 0.05263157894736842
+Jose given around : 0.25
+Where given <UNK> : 0.0025380710659898475
+Minneapolis given tomorrow : 0.09090909090909091
+All given flights : 0.0106951871657754
+twelve given noon : 0.2857142857142857
+morning given flights : 0.016042780748663103
+before given nine : 0.14285714285714285
+and given <UNK> : 0.005076142131979695
+<S> given Thursday : 0.2
+these given leave : 0.05263157894736842
+to given Montreal : 0.8888888888888888
+from given Tampa : 0.4117647058823529
+to given Milwaukee : 0.42105263157894735
+that given fare : 0.0625
+the given evening : 0.25
+or given Thursday : 0.1
+Denver given by : 0.5
+for given United : 0.2
+I given 'd : 1.0
+to given Columbus : 0.25
+day given in : 0.018518518518518517
+Lake given City : 0.16216216216216217
+a given round : 0.06666666666666667
+transportation given </S> : 0.0019267822736030828
+<S> given Which : 1.0
+Flight given numbers : 0.5
+on given twenty : 0.3333333333333333
+like given the : 0.008771929824561403
+eleven given a.m : 0.4444444444444444
+night given </S> : 0.0019267822736030828
+flight given <UNK> : 0.015228426395939087
+Houston given <UNK> : 0.0025380710659898475
+have given stops : 0.5
+<S> given On : 1.0
+Florida given </S> : 0.0019267822736030828
+Chicago given to : 0.013986013986013986
+and given San : 0.14285714285714285
+stops given </S> : 0.0038535645472061657
+much given do : 0.2
+Saint given <UNK> : 0.005076142131979695
+Wednesday given what : 1.0
+of given United : 0.2
+that given leave : 0.10526315789473684
+nine given seven : 0.16666666666666666
+How given many : 1.0
+to given Atlanta : 0.375
+Sunday given flights : 0.0053475935828877
+Diego given to : 0.0034965034965034965
+Price given from : 0.00796812749003984
+<UNK> given class : 0.4166666666666667
+is given this : 0.14285714285714285
+Are given there : 0.07692307692307693
+on given those : 0.14285714285714285
+me given evening : 0.08333333333333333
+D given ten : 0.1111111111111111
+be given on : 0.013513513513513514
+leaving given Tuesday : 0.16666666666666666
+<S> given Leaving : 1.0
+<UNK> given City : 0.02702702702702703
+in given Miami : 0.0625
+Seattle given to : 0.006993006993006993
+on given Monday : 0.36363636363636365
+Angeles given to : 0.02097902097902098
+on given Saturday : 1.0
+Diego given </S> : 0.0019267822736030828
+and given Saint : 0.14285714285714285
+<UNK> given eleven : 0.75
+the given dinner : 0.13636363636363635
+On given Friday : 0.08333333333333333
+<UNK> given stops : 0.5
+Montreal given to : 0.0034965034965034965
+<S> given First : 1.0
+County given </S> : 0.005780346820809248
+Thursday given after : 0.05
+Are given these : 0.047619047619047616
+those given leaving : 0.125
+like given <UNK> : 0.0025380710659898475
+Thursday given <UNK> : 0.0025380710659898475
+American given Airlines : 0.7142857142857143
+minutes given apart : 1.0
+American given 's : 0.2
+all given fares : 0.09090909090909091
+on given the : 0.02631578947368421
+around given noon : 0.2857142857142857
+this given </S> : 0.0019267822736030828
+Detroit given to : 0.017482517482517484
+Thursday given evening : 0.16666666666666666
+Boston given </S> : 0.0038535645472061657
+Sunday given 's : 0.2
+from given Salt : 0.5
+Flight given number : 0.25
+to given Boston : 0.5
+Does given this : 0.14285714285714285
+<UNK> given <UNK> : 0.25888324873096447
+dinner given flights : 0.026737967914438502
+From given Washington : 0.1111111111111111
+Charlotte given on : 0.013513513513513514
+you given have : 0.18181818181818182
+P given <UNK> : 0.0025380710659898475
+Cleveland given to : 0.038461538461538464
+Friday given on : 0.05405405405405406
+before given four : 0.3333333333333333
+Seattle given <UNK> : 0.0025380710659898475
+Milwaukee given <UNK> : 0.0025380710659898475
+nonstop given flight : 0.03333333333333333
+from given J : 0.3333333333333333
+thirty given minutes : 1.0
+nine given </S> : 0.0038535645472061657
+Baltimore given </S> : 0.005780346820809248
+to given leave : 0.15789473684210525
+to given New : 0.10344827586206896
+do given <UNK> : 0.0025380710659898475
+<UNK> given and : 0.17647058823529413
+me given the : 0.2807017543859649
+from given Indianapolis : 0.6153846153846154
+fly given from : 0.0199203187250996
+<UNK> given dinner : 0.09090909090909091
+Monday given afternoon : 0.1111111111111111
+four given five : 0.047619047619047616
+On given Tuesday : 0.3333333333333333
+depart given Wednesday : 0.06666666666666667
+ten given <UNK> : 0.005076142131979695
+<S> given All : 1.0
+K given </S> : 0.0019267822736030828
+to given Las : 0.4642857142857143
+other given fares : 0.09090909090909091
+any given of : 0.043478260869565216
+<UNK> given New : 0.034482758620689655
+Ontario given to : 0.024475524475524476
+thirty given five : 0.09523809523809523
+leave given latest : 0.125
+trip given airfare : 0.6
+from given Newark : 0.5142857142857142
+you given <UNK> : 0.005076142131979695
+flights given leave : 0.5263157894736842
+A given one : 0.09090909090909091
+Denver given in : 0.018518518518518517
+three given one : 0.045454545454545456
+from given New : 0.4482758620689655
+number given from : 0.00398406374501992
+<UNK> given this : 0.42857142857142855
+ones given leave : 0.05263157894736842
+<UNK> given five : 0.23809523809523808
+Columbus given </S> : 0.0019267822736030828
+p.m given daily : 0.25
+around given <UNK> : 0.007614213197969543
+Tacoma given on : 0.013513513513513514
+Atlanta given in : 0.037037037037037035
+after given five : 0.19047619047619047
+York given to : 0.006993006993006993
+Washington given D : 0.8333333333333334
+Montreal given </S> : 0.01348747591522158
+<S> given Do : 1.0
+<UNK> given all : 0.125
+from given Charlotte : 0.5
+to given Long : 0.3333333333333333
+on given these : 0.047619047619047616
+airline given </S> : 0.0019267822736030828
+Phoenix given on : 0.08108108108108109
+Show given all : 0.25
+way given </S> : 0.0038535645472061657
+from given Las : 0.14285714285714285
+twenty given six : 0.09090909090909091
+depart given Newark : 0.02857142857142857
+first given <UNK> : 0.0025380710659898475
+<S> given Friday : 0.16666666666666666
+flights given arrive : 0.25
+a given <UNK> : 0.012690355329949238
+<S> given Round : 1.0
+Saint given Louis : 1.0
+to given Orlando : 0.8
+hours given </S> : 0.0038535645472061657
+Shortest given evening : 0.08333333333333333
+from given Detroit : 0.7142857142857143
+the given coach : 1.0
+stopovers given for : 0.16666666666666666
+<UNK> given code : 1.0
+from given Philadelphia : 0.2
+<S> given Any : 1.0
+How given about : 0.2
+tomorrow given evening : 0.16666666666666666
+and given six : 0.09090909090909091
+or given J : 0.3333333333333333
+Washington given </S> : 0.005780346820809248
+evening given that : 0.04
+transportation given <UNK> : 0.0025380710659898475
+Milwaukee given </S> : 0.005780346820809248
+flight given numbers : 0.5
+least given one : 0.045454545454545456
+leave given in : 0.07407407407407407
+from given Cleveland : 0.3142857142857143
+between given Phoenix : 0.047619047619047616
+from given <UNK> : 0.03299492385786802
+Airports given in : 0.018518518518518517
+before given arriving : 0.06666666666666667
+is given that : 0.04
+Is given flight : 0.011111111111111112
+Long given Beach : 1.0
+<UNK> given are : 0.06451612903225806
+Pittsburgh given </S> : 0.011560693641618497
+Charlotte given to : 0.017482517482517484
+Show given <UNK> : 0.005076142131979695
+Cheapest given airfare : 0.4
+<UNK> given two : 0.3333333333333333
+first given class : 0.16666666666666666
+serve given <UNK> : 0.0025380710659898475
+arrive given around : 0.125
+Monday given morning : 0.05263157894736842
+for given Delta : 1.0
+Tacoma given to : 0.024475524475524476
+between given Baltimore : 0.05
+<UNK> given first : 0.125
+after given lunch : 0.3333333333333333
+evening given flights : 0.0053475935828877
+Cleveland given daily : 0.75
+return given flight : 0.011111111111111112
+in given Nashville : 0.15789473684210525
+the given morning : 0.5789473684210527
+Which given flights : 0.0213903743315508
+Now given I : 0.019230769230769232
+City given the : 0.008771929824561403
+Tacoma given <UNK> : 0.0025380710659898475
+flight given number : 0.75
+City given that : 0.04
+return given <UNK> : 0.0025380710659898475
+lowest given fare : 0.0625
+Petersburg given to : 0.0034965034965034965
+<UNK> given any : 0.2
+Denver given that : 0.04
+oh given six : 0.09090909090909091
+you given </S> : 0.0019267822736030828
+trip given <UNK> : 0.0025380710659898475
+to given Minneapolis : 0.3333333333333333
+<UNK> given Baltimore : 0.05
+<S> given Price : 1.0
+American given from : 0.00398406374501992
+<S> given Flights : 1.0
+seven given <UNK> : 0.005076142131979695
+Do given any : 0.2
+the given American : 0.07142857142857142
+<S> given Show : 1.0
+<UNK> given ground : 0.25
+aircraft given is : 0.07894736842105263
+in given Toronto : 0.08333333333333333
+Airlines given flight : 0.03333333333333333
+trip given flights : 0.0213903743315508
+Air given next : 0.16666666666666666
+<S> given Monday : 0.18181818181818182
+York given weekdays : 0.5
+<UNK> given leg : 1.0
+<S> given Are : 1.0
+five given seven : 0.16666666666666666
+<S> given Is : 1.0
+<S> given Okay : 1.0
+noon given and : 0.08823529411764706
+one given seven : 0.16666666666666666
+first given one : 0.045454545454545456
+Return given flight : 0.022222222222222223
+N given two : 0.3333333333333333
+for given the : 0.008771929824561403
+Denver given on : 0.013513513513513514
+flight given six : 0.09090909090909091
+<S> given The : 1.0
+of given each : 1.0
+are given from : 0.00398406374501992
+What given airline : 0.3333333333333333
+one given way : 1.0
+Newark given Wednesday : 0.06666666666666667
+<S> given Departing : 1.0
+flights given do : 0.4
+Minneapolis given </S> : 0.011560693641618497
+Cincinnati given </S> : 0.007707129094412331
+<S> given Wednesday : 0.06666666666666667
+How given <UNK> : 0.0025380710659898475
+July given </S> : 0.0038535645472061657
+Any given of : 0.021739130434782608
+five given in : 0.037037037037037035
+leave given before : 0.1
+<S> given What : 1.0
+leaves given latest : 0.125
+ones given arrive : 0.125
+one given four : 0.3333333333333333
+<UNK> given stopovers : 1.0
+ten given </S> : 0.0019267822736030828
+Jose given before : 0.1
+<UNK> given like : 0.043478260869565216
+airlines given fly : 0.1111111111111111
+flights given that : 0.2
+Thursday given </S> : 0.007707129094412331
+Francisco given with : 0.5
+Baltimore given and : 0.029411764705882353
+or given the : 0.008771929824561403
+these given is : 0.05263157894736842
+<S> given Cheapest : 1.0
+On given Wednesdays : 0.5
+today given <UNK> : 0.0025380710659898475
+you given list : 0.3333333333333333
+those given on : 0.013513513513513514
+Show given the : 0.008771929824561403
+Are given any : 0.2
+Philadelphia given to : 0.01048951048951049
+Do given I : 0.019230769230769232
+<UNK> given from : 0.04780876494023904
+Friday given in : 0.018518518518518517
+that given are : 0.03225806451612903
+<UNK> given the : 0.08771929824561403
+like given to : 0.05944055944055944
+of given these : 0.7619047619047619
+leave given on : 0.013513513513513514
+nonstop given <UNK> : 0.0025380710659898475
+eight given <UNK> : 0.0025380710659898475
+in given San : 0.19047619047619047
+me given flights : 0.0748663101604278
+from given Atlanta : 0.5
+K given or : 0.2
+The given flight : 0.03333333333333333
+City given and : 0.058823529411764705
+Newark given City : 0.02702702702702703
+there given any : 0.4
+Sunday given </S> : 0.01348747591522158
+<S> given Last : 1.0
+From given Toronto : 0.16666666666666666
+dinner given </S> : 0.02697495183044316
+Departing given after : 0.1
+thirty given in : 0.018518518518518517
+<UNK> given lunch : 0.3333333333333333
+I given A : 0.09090909090909091
+on given Wednesdays : 0.5
+apart given </S> : 0.005780346820809248
+visit given me : 0.01639344262295082
+fare given </S> : 0.019267822736030827
+P given slash : 1.0
+Cleveland given </S> : 0.02119460500963391
+make given a : 0.029411764705882353
+Wednesday given after : 0.05
+me given <UNK> : 0.005076142131979695
+'s given flight : 0.011111111111111112
+from given Pittsburgh : 0.4666666666666667
+Airlines given </S> : 0.019267822736030827
+Oakland given please : 1.0
+before given five : 0.14285714285714285
+morning given after : 0.05
+Please given list : 0.6666666666666666
+to given Salt : 0.5
+<S> given Does : 1.0
+and given arrive : 0.25
+to given Nashville : 0.42105263157894735
+from given Dallas : 0.45454545454545453
+on given U : 0.25
+Guardia given to : 0.006993006993006993
+<UNK> given Wednesday : 0.13333333333333333
+flights given go : 0.8
+these given nonstop : 0.07142857142857142
+from given La : 0.6666666666666666
+least given <UNK> : 0.0025380710659898475
+Flight given <UNK> : 0.0025380710659898475
+<UNK> given twenty : 0.6666666666666666
+early given in : 0.018518518518518517
+Newark given New : 0.13793103448275862
+Cleveland given on : 0.04054054054054054
+to given Toronto : 0.5833333333333334
+nine given p.m : 0.043478260869565216
+<UNK> given transportation : 0.16666666666666666
+A given nine : 0.14285714285714285
+serve given dinner : 0.5454545454545454
+daily given </S> : 0.005780346820809248
+latest given flight : 0.03333333333333333
+'s given the : 0.02631578947368421
+leave given Phoenix : 0.14285714285714285
+to given Florida : 1.0
+Denver given to : 0.017482517482517484
+twenty given <UNK> : 0.0025380710659898475
+Delta given one : 0.045454545454545456
+reservation given on : 0.013513513513513514
+the given fares : 0.18181818181818182
+to given Tacoma : 0.3
+thirty given a : 0.029411764705882353
+Francisco given </S> : 0.007707129094412331
+one given <UNK> : 0.005076142131979695
+are given served : 0.5
+Flights given from : 0.17131474103585656
+Thursday given afternoon : 0.1111111111111111
+at given or : 0.2
+Cheapest given round : 0.13333333333333333
+<UNK> given flights : 0.0481283422459893
+thirty given <UNK> : 0.0025380710659898475
+Friday given afternoon : 0.2222222222222222
+evening given flight : 0.011111111111111112
+to given be : 0.5
+Francisco given <UNK> : 0.0025380710659898475
+<UNK> given Monday : 0.18181818181818182
+flights given serves : 0.5
+Round given trip : 0.1111111111111111
+<S> given Nonstop : 1.0
+with given at : 0.1
+A given </S> : 0.0038535645472061657
+to given Los : 0.45454545454545453
+Atlanta given to : 0.017482517482517484
+on given Thursday : 0.2
+K given to : 0.0034965034965034965
+Vegas given </S> : 0.028901734104046242
+Philadelphia given </S> : 0.0019267822736030828
+flights given is : 0.02631578947368421
+next given day : 0.6666666666666666
+flight given A : 0.18181818181818182
+With given round : 0.06666666666666667
+at given Las : 0.07142857142857142
+<UNK> given or : 0.2
+last given </S> : 0.007707129094412331
+or given La : 0.3333333333333333
+<UNK> given on : 0.10810810810810811
+before given eight : 0.5
+all given flights : 0.016042780748663103
+Does given the : 0.02631578947368421
+the given <UNK> : 0.048223350253807105
+flight given U : 0.25
+and given I : 0.038461538461538464
+ones given stop : 0.08333333333333333
+flight given W : 0.6666666666666666
+me given one : 0.09090909090909091
+Is given there : 0.07692307692307693
+<S> given U : 0.25
+have given the : 0.008771929824561403
+and given U : 0.25
+about given Thursday : 0.1
+to given return : 0.5
+July given first : 0.125
+travel given from : 0.00398406374501992
+Vegas given from : 0.0199203187250996
+<S> given I : 0.7115384615384616
+Houston given </S> : 0.005780346820809248
+eight given a.m : 0.1111111111111111
+Is given this : 0.2857142857142857
+Cleveland given departing : 1.0
+about given Monday : 0.09090909090909091
+from given Orlando : 0.13333333333333333
+time given </S> : 0.0019267822736030828
+from given Los : 0.5454545454545454
+would given a : 0.029411764705882353
+New given York : 1.0
+this given flight : 0.05555555555555555
+the given other : 0.25
+around given ten : 0.2222222222222222
+within given thirty : 0.08333333333333333
+arriving given </S> : 0.0019267822736030828
+Friday given </S> : 0.005780346820809248
+Dallas given on : 0.013513513513513514
+in given Indianapolis : 0.07692307692307693
+Jose given to : 0.006993006993006993
+fare given cost : 0.2
+fare given one : 0.045454545454545456
+morning given </S> : 0.02697495183044316
+Can given you : 0.16666666666666666
+between given Milwaukee : 0.05263157894736842
+<UNK> given Sunday : 0.18181818181818182
+price given </S> : 0.02119460500963391
+<UNK> given nine : 0.14285714285714285
+San given Jose : 1.0
+Orlando given to : 0.006993006993006993
+to given San : 0.38095238095238093
+to given Cleveland : 0.6857142857142857
+meals given </S> : 0.0019267822736030828
+to given Charlotte : 0.4
+<S> given Can : 1.0
+Baltimore given in : 0.018518518518518517
+those given leave : 0.05263157894736842
+numbers given </S> : 0.0019267822736030828
+Does given American : 0.07142857142857142
+other given American : 0.07142857142857142
+and given Memphis : 0.21052631578947367
+flight given </S> : 0.023121387283236993
+many given <UNK> : 0.0025380710659898475
+flight given two : 0.3333333333333333
+York given and : 0.14705882352941177
+What given flights : 0.45454545454545453
+<UNK> given latest : 0.125
+Charlotte given at : 0.1
+class given </S> : 0.009633911368015413
+United given Airlines : 0.2857142857142857
+trip given </S> : 0.007707129094412331
+Only given <UNK> : 0.0025380710659898475
+Columbus given on : 0.013513513513513514
+by given six : 0.18181818181818182
+is given <UNK> : 0.007614213197969543
+I given have : 0.2727272727272727
+Monday given </S> : 0.005780346820809248
+cost given of : 0.06521739130434782
+<UNK> given three : 0.3333333333333333
+Show given me : 0.9016393442622951
+these given serve : 0.13333333333333333
+Orlando given <UNK> : 0.0025380710659898475
+make given at : 0.1
+Show given cost : 0.2
+City given to : 0.06643356643356643
+seven given p.m : 0.13043478260869565
+noon given </S> : 0.007707129094412331
+as given <UNK> : 0.0025380710659898475
+please given </S> : 0.0019267822736030828
+to given Saint : 0.7142857142857143
+are given nonstop : 0.14285714285714285
+flights given leaving : 0.25
+a given one : 0.045454545454545456
+Dallas given to : 0.017482517482517484
+Nashville given </S> : 0.017341040462427744
+the given ten : 0.1111111111111111
+<UNK> given stop : 0.16666666666666666
+Shortest given flight : 0.011111111111111112
+what given about : 0.2
+to given have : 0.09090909090909091
+is given used : 1.0
+<UNK> given me : 0.06557377049180328
+lunch given flight : 0.011111111111111112
+Vegas given on : 0.05405405405405406
+from given Houston : 0.42105263157894735
+from given Chicago : 0.4444444444444444
+<S> given Please : 1.0
+type given of : 0.06521739130434782
+stop given in : 0.14814814814814814
+ground given <UNK> : 0.0025380710659898475
+A given flight : 0.011111111111111112
+Westchester given County : 1.0
+all given the : 0.02631578947368421
+Thursday given morning : 0.05263157894736842
+Orlando given on : 0.013513513513513514
+Cincinnati given to : 0.01048951048951049
+the given least : 0.5
+Las given Vegas : 1.0
+to given Phoenix : 0.38095238095238093
+<UNK> given fare : 0.1875
+of given those : 0.8571428571428571
+T given W : 0.3333333333333333
+seven given </S> : 0.007707129094412331
+that given serve : 0.2
+aircraft given and : 0.029411764705882353
+<UNK> given ten : 0.2222222222222222
+Wednesday given from : 0.00796812749003984
+The given <UNK> : 0.0025380710659898475
+Guardia given or : 0.2
+here given in : 0.018518518518518517
+<S> given Thank : 1.0
+me given first : 0.125
+after given six : 0.18181818181818182
+Oakland given </S> : 0.011560693641618497
+<UNK> given via : 0.5
+from given Ontario : 0.8888888888888888
+between given Denver : 0.05555555555555555
+to given Kansas : 0.4444444444444444
+<UNK> given of : 0.15217391304347827
+from given Nashville : 0.42105263157894735
+a given flight : 0.2222222222222222
+many given fares : 0.09090909090909091
+on given July : 0.25
+from given Minneapolis : 0.2222222222222222
+on given fare : 0.0625
+round given trip : 0.8333333333333334
+Chicago given I : 0.019230769230769232
+ten given p.m : 0.043478260869565216
+<UNK> given have : 0.09090909090909091
+numbers given from : 0.00398406374501992
+from given Miami : 0.5
+travel given to : 0.006993006993006993
+Dallas given </S> : 0.009633911368015413
+Boston given to : 0.01048951048951049
+any given <UNK> : 0.0025380710659898475
+have given meals : 1.0
+to given J : 0.3333333333333333
+daily given five : 0.047619047619047616
+before given ten : 0.1111111111111111
+to given Chicago : 0.2222222222222222
+have given from : 0.01195219123505976
+fifty given one : 0.045454545454545456
+from given Denver : 0.2222222222222222
+Columbus given to : 0.02097902097902098
+and given flight : 0.022222222222222223
+goes given from : 0.00398406374501992
+airlines given from : 0.00398406374501992
+Jose given </S> : 0.0019267822736030828
+Cleveland given five : 0.047619047619047616
+serve given breakfast : 1.0
+or given before : 0.1
+On given <UNK> : 0.0025380710659898475
+Friday given from : 0.00398406374501992
+Tampa given on : 0.02702702702702703
+trip given flight : 0.03333333333333333
+to given fly : 0.7777777777777778
+me given nonstop : 0.07142857142857142
+and given stop : 0.08333333333333333
+transportation given in : 0.07407407407407407
+<S> given Flight : 1.0
+ground given transportation : 0.5
+Miami given to : 0.027972027972027972
+at given <UNK> : 0.005076142131979695
+want given to : 0.01048951048951049
+from given Cincinnati : 0.5
+class given fare : 0.0625
+Sunday given from : 0.00398406374501992
+at given least : 0.5
+Cheapest given fare : 0.375
+Pittsburgh given on : 0.02702702702702703
+Washington given to : 0.0034965034965034965
+in given <UNK> : 0.015228426395939087
+me given ground : 0.5
+Denver given after : 0.1
+Wednesday given or : 0.2
+San given Diego : 1.0
+business given class : 0.08333333333333333
+<UNK> given </S> : 0.1233140655105973
+evening given on : 0.013513513513513514
+Denver given <UNK> : 0.0025380710659898475
+Wednesday given on : 0.013513513513513514
+leaving given Monday : 0.09090909090909091
+to given Pittsburgh : 0.5333333333333333
+of given July : 0.5
+morning given flight : 0.011111111111111112
+before given seven : 0.08333333333333333
+<UNK> given one : 0.18181818181818182
+Monday given I : 0.019230769230769232
+airline given <UNK> : 0.0025380710659898475
+each given other : 0.25
+from given Toronto : 0.16666666666666666
+a.m given tomorrow : 0.18181818181818182
+at given Charlotte : 0.1
+depart given Burbank : 0.3333333333333333
+at given ten : 0.1111111111111111
+From given Atlanta : 0.125
+Show given afternoon : 0.1111111111111111
+the given one : 0.045454545454545456
+<UNK> given weekdays : 0.5
+have given <UNK> : 0.0025380710659898475
+Orlando given one : 0.045454545454545456
+Monday given evening : 0.16666666666666666
+the given flight : 0.044444444444444446
+of given the : 0.03508771929824561
+Tuesday given I : 0.019230769230769232
+Miami given and : 0.029411764705882353
+A given A : 0.18181818181818182
+fly given next : 0.16666666666666666
+in given Milwaukee : 0.10526315789473684
+Los given Angeles : 1.0
+Tampa given to : 0.024475524475524476
+A given P : 1.0
+first given of : 0.021739130434782608
+I given <UNK> : 0.025380710659898477
+to given Washington : 0.3333333333333333
+to given Westchester : 0.42857142857142855
+New given Jersey : 1.0
+slash given five : 0.047619047619047616
+<UNK> given to : 0.07692307692307693
+Baltimore given <UNK> : 0.0025380710659898475
+Miami given on : 0.013513513513513514
+and given from : 0.00796812749003984
+<UNK> given before : 0.3
+trip given fare : 0.125
+Boston given via : 0.5
+Cheapest given </S> : 0.0019267822736030828
+the given cost : 0.4
+<S> given Shortest : 1.0
+<UNK> given flight : 0.1
+I given need : 1.0
+to given Miami : 0.4375
+the given nonstop : 0.07142857142857142
+flights given <UNK> : 0.015228426395939087
+fly given the : 0.008771929824561403
+a.m given </S> : 0.01348747591522158
+Orlando given </S> : 0.015414258188824663
+Wednesday given morning : 0.10526315789473684
+between given Memphis : 0.10526315789473684
+of given round : 0.06666666666666667
+Departing given Thursday : 0.1
+ten given a.m : 0.3333333333333333
+flight given from : 0.11155378486055777
+Alaska given <UNK> : 0.0025380710659898475
+What given does : 1.0
+used given on : 0.013513513513513514
+the given fare : 0.0625
+class given from : 0.00398406374501992
+flights given between : 0.6153846153846154
+in given Denver : 0.16666666666666666
+ones given go : 0.1
+Leaving given next : 0.16666666666666666
+latest given </S> : 0.007707129094412331
+Charlotte given </S> : 0.0038535645472061657
+of given flight : 0.06666666666666667
+forty given five : 0.047619047619047616
+<UNK> given after : 0.05
+Houston given tomorrow : 0.09090909090909091
+'d given like : 0.5217391304347826
+from given Phoenix : 0.42857142857142855
+between given twelve : 0.25
+from given Baltimore : 0.7
+is given the : 0.20175438596491227
+list given the : 0.02631578947368421
+Westchester given <UNK> : 0.005076142131979695
+Which given leaves : 0.3333333333333333
+should given arrive : 0.25
+Pittsburgh given to : 0.024475524475524476
+Phoenix given to : 0.024475524475524476
+is given last : 0.8
+need given a : 0.3235294117647059
+<UNK> given lives : 1.0
+that given mean : 1.0
+Newark given leaving : 0.125
+City given </S> : 0.017341040462427744
+Monday given around : 0.25
+serves given a : 0.029411764705882353
+Beach given to : 0.006993006993006993
+eight given p.m : 0.043478260869565216
+that given leaves : 0.3333333333333333
+leaves given <UNK> : 0.0025380710659898475
+way given flights : 0.0106951871657754
+<S> given July : 0.25
+from given Seattle : 0.4
+Chicago given </S> : 0.007707129094412331
+Leaving given on : 0.013513513513513514
+eight given forty : 1.0
+departing given after : 0.05
+Nonstop given </S> : 0.0038535645472061657
+on given Sunday : 0.7272727272727273
+Toronto given from : 0.00398406374501992
+trip given fares : 0.09090909090909091
+and given price : 0.07692307692307693
+after given eleven : 0.25
+<UNK> given Chicago : 0.1111111111111111
+dinner given <UNK> : 0.0025380710659898475
+Phoenix given </S> : 0.01348747591522158
+two given </S> : 0.0019267822736030828
+Memphis given and : 0.11764705882352941
+How given much : 1.0
+to given arrive : 0.125
+next given <UNK> : 0.007614213197969543
+do given you : 0.3333333333333333
+is given better : 1.0
+Departing given on : 0.013513513513513514
+five given and : 0.029411764705882353
+dinner given served : 0.5
+from given Kansas : 0.5555555555555556
+to given Denver : 0.5
+arriving given before : 0.2
+Memphis given <UNK> : 0.0025380710659898475
+leaves given first : 0.125
+York given City : 0.2972972972972973
+at given around : 0.25
+to given Oakland : 1.0
+<S> given <UNK> : 0.1700507614213198
+Angeles given Thursday : 0.2
+to given <UNK> : 0.07106598984771574
+Toronto given to : 0.013986013986013986
+Diego given leaving : 0.125
+breakfast given </S> : 0.0019267822736030828
+York given Newark : 0.02857142857142857
+Which given make : 0.5
+<S> given Only : 1.0
+County given to : 0.0034965034965034965
+<S> given From : 1.0
+<UNK> given afternoon : 0.1111111111111111
+Flights given after : 0.05
+<UNK> given fares : 0.18181818181818182
+there given from : 0.07569721115537849
+<UNK> given at : 0.2
+What given about : 0.6
+to given Tampa : 0.4117647058823529
+<UNK> given as : 1.0
+Which given are : 0.0967741935483871
+flights given serve : 0.2
+to given Cincinnati : 0.375
+fly given between : 0.07692307692307693
+six given </S> : 0.0019267822736030828
+do given these : 0.09523809523809523
+Cleveland given and : 0.029411764705882353
+arriving given from : 0.00796812749003984
+two given <UNK> : 0.005076142131979695
+First given class : 0.3333333333333333
+Miami given </S> : 0.009633911368015413
+Indianapolis given on : 0.013513513513513514
+of given flights : 0.0053475935828877
+Airlines given flights : 0.0053475935828877
+Beach given arriving : 0.06666666666666667
+class given fares : 0.2727272727272727
+evening given tomorrow : 0.09090909090909091
+fares given from : 0.00796812749003984
+Francisco given to : 0.006993006993006993
+Ontario given </S> : 0.0019267822736030828
+to given Seattle : 0.6
+arrives given in : 0.018518518518518517
+flight given the : 0.008771929824561403
+from given Tacoma : 0.7
+from given </S> : 0.0019267822736030828
+in given Las : 0.14285714285714285
+flight given on : 0.05405405405405406
+Detroit given </S> : 0.0019267822736030828
+in given New : 0.06896551724137931
+Baltimore given to : 0.04895104895104895
+<S> given Where : 1.0
+flight given stop : 0.08333333333333333
+five given a.m : 0.1111111111111111
+those given leaves : 0.3333333333333333
+Flights given arriving : 0.13333333333333333
+other given </S> : 0.0038535645472061657
+Which given ones : 1.0
+fare given round : 0.13333333333333333
+on given <UNK> : 0.02284263959390863
+twenty given three : 0.3333333333333333
+than given thirty : 0.25
+afternoon given </S> : 0.01348747591522158
+need given to : 0.013986013986013986
+Orlando given leaving : 0.125
+seven given fifty : 1.0
+flight given nonstop : 0.07142857142857142
+Milwaukee given to : 0.027972027972027972
+On given Thursday : 0.1
+those given flights : 0.0053475935828877
+Wednesdays given after : 0.1
+Okay given <UNK> : 0.0025380710659898475
+<UNK> given want : 0.3333333333333333
+fare given for : 0.16666666666666666
+the given earliest : 1.0
+five given p.m : 0.21739130434782608
+nonstop given flights : 0.026737967914438502
+tomorrow given </S> : 0.009633911368015413
+leaving given tomorrow : 0.09090909090909091
+one given stop : 0.16666666666666666
+would given like : 0.43478260869565216
+Houston given and : 0.058823529411764705
+<S> given Return : 1.0
+<S> given Tuesday : 0.16666666666666666
+any given other : 0.25
+Milwaukee given and : 0.058823529411764705
+three given and : 0.029411764705882353
+next given Wednesday : 0.06666666666666667
+leave given </S> : 0.0019267822736030828
+Newark given for : 0.16666666666666666
+earliest given flight : 0.03333333333333333
+between given Cincinnati : 0.125
+o'clock given p.m : 0.17391304347826086
+Tampa given </S> : 0.01348747591522158
+in given Westchester : 0.2857142857142857
+those given depart : 0.2
+go given <UNK> : 0.0025380710659898475
+first given </S> : 0.0019267822736030828
+are given <UNK> : 0.0025380710659898475
+latest given dinner : 0.045454545454545456
+Kansas given City : 0.4864864864864865
+Saturday given </S> : 0.015414258188824663
+a given reservation : 1.0
+Show given business : 1.0
+to given Newark : 0.2857142857142857
+flights given arriving : 0.4666666666666667
+arrive given at : 0.2
+tomorrow given <UNK> : 0.0025380710659898475
+from given Saint : 0.14285714285714285
+to given Detroit : 0.2857142857142857
+evening given </S> : 0.01348747591522158
+dinner given flight : 0.011111111111111112
+leave given <UNK> : 0.0025380710659898475
+Tuesday given arriving : 0.06666666666666667
+fare given <UNK> : 0.0025380710659898475
+code given A : 0.18181818181818182
+are given the : 0.017543859649122806
+Sunday given after : 0.05
+Burbank given between : 0.07692307692307693
+What given airlines : 0.5
+of given aircraft : 0.6
+S given Air : 1.0
+to given Philadelphia : 0.4
+Show given flights : 0.03208556149732621
+Cheapest given flight : 0.03333333333333333
+in given Chicago : 0.2222222222222222
+serve given lunch : 0.3333333333333333
+I given want : 0.6666666666666666
+the given T : 1.0
+have given dinner : 0.045454545454545456
+after given ten : 0.1111111111111111
+lunch given </S> : 0.0019267822736030828
+a given nonstop : 0.14285714285714285
+after given <UNK> : 0.0025380710659898475
+arriving given by : 0.5
+Tampa given and : 0.029411764705882353
+<UNK> given for : 0.3333333333333333
+the given A : 0.09090909090909091
+N given one : 0.045454545454545456
+six given p.m : 0.21739130434782608
+p.m given on : 0.02702702702702703
+<UNK> given is : 0.02631578947368421
+J given F : 0.6
+<UNK> given in : 0.24074074074074073
+between given New : 0.10344827586206896
+City given in : 0.018518518518518517
+flight given nine : 0.14285714285714285
+<UNK> given fly : 0.1111111111111111
+Thank given you : 0.16666666666666666
+Wednesday given </S> : 0.009633911368015413
+C given </S> : 0.0038535645472061657
+Newark given to : 0.06643356643356643
+one given three : 0.3333333333333333
+Jersey given to : 0.01048951048951049
+coach given <UNK> : 0.0025380710659898475
+A given <UNK> : 0.0025380710659898475
+the given last : 0.2
+Detroit given leaving : 0.125
+arrive given early : 1.0
+the given flights : 0.12299465240641712
+hundred given hours : 0.6666666666666666
+Saturday given with : 0.5
+Which given airlines : 0.5
+in given Minneapolis : 0.3333333333333333
+cost given </S> : 0.0038535645472061657
+me given here : 1.0
+Atlanta given </S> : 0.0019267822736030828
+Houston given that : 0.04
+Burbank given after : 0.05
+Saint given Petersburg : 1.0
+in given the : 0.15789473684210525
+from given San : 0.2857142857142857
+better given </S> : 0.0019267822736030828
+less given than : 1.0
+Ohio given </S> : 0.0019267822736030828
+<UNK> given would : 0.08333333333333333
+<UNK> given show : 1.0
+Memphis given on : 0.013513513513513514
+From given Philadelphia : 0.4
+Which given of : 0.43478260869565216
+find given <UNK> : 0.0025380710659898475
+<UNK> given next : 0.16666666666666666
+F given </S> : 0.0019267822736030828
+seven given flight : 0.011111111111111112
+five given five : 0.047619047619047616
+<UNK> given Washington : 0.1111111111111111
+<UNK> given do : 0.4
+New given <UNK> : 0.0025380710659898475
+on given flight : 0.022222222222222223
+Flights given on : 0.02702702702702703
+the given round : 0.13333333333333333
+be given <UNK> : 0.0025380710659898475
+is given Alaska : 1.0
+tomorrow given morning : 0.05263157894736842
+Seattle given </S> : 0.0038535645472061657
+those given are : 0.03225806451612903
+on given United : 0.2
+day given </S> : 0.0038535645472061657
+after given eight : 0.5
+American given flight : 0.022222222222222223
+afternoon given flights : 0.0106951871657754
+one given nine : 0.2857142857142857
+to given travel : 1.0
+Denver given </S> : 0.007707129094412331
+from given Washington : 0.3333333333333333
+after given seven : 0.08333333333333333
+fly given <UNK> : 0.0025380710659898475
+to given Houston : 0.5263157894736842
+leaving given today : 1.0
+Cleveland given Ohio : 1.0
+Vegas given to : 0.013986013986013986
+arriving given at : 0.2
+Indianapolis given to : 0.027972027972027972
+five given flight : 0.011111111111111112
+should given <UNK> : 0.005076142131979695
+four given thirty : 0.08333333333333333
+me given Sunday : 0.09090909090909091
+<UNK> given other : 0.25
+from given Boston : 0.5
+leave given from : 0.02390438247011952
+<UNK> given six : 0.18181818181818182
+depart given <UNK> : 0.0025380710659898475
+Newark given </S> : 0.011560693641618497
+last given flight : 0.011111111111111112
+for given tomorrow : 0.09090909090909091
+are given dinner : 0.09090909090909091
+Jose given on : 0.013513513513513514
+I given would : 0.75
+that given flight : 0.03333333333333333
+leaving given Baltimore : 0.05
+What given <UNK> : 0.015228426395939087
+there given one : 0.09090909090909091
+one given </S> : 0.005780346820809248
+the given price : 0.9230769230769231
+and given Las : 0.17857142857142858
+and given New : 0.06896551724137931
+flight given to : 0.01048951048951049
+San given Francisco : 1.0
+City given on : 0.02702702702702703
+mean given </S> : 0.0019267822736030828
+flight given serve : 0.3333333333333333
+have given a : 0.08823529411764706
+Denver given arriving : 0.06666666666666667
+for given Tampa : 0.058823529411764705
+any given flights : 0.0053475935828877
+flights given have : 0.36363636363636365
+Newark given on : 0.02702702702702703
+County given New : 0.034482758620689655
+Houston given to : 0.027972027972027972
+five given serve : 0.06666666666666667
+----------------------------------

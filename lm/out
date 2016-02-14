@@ -1,0 +1,20 @@
+# Train Sentences = 519 (# words = 3922) 
+# Test Sentences = 58 (# words = 431)
+Backward BigramModel
+Training...
+Word Perplexity = 9.911967859314963
+----------------------------------
+[List, the, flights, from, Baltimore, to, Seattle, that, stop, in, Minneapolis]
+ given List:8.064516129032258E-5
+List given the:0.0022983870967741935
+the given flights:0.11446534845609799
+flights given from:0.30984136036499166
+from given Baltimore:0.6304032258064516
+Baltimore given to:0.04982207308820212
+to given Seattle:0.540100806451613
+Seattle given that:5.040322580645161E-4
+that given stop:2.4193548387096777E-4
+stop given in:0.1344220430107527
+in given Minneapolis:0.3001814516129032
+Minneapolis given </S>:0.020868333954876
+----------------------------------
