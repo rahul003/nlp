@@ -1,7 +1,6 @@
-rh:nlp$ java -cp ../ nlp.lm.BidirectionalBigramModel data/pos/atis/ 0.1
+Running: java -cp ../.. nlp.lm.BidirectionalBigramModel ../data/atis/ 0.1
 # Train Sentences = 519 (# words = 3922) 
 # Test Sentences = 58 (# words = 431)
-----------------------------------
 BidirectionalBigramModel
 Training...
 Double unigram Word Perplexity = 8.988894323588182
@@ -10,29 +9,28 @@ Testing...
 Double unigram Word Perplexity = 20.276560446413843
 Word Perplexity = 13.470497721982733
 ----------------------------------
-
-rh:nlp$ java -cp ../ nlp.lm.BidirectionalBigramModel data/pos/wsj/ 0.1
-# Train Sentences = 43820 (# words = 996418) 
-# Test Sentences = 4869 (# words = 110926)
 ----------------------------------
+Running: java -cp ../.. nlp.lm.BidirectionalBigramModel ../data/wsj/ 0.1
+# Train Sentences = 43820 (# words = 995626) 
+# Test Sentences = 4869 (# words = 111718)
 BidirectionalBigramModel
 Training...
-Double unigram Word Perplexity = 57.29286741012693
-Word Perplexity = 46.79711907445166
+Double unigram Word Perplexity = 57.55976865901988
+Word Perplexity = 46.93903066188463
 Testing...
-Double unigram Word Perplexity = 172.6526981264391
-Word Perplexity = 140.51336225051588
+Double unigram Word Perplexity = 160.817117343984
+Word Perplexity = 129.0966161437189
 ----------------------------------
-
-rh:nlp$ java -cp ../ nlp.lm.BidirectionalBigramModel data/pos/brown/ 0.1
-# Train Sentences = 47207 (# words = 1062447) 
-# Test Sentences = 5245 (# words = 110523)
 ----------------------------------
+Running: java -cp ../.. nlp.lm.BidirectionalBigramModel ../data/brown/ 0.1
+# Train Sentences = 47207 (# words = 1079440) 
+# Test Sentences = 5245 (# words = 93530)
 BidirectionalBigramModel
 Training...
-Double unigram Word Perplexity = 69.99953202882602
-Word Perplexity = 60.75974852775778
+Double unigram Word Perplexity = 71.67210799313014
+Word Perplexity = 62.07202023841888
 Testing...
-Double unigram Word Perplexity = 285.5273512048214
-Word Perplexity = 277.3811621038459
+Double unigram Word Perplexity = 180.6105233202774
+Word Perplexity = 172.32689231797417
+----------------------------------
 ----------------------------------

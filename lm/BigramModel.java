@@ -55,7 +55,6 @@ public class BigramModel {
 
     /** Accumulate unigram and bigram counts for this sentence */
     public void trainSentence (List<String> sentence) {
-<<<<<<< HEAD
     // First count an initial start sentence token
         String prevToken = "<S>";
         DoubleValue unigramValue = unigramMap.get("<S>");
@@ -323,7 +322,7 @@ public void print() {
      */
     public static void main(String[] args) throws IOException {
         DataManager data = new DataManager(args);
-        System.out.println("----------------------------------\nForward BigramModel");
+        System.out.println("Forward BigramModel:");
     // Create a bigram model and train it.
         BigramModel model = new BigramModel();
         System.out.println("Training...");
@@ -335,6 +334,7 @@ public void print() {
     // Test on test data using test and test2
         model.test(data.testSentences);
         model.test2(data.testSentences);
+        System.out.println("----------------------------------");
         System.out.println("----------------------------------");
     }
 

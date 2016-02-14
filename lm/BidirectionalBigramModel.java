@@ -218,17 +218,16 @@ public class BidirectionalBigramModel extends BigramModel{
     public static void main(String[] args) throws IOException {
         DataManager data = new DataManager(args);
 
-        System.out.println("----------------------------------");
         System.out.println("BidirectionalBigramModel");
         BidirectionalBigramModel model = new BidirectionalBigramModel();
         System.out.println("Training...");
         model.train(data.trainSentences);
         // Test on training data using test and test2
-        model.test(data.trainSentences);
+        // model.test(data.trainSentences);
         model.test3(data.trainSentences);
         System.out.println("Testing...");
         // Test on test data using test and test2
-        model.test(data.testSentences);
+        // model.test(data.testSentences);
         model.test3(data.testSentences);
         System.out.println("----------------------------------");
         System.out.println("Backward BigramModel");
@@ -236,22 +235,23 @@ public class BidirectionalBigramModel extends BigramModel{
         System.out.println("Training...");
         backward.train(data.trainSentences);
         // Test on training data using test and test2
-        backward.test(data.trainSentences);
+        // backward.test(data.trainSentences);
         backward.test2(data.trainSentences);
         System.out.println("Testing...");
         // Test on test data using test and test2
-        backward.test(data.testSentences);
+        // backward.test(data.testSentences);
         backward.test2(data.testSentences);
         System.out.println("----------------------------------");
         System.out.println("Forward BigramModel");
         BigramModel forward = new BigramModel();
         System.out.println("Training...");
         forward.train(data.trainSentences);
-        forward.test(data.trainSentences);
+        // forward.test(data.trainSentences);
         forward.test2(data.trainSentences);
         System.out.println("Testing...");
-        forward.test(data.testSentences);
+        // forward.test(data.testSentences);
         forward.test2(data.testSentences);
+        System.out.println("----------------------------------");
         System.out.println("----------------------------------");
 
     }

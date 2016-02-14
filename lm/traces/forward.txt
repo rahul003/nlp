@@ -1,8 +1,7 @@
-rh:nlp$ java -cp ../ nlp.lm.BigramModel data/pos/atis/ 0.1
+Running: java -cp ../.. nlp.lm.BigramModel ../data/atis/ 0.1
 # Train Sentences = 519 (# words = 3922) 
 # Test Sentences = 58 (# words = 431)
-----------------------------------
-Forward BigramModel
+Forward BigramModel:
 Training...
 Perplexity = 9.043192013019798
 Word Perplexity = 10.5919539986291
@@ -10,29 +9,28 @@ Testing...
 Perplexity = 19.341388622483773
 Word Perplexity = 24.053999598153656
 ----------------------------------
-
-rh:nlp$ java -cp ../ nlp.lm.BigramModel data/pos/wsj/ 0.1
-# Train Sentences = 43820 (# words = 996418) 
-# Test Sentences = 4869 (# words = 110926)
 ----------------------------------
-Forward BigramModel
+Running: java -cp ../.. nlp.lm.BigramModel ../data/wsj/ 0.1
+# Train Sentences = 43820 (# words = 995626) 
+# Test Sentences = 4869 (# words = 111718)
+Forward BigramModel:
 Training...
-Perplexity = 73.9483923189533
-Word Perplexity = 88.47240730096729
+Perplexity = 74.26799183241482
+Word Perplexity = 88.89008380713945
 Testing...
-Perplexity = 234.07965011179772
-Word Perplexity = 294.52021253256413
+Perplexity = 219.71517777445175
+Word Perplexity = 275.1178149885602
 ----------------------------------
-
-rh:nlp$ java -cp ../ nlp.lm.BigramModel data/pos/brown/ 0.1
-# Train Sentences = 47207 (# words = 1062447) 
-# Test Sentences = 5245 (# words = 110523)
 ----------------------------------
-Forward BigramModel
+Running: java -cp ../.. nlp.lm.BigramModel ../data/brown/ 0.1
+# Train Sentences = 47207 (# words = 1079440) 
+# Test Sentences = 5245 (# words = 93530)
+Forward BigramModel:
 Training...
-Perplexity = 90.98253155662894
-Word Perplexity = 110.47387795072683
+Perplexity = 93.51927720192262
+Word Perplexity = 113.35954408376686
 Testing...
-Perplexity = 386.9621221186537
-Word Perplexity = 509.6864163268459
+Perplexity = 231.30243689356243
+Word Perplexity = 310.66735613437913
+----------------------------------
 ----------------------------------

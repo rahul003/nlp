@@ -13,7 +13,7 @@ public class BackwardBigramModel extends BigramModel{
 
     public static void main(String[] args) throws IOException {
         DataManager data = new DataManager(args);
-        System.out.println("----------------------------------\nBackward BigramModel");
+        System.out.println("Backward BigramModel");
         BackwardBigramModel model = new BackwardBigramModel();
         System.out.println("Training...");
         model.train(data.trainSentences);
@@ -25,16 +25,8 @@ public class BackwardBigramModel extends BigramModel{
         model.test(data.testSentences);
         model.test2(data.testSentences);
         System.out.println("----------------------------------");
-        
-        // System.out.println("----------------------------------\nForward BigramModel");
-        // BigramModel forward = new BigramModel();
-        // System.out.println("Training...");
-        // forward.train(data.trainSentences);
-        // forward.test(data.trainSentences);
-        // forward.test2(data.trainSentences);
-        // System.out.println("Testing...");
-        // forward.test(data.testSentences);
-        // forward.test2(data.testSentences);
+        System.out.println("----------------------------------");
+
     }
 
 }
