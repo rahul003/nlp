@@ -1,1 +1,0 @@
-java -cp ../ nlp.lm.BackwardBigramModel data/pos/brown/ 0.1
