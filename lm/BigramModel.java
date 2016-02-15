@@ -27,7 +27,7 @@ public class BigramModel {
     /** Interpolation weight for bigram model */
     public double lambda2 = 0.9;
 
-    //debug mode only runs on one sentence and prints tokens used
+    //debug mode only runs on one sentence and prints the bigrams used
     public boolean debug = false;
     /** Initialize model with empty hashmaps with initial
      *  unigram entries for setence start (<S>), sentence end (</S>)
@@ -115,7 +115,7 @@ public class BigramModel {
         DoubleValue value = entry.getValue();
         double bigramCount = value.getValue();
         String context = bigramContext(bigram); // Get context token of bigram
-        // Prob is ratio of bigram count to token1 unigram count
+        // Prob is ratio of bigram count to context unigram count
         double condProb = bigramCount / unigramMap.get(context).getValue();
         // Set map value to conditional probability 
         value.setValue(condProb);
@@ -299,11 +299,6 @@ public class BigramModel {
         // Store prediction prob for i'th token
         tokenProbs[i] = interpolatedProb(unigramVal, bigramVal);
         prevToken = token;
-        // System.out.print(bigramPosterior(bigram));
-        // System.out.print(" given ");
-        // System.out.print(bigramContext(bigram));
-        // System.out.print(":");
-        // System.out.println(tokenProbs[i]);
         i++;
     }
     // Check prediction of end of sentence
@@ -325,6 +320,7 @@ public class BigramModel {
     return lambda1 * unigramVal.getValue() + lambda2 * bigramProb;
     }
 
+    /*Only if debug mode is on, it prints the bigram appropriately*/
     public void printBigram(String bigram){
     if(!debug)
         return;
@@ -355,12 +351,7 @@ public class BigramModel {
     // Test on test data using test and test2
     model.test(data.testSentences);
     model.test2(data.testSentences);
-    // System.out.println("----------------------------------");
-    // System.out.println(data.trainSentences.get(0));
-    model.sentenceTokenProbs(data.trainSentences.get(0));
-    // System.out.println("----------------------------------");
     }
-
 }
 
 

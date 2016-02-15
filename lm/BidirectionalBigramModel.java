@@ -15,125 +15,138 @@ public class BidirectionalBigramModel{
     public BackwardBigramModel backward = null;
     public BigramModel forward = null;
 
-    /** Interpolation weight for forward bigram model */
+    /** Interpolation weight for forward bigram */
     public double lambdaf = 0.45;
-    /** Interpolation weight for backward bigram model */
+    /** Interpolation weight for backward bigram */
     public double lambdab = 0.45;
-    /** Interpolation weight for unigram model */
+    /** Interpolation weight for unigram */
     public double lambdau = 0.1;
 
-    /* will be laoded to same value asin bigram*/
+    /* will be loaded to the same value as in BigramModel*/
     public boolean debug;
 
-    public BidirectionalBigramModel() {
-    backward = new BackwardBigramModel();
-    forward = new BigramModel();
-    debug = forward.debug;
+    public BidirectionalBigramModel() 
+    {
+        backward = new BackwardBigramModel();
+        forward = new BigramModel();
+        /* fetch debug value of BigramModel*/
+        debug = forward.debug;
     }
 
-    public void train (List<List<String>> sentences) {
-    forward.train(sentences);
-    backward.train(sentences);
+    public void train (List<List<String>> sentences) 
+    {
+        forward.train(sentences);
+        backward.train(sentences);
     }
 
     /* Compute log probability of sentence given current model 
     does not predict for <s> and </s>
     */
-    public double sentenceLogProb (List<String> sentence) {
-    // System.out.println(sentence.toString());
-    // Set start-sentence as initial token
-    String prevToken = "<S>";
-    String token, nextToken; 
-    double sentenceLogProb = 0;
-    for(int i=0; i<sentence.size(); i++){
-    token = sentence.get(i);
-    if(i<sentence.size()-1)
-        nextToken = sentence.get(i+1);
-    else
-        nextToken = "</S>";
-    
-    DoubleValue unigramVal = forward.unigramMap.get(token);
-    if (unigramVal == null) {
-        // If token not in unigram model, treat as <UNK> token
-        token = "<UNK>";
-        unigramVal = forward.unigramMap.get(token);
-    }
-    if (forward.unigramMap.get(nextToken) == null) {
-        // If token not in unigram model, treat as <UNK> token
-        token = "<UNK>";
-    }
+    public double sentenceLogProb (List<String> sentence) 
+    {
+        // Set start-sentence as initial token
+        String prevToken = "<S>"; //for first word, prevToken is this
+        String token, nextToken; 
+        double sentenceLogProb = 0;
+        for(int i=0; i<sentence.size(); i++)
+        {
+            token = sentence.get(i);
+            if(i<sentence.size()-1)
+                nextToken = sentence.get(i+1);
+            else
+                nextToken = "</S>"; //for last word, next token is this
 
-    // Get forward bigram prob
-    String bigram = forward.bigram(prevToken, token);
-    DoubleValue bigramVal = forward.bigramMap.get(bigram);
-    double logProbf = Math.log(forward.interpolatedProb(unigramVal, bigramVal));
+            
+            DoubleValue unigramVal = forward.unigramMap.get(token);
+            if (unigramVal == null) 
+            {
+                // If token not in unigram model, treat as <UNK> token
+                token = "<UNK>";
+                unigramVal = forward.unigramMap.get(token);
+            }
+            if (forward.unigramMap.get(nextToken) == null) 
+            {
+                // If token not in unigram model, treat as <UNK> token
+                token = "<UNK>";
+            }
 
-    // Get backward bigram prob
-    String bigram2 = backward.bigram(token, nextToken);
-    DoubleValue bigramVal2 = backward.bigramMap.get(bigram2);
-    double logProbb = Math.log(backward.interpolatedProb(unigramVal, bigramVal2));
-    
-    printBigrams(bigram, bigram2);
+            // Get forward bigram prob using context of prevToken
+            String bigram = forward.bigram(prevToken, token);
+            DoubleValue bigramVal = forward.bigramMap.get(bigram);
+            double logProbf = Math.log(forward.interpolatedProb(unigramVal, bigramVal));
 
-    // double logProb = interpolatedProb(logProbf, logProbb);
-    double logProb = Math.log(interpolatedProb(unigramVal, bigramVal, bigramVal2));
+            // Get backward bigram prob using context of nextToken
+            String bigram2 = backward.bigram(token, nextToken);
+            DoubleValue bigramVal2 = backward.bigramMap.get(bigram2);
+            double logProbb = Math.log(backward.interpolatedProb(unigramVal, bigramVal2));
+            
+            //only printed if debug is on
+            printBigrams(bigram, bigram2);
 
-    sentenceLogProb += logProb;
-    // update previous token and move to next token
-    prevToken = token;
-    }
-    return sentenceLogProb;
-    }
+            double logProb = Math.log(interpolatedProb(unigramVal, bigramVal, bigramVal2));
 
-    public void test (List<List<String>> sentences) {
-    double totalLogProb = 0;
-    double totalNumTokens = 0;
-    for (List<String> sentence : sentences) {
-    totalNumTokens += sentence.size();
-    double sentenceLogProb = sentenceLogProb(sentence);
-    //      System.out.println(sentenceLogProb + " : " + sentence);
-    totalLogProb += sentenceLogProb;
-    if(debug)
-        break;
-    }
-    double perplexity = Math.exp(-totalLogProb / totalNumTokens);
-    System.out.println("Word Perplexity = " + perplexity );
+            sentenceLogProb += logProb;
+            // update previous token and move to next token
+            prevToken = token;
+        }
+        return sentenceLogProb;
     }
 
-
-    public double interpolatedProb(DoubleValue unigramVal, DoubleValue forwardVal, DoubleValue backwardVal) {
-    double forw=0;
-    double backw=0;
-    if(forwardVal!=null)
-        forw = forwardVal.getValue();
-    if(backwardVal!=null)
-        backw = backwardVal.getValue();
-    return lambdau* unigramVal.getValue() + lambdaf * forw + lambdab * backw;
+    public void test (List<List<String>> sentences) 
+    {
+        double totalLogProb = 0;
+        double totalNumTokens = 0;
+        for (List<String> sentence : sentences) 
+        {
+            totalNumTokens += sentence.size();
+            double sentenceLogProb = sentenceLogProb(sentence);
+            //      System.out.println(sentenceLogProb + " : " + sentence);
+            totalLogProb += sentenceLogProb;
+            if(debug)
+                break;
+        }
+        double perplexity = Math.exp(-totalLogProb / totalNumTokens);
+        System.out.println("Word Perplexity = " + perplexity );
     }
 
-    public void printBigrams(String fbigram, String bbigram){
-    if(!debug)
-        return;
-    System.out.print(forward.bigramPosterior(fbigram));
-    System.out.print(" given ");
-    System.out.print(forward.bigramContext(fbigram));
-    System.out.print("; ");
-
-    System.out.print(backward.bigramPosterior(bbigram));
-    System.out.print(" given ");
-    System.out.println(backward.bigramContext(bbigram));
+    //interpolates
+    public double interpolatedProb(DoubleValue unigramVal, DoubleValue forwardVal, DoubleValue backwardVal) 
+    {
+        double forw=0;
+        double backw=0;
+        if(forwardVal!=null)
+            forw = forwardVal.getValue();
+        if(backwardVal!=null)
+            backw = backwardVal.getValue();
+        return lambdau* unigramVal.getValue() + lambdaf * forw + lambdab * backw;
     }
 
-    public static void main(String[] args) throws IOException {
-    DataManager data = new DataManager(args);
+    //if debug mode is on, prints bigrams
+    public void printBigrams(String fbigram, String bbigram)
+    {
+        if(!debug)
+            return;
+        System.out.print(forward.bigramPosterior(fbigram));
+        System.out.print(" given ");
+        System.out.print(forward.bigramContext(fbigram));
+        System.out.print("; ");
 
-    BidirectionalBigramModel model = new BidirectionalBigramModel();
-    System.out.println("Training...");
-    model.train(data.trainSentences);
-    // Test on training data
-    model.test(data.trainSentences);
-    System.out.println("Testing...");
-    // Test on test data
-    model.test(data.testSentences);
+        System.out.print(backward.bigramPosterior(bbigram));
+        System.out.print(" given ");
+        System.out.println(backward.bigramContext(bbigram));
+    }
+
+    public static void main(String[] args) throws IOException 
+    {
+        DataManager data = new DataManager(args);
+        //only tests for Word perplexities
+        BidirectionalBigramModel model = new BidirectionalBigramModel();
+        System.out.println("Training...");
+        model.train(data.trainSentences);
+        // Test on training data
+        model.test(data.trainSentences);
+        System.out.println("Testing...");
+        // Test on test data
+        model.test(data.testSentences);
     }
 }

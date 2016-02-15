@@ -9,33 +9,38 @@ import nlp.lm.DataManager;
 */
 
 public class BackwardBigramModel extends BigramModel{
+    // inherits BigramModel to use its functions, except the ones overridden below
+
     /*  Sentence: b a
         Forward : P(a|b) = n(ba)/n(b)
         Backward: P(b|a) = n(ba)/n(a)
-        To do this we use same counts of n(ba) so same map.
-        while calculating prob, change the denominator count to a from b. to do this invert 
-        the bigram 
     */
-
     /** Return bigram string as two tokens separated by a newline
-        Note that the difference from BigramModel is that the arguments treated as posterior and context are interchanged
-        This means that if earlier we considered a\nb as bigram now we consider b\na
+        Note that the difference from BigramModel is that 
+        the arguments treated as posterior and context are interchanged.
+        This along with the change in BigramModel which now uses a function bigramContext 
+        to fetch context helps us build BackwardBigramModel using the same calcProbs function used in BigramModel
+
+        This means that if earlier we considered a\nb as bigram now we consider b\na.
+        We also need to make appropriate changes for begin and end sentence markers
     */
     public String bigram (String posterior, String context) {
         return context + "\n" + posterior;
     }
     
-    /** Like sentenceLogProb but excludes predicting end-of-sentence when computing prob */
+    /** excludes predicting begin-of-sentence when computing prob */
     public double sentenceLogProb2 (List<String> sentence) {
         double sentenceLogProb = 0;
         String prevToken = "";
         String token = "";
         int i = 0;
-        while (i <= sentence.size()) {
+        while (i <= sentence.size())
+        {
+            //note one extra iteration for last word to become prevToken
             if(i<sentence.size())
                 token = sentence.get(i);
             else
-                token = "</S>";
+                token = "</S>"; //assigns next token as end sentence if reached end. this is for lastword|</S>
 
             DoubleValue unigramVal = unigramMap.get(token);
             if (unigramVal == null) {
@@ -44,6 +49,9 @@ public class BackwardBigramModel extends BigramModel{
             }
             if(i!=0)
             {
+                //i==0 we dont have next token so skipped
+
+                //note that this fetches prevToken|token
                 String bigram = bigram(prevToken, token);
                 DoubleValue bigramVal = bigramMap.get(bigram);
                 
@@ -59,7 +67,7 @@ public class BackwardBigramModel extends BigramModel{
 
 
     /** Returns vector of probabilities of predicting each token in the sentence
-     *  including the end of sentence */
+     *  including the start of sentence */
     public double[] sentenceTokenProbs (List<String> sentence) {
         String prevToken = "";
         String token = "";
@@ -67,13 +75,15 @@ public class BackwardBigramModel extends BigramModel{
         double[] tokenProbs = new double[sentence.size() + 1];
 
         int i = 0;
-        while (i <= sentence.size()) {
+        while (i <= sentence.size()) 
+        {
             if(i<sentence.size())
                 token = sentence.get(i);
             else
                 token = "</S>";
             DoubleValue unigramVal = unigramMap.get(token);
-            if (unigramVal == null) {
+            if (unigramVal == null) 
+            {
                 token = "<UNK>";
                 unigramVal = unigramMap.get(token);
             }

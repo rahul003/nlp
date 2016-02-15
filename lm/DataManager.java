@@ -4,6 +4,9 @@ import nlp.lm.BackwardBigramModel;
 import java.util.*;
 import java.io.*;
 
+/*
+Receives command line arguments from BigramModel and loads data.
+*/
 public class DataManager{
 
     public double testFraction = 0; 
