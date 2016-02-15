@@ -1,1 +1,0 @@
-java -cp ../.. nlp.lm.BackwardBigramModel ../data/atis/ 0.1
