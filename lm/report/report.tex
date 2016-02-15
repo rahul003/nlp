@@ -1,8 +1,5 @@
 \documentclass{article}
 \usepackage[margin=0.8in]{geometry} 
-%\documentclass[journal]{IEEEtran}
-%\documentclass{report}
-%\documentclass{ActaOulu}
 \usepackage{graphicx, wrapfig}
 \usepackage{palatino}
 \usepackage{subcaption}
@@ -13,17 +10,16 @@
 \author{Rahul R Huilgol (rrh2226)}
 \maketitle
 
-\section{Introduction}
-A simple Bigram Model works by predicting the probability of a word given the context of the previous word. 
-% \renewcommand{\arraystretch}{1.25}
-% Please add the following required packages to your document preamble:
-% \usepackage{booktabs}
-% Please add the following required packages to your document preamble:
-% \usepackage{booktabs}
-% Please add the following required packages to your document preamble:
-% \usepackage{booktabs}
-% Please add the following required packages to your document preamble:
-% \usepackage{booktabs}
+\abstract{
+In this homework, I implemented Backward Bigram Model and a Bidirectional Bigram Model (which interpolates both normal Bigram and Backward Bigram) and discuss the results.}
+\section{Backward Bigram Model}
+A simple Bigram Model (also referred to below as Forward Bigram Model for the sake of clarity) works by predicting the probability of a word given the context of the previous word. It interpolates both unigram probability and bigram probability. In this work, the interpolation weights are 0.1 for unigram and 0.9 for bigram. A Backward Bigram Model instead predicts the probability of a word given the context of the next word. 
+
+Consider the sentence "\textit{You made history}". After adding markers for start and end sentence, the list of tokens are [\textless s \textgreater, You, made, history, \textless/s\textgreater]. The probability of each word with the context of its next word has to be calculated.  For the above sentence to calculate \textit{Perplexity}, we need to use p(\textless s \textgreater$|$You), p(you$|$made), p(made$|$history), p(history$|$\textless/s\ \textgreater).  To calculate \textit{Word Perplexity} we ignore the case where we predict a sentence marker, i.e. first term p(\textless s\ \textgreater$|$you). 
+
+Interpolation was done similar to the Forward Bigram Model and with same parameters. Smoothing for Backward Bigram Model was performed in the same way as in Forward Bigram Model. The left most occurence of a word was treated as the first time it is seen, so it was treated as \textless UNK \textgreater. I believe the left most occurence should still be treated as the first occurence because English is read left to right.  A Backward Bigram Model uses the context on the right, but it is still attempting to model the English language. 
+
+The Word perplexity measure is a fair way to compare the Forward Bigram and Backward Bigram models because it does not predict sentence markers, which both models treat  differently. The results listed in Table \ref{backvforw} use the same split of 10\% data for testing, and same default interpolation parameters.
 \begin{table}[h]
 \centering
 \begin{tabular}{@{}lllll@{}}
@@ -37,10 +33,18 @@ A simple Bigram Model works by predicting the probability of a word given the co
 \textbf{Brown} & train        &  & 113.36              & 61.43                \\ \midrule
                & test         &  & 310.67              & 189.16               \\ \bottomrule
 \end{tabular}
-\caption{Comparing perplexities of Backward and Forward Bigram Models}
+\caption{Comparing Word perplexities of Forward and Backward Bigram Models}
 \label{backvforw}
 \end{table}
+The Backward model performed significantly better than Forward model on both Brown and WSJ datasets, for both training and test data. This suggests that the future context is more valuable than backward context for data similar to Brown and WSJ structure. Brown dataset has been carefully crafted to include text from different domains. WSJ being a news dataset also captures many domains. So we could say that in general for most domains, future context is more helpful. Backward Bigram Model did not perform better on the ATIS dataset however. The perplexity of Backward was almost similar to the perplexity of Forward. It performed slightly better on training and performed slightly worse on the more important criterion of test set. This suggests that for Airline reservations domain, the future context of a word is a worse predictor than historical context.
 \section{Bidirectional Bigram Model}
+A Bidirectional Bigram Model uses both future and historical context, i.e. both previous and next word to predict the probability of the current word. It computest he probability of a word by interpolating Forward and Bigram Models. Since both Forward and Bigram Models internally interpolate unigram and bigram probabilites, the Bidirectional Bigram Model interpolates using unigram probabilty, forward bigram probability and backward bigram probabilty. The weights used to interpolate are 0.1 for unigram and 0.45 for each of the bigram models. Both styles of the Bigram Models are treated similarly by using same weights because there is no reason for us to claim that a particular kind of context is objectively better. 
+
+As an example consider the word "\textit{you}" in the sentence "\textit{You made history}" again. Its probability is computed using both p(you $|$ \textless s \textgreater) both p(you $|$ made), in other words using contexts of previous word and next word.
+
+
+
+The Word perplexities of all three kinds of models are shown in Table \ref{all}.
 \begin{table}[h]
 \centering
 \begin{tabular}{@{}llllll@{}}
@@ -54,10 +58,11 @@ A simple Bigram Model works by predicting the probability of a word given the co
 \textbf{Brown} & train        &  & 113.36          & 61.43            & 61.13                  \\ \midrule
                & test         &  & 310.67          & 189.16           & 160.22               \\ \bottomrule
 \end{tabular}
-\caption{Comparing perplexities of Forward, Backward and Bidirectional Bigram Models}
+\caption{Comparing Word perplexities of Forward, Backward and Bidirectional Bigram Models}
 \label{all}
 \end{table}
+
+The results confirmed my intuition that a Bidirectional Bigram Model would perform the best. It greatly improved on the perplexities that the Forward or Backward Bigram Model could get. It produced perplexities almost half that of the Forward Bigram Model, for both training and test data. We can also observe here that even though Backward Bigram model performed worse than Forward on ATIS dataset, combining the context informations in Bidirectional Model still gave drastically better perplexities. I believe this is because by conditioning on both the previous word and the next word, it gains more information and better understands the context. So using more context information, it can make a better prediction of the word, and thus better fits the data. 
 \section{Conclusion}
-
-
+The Bidirectional Bigram Model performs much better than the standard (Forward) Bigram Model in my experiments. It effectively uses both previous and next words as context to better model the data. This approach seems valuable and is worth using for many applications.
 \end{document}
