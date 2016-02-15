@@ -28,83 +28,74 @@ public class BackwardBigramModel extends BigramModel{
         return context + "\n" + posterior;
     }
     
-    /** excludes predicting begin-of-sentence when computing prob */
-    public double sentenceLogProb2 (List<String> sentence) {
-        double sentenceLogProb = 0;
-        String prevToken = "";
-        String token = "";
-        int i = 0;
-        while (i <= sentence.size())
-        {
-            //note one extra iteration for last word to become prevToken
-            if(i<sentence.size())
-                token = sentence.get(i);
-            else
-                token = "</S>"; //assigns next token as end sentence if reached end. this is for lastword|</S>
+    //by not having trainsentence left most is made unk
 
+    /* Compute log probability of sentence given current model */
+    public double sentenceLogProb (List<String> sentence) 
+    {
+        // Set start-sentence as initial token
+        String prevToken = "</S>";
+        String token;
+        double sentenceLogProb = 0;
+        // Check prediction of each token in sentence
+        for (int i=sentence.size()-1; i>=0; i--) 
+        {
+            token = sentence.get(i);
             DoubleValue unigramVal = unigramMap.get(token);
-            if (unigramVal == null) {
+            if (unigramVal == null) 
+            {
+               // If token not in unigram model, treat as <UNK> token
                 token = "<UNK>";
                 unigramVal = unigramMap.get(token);
             }
-            if(i!=0)
-            {
-                //i==0 we dont have next token so skipped
-
-                //note that this fetches prevToken|token
-                String bigram = bigram(prevToken, token);
-                DoubleValue bigramVal = bigramMap.get(bigram);
-                
-                double logProb = Math.log(interpolatedProb(unigramVal, bigramVal));
-                sentenceLogProb += logProb;
-                printBigram(bigram);
-            }
+            String bigram = bigram(token, prevToken);
+            printBigram(bigram);
+            DoubleValue bigramVal = bigramMap.get(bigram);
+            double logProb = Math.log(interpolatedProb(unigramVal, bigramVal));
+            sentenceLogProb += logProb;
             prevToken = token;
-            i++;
+        }
+        // Check prediction of end of sentence token
+        DoubleValue unigramVal = unigramMap.get("<S>");
+        String bigram = bigram("<S>", prevToken);
+        printBigram(bigram);
+        DoubleValue bigramVal = bigramMap.get(bigram);
+        double logProb = Math.log(interpolatedProb(unigramVal, bigramVal));
+        // Update sentence log prob based on prediction of </S>
+        sentenceLogProb += logProb;
+        return sentenceLogProb;
+    }
+
+    /* Compute log probability of sentence given current model */
+    public double sentenceLogProb2 (List<String> sentence) 
+    {
+        String prevToken = "</S>";
+        String token;
+        double sentenceLogProb = 0;
+        for (int i=sentence.size()-1; i>=0; i--) 
+        {
+            token = sentence.get(i);
+            // System.out.println(token);
+            DoubleValue unigramVal = unigramMap.get(token);
+            if (unigramVal == null) {
+            token = "<UNK>";
+            unigramVal = unigramMap.get(token);
+            }
+            String bigram = bigram(token, prevToken);
+            DoubleValue bigramVal = bigramMap.get(bigram);
+            double logProb = Math.log(interpolatedProb(unigramVal, bigramVal));
+            sentenceLogProb += logProb;
+            prevToken = token;
+            printBigram(bigram);
         }
         return sentenceLogProb;
     }
 
-
-    /** Returns vector of probabilities of predicting each token in the sentence
-     *  including the start of sentence */
-    public double[] sentenceTokenProbs (List<String> sentence) {
-        String prevToken = "";
-        String token = "";
-        // Vector for storing token prediction probs
-        double[] tokenProbs = new double[sentence.size() + 1];
-
-        int i = 0;
-        while (i <= sentence.size()) 
-        {
-            if(i<sentence.size())
-                token = sentence.get(i);
-            else
-                token = "</S>";
-            DoubleValue unigramVal = unigramMap.get(token);
-            if (unigramVal == null) 
-            {
-                token = "<UNK>";
-                unigramVal = unigramMap.get(token);
-            }
-            if(i!=0)
-            {
-                String bigram = bigram(prevToken, token);
-                DoubleValue bigramVal = bigramMap.get(bigram);
-                // Store prediction prob for i'th token
-                tokenProbs[i] = interpolatedProb(unigramVal, bigramVal);
-                // System.out.print(bigramPosterior(bigram));
-                // System.out.print(" given ");
-                // System.out.print(bigramContext(bigram));
-                // System.out.print(":");
-                // System.out.println(tokenProbs[i]);
-            }
-            prevToken = token;
-            i++;
-        }
-        return tokenProbs;
+    //not implemented. slightly different than BigramModel so disabling access to BigramModel class method
+    public double[] sentenceTokenProbs (List<String> sentence)
+    {
+        throw new UnsupportedOperationException();
     }
-
 
     public static void main(String[] args) throws IOException {
         DataManager data = new DataManager(args);

@@ -92,23 +92,6 @@ public class BidirectionalBigramModel{
         return sentenceLogProb;
     }
 
-    public void test (List<List<String>> sentences) 
-    {
-        double totalLogProb = 0;
-        double totalNumTokens = 0;
-        for (List<String> sentence : sentences) 
-        {
-            totalNumTokens += sentence.size();
-            double sentenceLogProb = sentenceLogProb(sentence);
-            //      System.out.println(sentenceLogProb + " : " + sentence);
-            totalLogProb += sentenceLogProb;
-            if(debug)
-                break;
-        }
-        double perplexity = Math.exp(-totalLogProb / totalNumTokens);
-        System.out.println("Word Perplexity = " + perplexity );
-    }
-
     //interpolates
     public double interpolatedProb(DoubleValue unigramVal, DoubleValue forwardVal, DoubleValue backwardVal) 
     {
@@ -120,6 +103,23 @@ public class BidirectionalBigramModel{
             backw = backwardVal.getValue();
         return lambdau* unigramVal.getValue() + lambdaf * forw + lambdab * backw;
     }
+    
+    public void test (List<List<String>> sentences) 
+    {
+        double totalLogProb = 0;
+        double totalNumTokens = 0;
+        for (List<String> sentence : sentences) 
+        {
+            totalNumTokens += sentence.size();
+            double sentenceLogProb = sentenceLogProb(sentence);
+            totalLogProb += sentenceLogProb;
+            if(debug)
+                break;
+        }
+        double perplexity = Math.exp(-totalLogProb / totalNumTokens);
+        System.out.println("Word Perplexity = " + perplexity );
+    }
+
 
     //if debug mode is on, prints bigrams
     public void printBigrams(String fbigram, String bbigram)
@@ -143,10 +143,8 @@ public class BidirectionalBigramModel{
         BidirectionalBigramModel model = new BidirectionalBigramModel();
         System.out.println("Training...");
         model.train(data.trainSentences);
-        // Test on training data
         model.test(data.trainSentences);
         System.out.println("Testing...");
-        // Test on test data
         model.test(data.testSentences);
     }
 }

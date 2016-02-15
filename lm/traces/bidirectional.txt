@@ -1,18 +1,18 @@
-dots$ java -cp ../.. nlp.lm.BidirectionalBigramModel ../data/atis/ 0.1
+dots$ java -cp ../.. nlp.lm.BidirectionalBigramModel /projects/nlp/penn-treebank3/tagged/pos/atis/ 0.1
 # Train Sentences = 519 (# words = 3922) 
 # Test Sentences = 58 (# words = 431)
 Training...
 Word Perplexity = 7.3447200002709
 Testing...
 Word Perplexity = 11.955606606443478
-dots$ java -cp ../.. nlp.lm.BidirectionalBigramModel ../data/wsj/ 0.1
+dots$ java -cp ../.. nlp.lm.BidirectionalBigramModel /projects/nlp/penn-treebank3/tagged/pos/wsj/ 0.1
 # Train Sentences = 43820 (# words = 995626) 
 # Test Sentences = 4869 (# words = 111718)
 Training...
 Word Perplexity = 46.406973849932605
 Testing...
 Word Perplexity = 121.13575758697985
-dots$ java -cp ../.. nlp.lm.BidirectionalBigramModel ../data/brown/ 0.1
+dots$ java -cp ../.. nlp.lm.BidirectionalBigramModel /projects/nlp/penn-treebank3/tagged/pos/brown/ 0.1
 # Train Sentences = 47207 (# words = 1079440) 
 # Test Sentences = 5245 (# words = 93530)
 Training...
