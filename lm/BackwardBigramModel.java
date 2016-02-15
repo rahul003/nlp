@@ -4,16 +4,23 @@ import java.util.*;
 import java.io.*;
 import nlp.lm.DataManager;
 
+/** 
+ * @author Rahul Huilgol
+*/
+
 public class BackwardBigramModel extends BigramModel{
     /*  Sentence: b a
         Forward : P(a|b) = n(ba)/n(b)
         Backward: P(b|a) = n(ba)/n(a)
         To do this we use same counts of n(ba) so same map.
-        while calculating prob, change the denominator count to a from b. to do this change foll. functions
-        Note  dont need to call these fns for testing. only use probs for a bigram calculated.
-        Here bigram is 
+        while calculating prob, change the denominator count to a from b. to do this invert 
+        the bigram 
     */
-    /** Return bigram string as two tokens separated by a newline */
+
+    /** Return bigram string as two tokens separated by a newline
+        Note that the difference from BigramModel is that the arguments treated as posterior and context are interchanged
+        This means that if earlier we considered a\nb as bigram now we consider b\na
+    */
     public String bigram (String posterior, String context) {
         return context + "\n" + posterior;
     }
@@ -42,10 +49,7 @@ public class BackwardBigramModel extends BigramModel{
                 
                 double logProb = Math.log(interpolatedProb(unigramVal, bigramVal));
                 sentenceLogProb += logProb;
-                
-                // System.out.print(bigramPosterior(bigram));
-                // System.out.print(" given ");
-                // System.out.println(bigramContext(bigram));
+                printBigram(bigram);
             }
             prevToken = token;
             i++;
@@ -94,7 +98,6 @@ public class BackwardBigramModel extends BigramModel{
 
     public static void main(String[] args) throws IOException {
         DataManager data = new DataManager(args);
-        System.out.println("Backward BigramModel");
         BackwardBigramModel model = new BackwardBigramModel();
         System.out.println("Training...");
         model.train(data.trainSentences);
@@ -105,9 +108,6 @@ public class BackwardBigramModel extends BigramModel{
         // Test on test data using test and test2
         model.test(data.testSentences);
         model.test2(data.testSentences);
-        System.out.println("----------------------------------");
-        System.out.println("----------------------------------");
-
     }
 
 }
