@@ -30,12 +30,12 @@ A simple Bigram Model works by predicting the probability of a word given the co
 \toprule
 \textbf{}      & \textbf{}    &  & \multicolumn{2}{c}{\textbf{Word Perplexity}} \\ \midrule
 \textbf{Data}  & \textbf{Set} &  & \textit{Forward}     & \textit{Backward}     \\ \midrule
-\textbf{ATIS}  & train        &  & 10.59               & 6.22               \\ \midrule
-               & test         &  & 24.05               & 16.51                \\ \midrule
-\textbf{WSJ}   & train        &  & 88.89               & 54.88                \\ \midrule
-               & test         &  & 275.12               & 186.51               \\ \midrule
-\textbf{Brown} & train        &  & 113.36              & 62.53                \\ \midrule
-               & test         &  & 310.67              & 193.50               \\ \bottomrule
+\textbf{ATIS}  & train        &  & 10.59               & 9.91               \\ \midrule
+               & test         &  & 24.05               & 24.79                \\ \midrule
+\textbf{WSJ}   & train        &  & 88.89               & 53.82                \\ \midrule
+               & test         &  & 275.12               & 180.39               \\ \midrule
+\textbf{Brown} & train        &  & 113.36              & 61.43                \\ \midrule
+               & test         &  & 310.67              & 189.16               \\ \bottomrule
 \end{tabular}
 \caption{Comparing perplexities of Backward and Forward Bigram Models}
 \label{backvforw}
@@ -47,12 +47,12 @@ A simple Bigram Model works by predicting the probability of a word given the co
 \toprule
 \textbf{}      & \textbf{}    &  & \multicolumn{3}{c}{\textbf{Word Perplexity}}                  \\ \midrule
 \textbf{Data}  & \textbf{Set} &  & \textit{Forward} & \textit{Backward} & \textit{Bidirectional} \\ \midrule
-\textbf{ATIS}  & train        &  & 10.59           & 6.22             & 7.34                  \\ \midrule
-               & test         &  & 24.05           & 16.51            & 13.47                 \\ \midrule
-\textbf{WSJ}   & train        &  & 88.89           & 54.88            & 46.93                 \\ \midrule
-               & test         &  & 275.12           & 186.51           & 129.10                \\ \midrule
-\textbf{Brown} & train        &  & 113.36          & 62.53            & 62.07                  \\ \midrule
-               & test         &  & 310.67          & 193.50           & 172.33               \\ \bottomrule
+\textbf{ATIS}  & train        &  & 10.59           & 9.91             & 7.34                  \\ \midrule
+               & test         &  & 24.05           & 24.79            & 11.95                 \\ \midrule
+\textbf{WSJ}   & train        &  & 88.89           & 53.82            & 46.41                 \\ \midrule
+               & test         &  & 275.12           & 180.39           & 121.14                \\ \midrule
+\textbf{Brown} & train        &  & 113.36          & 61.43            & 61.13                  \\ \midrule
+               & test         &  & 310.67          & 189.16           & 160.22               \\ \bottomrule
 \end{tabular}
 \caption{Comparing perplexities of Forward, Backward and Bidirectional Bigram Models}
 \label{all}
