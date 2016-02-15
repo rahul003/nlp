@@ -46,7 +46,8 @@ public class BidirectionalBigramModel{
     {
         // Set start-sentence as initial token
         String prevToken = "<S>"; //for first word, prevToken is this
-        String token, nextToken; 
+        String token;
+        String nextToken = "</S>"; 
         double sentenceLogProb = 0;
         for(int i=0; i<sentence.size(); i++)
         {
@@ -64,10 +65,10 @@ public class BidirectionalBigramModel{
                 token = "<UNK>";
                 unigramVal = forward.unigramMap.get(token);
             }
-            if (forward.unigramMap.get(nextToken) == null) 
+            if (backward.unigramMap.get(nextToken) == null) 
             {
-                // If token not in unigram model, treat as <UNK> token
-                token = "<UNK>";
+                // If nexttoken not in unigram model, treat as <UNK> token
+                nextToken = "<UNK>";
             }
 
             // Get forward bigram prob using context of prevToken
@@ -76,7 +77,7 @@ public class BidirectionalBigramModel{
             double logProbf = Math.log(forward.interpolatedProb(unigramVal, bigramVal));
 
             // Get backward bigram prob using context of nextToken
-            String bigram2 = backward.bigram(token, nextToken);
+            String bigram2 = backward.bigram(nextToken, token);
             DoubleValue bigramVal2 = backward.bigramMap.get(bigram2);
             double logProbb = Math.log(backward.interpolatedProb(unigramVal, bigramVal2));
             
@@ -115,7 +116,10 @@ public class BidirectionalBigramModel{
             double sentenceLogProb = sentenceLogProb(sentence);
             totalLogProb += sentenceLogProb;
             if(debug)
-                break;
+                {
+                    System.out.println(sentence.toString());
+                    break;
+                }
         }
         double perplexity = Math.exp(-totalLogProb / totalNumTokens);
         System.out.println("Word Perplexity = " + perplexity );

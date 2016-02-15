@@ -24,10 +24,65 @@ public class BackwardBigramModel extends BigramModel{
         This means that if earlier we considered a\nb as bigram now we consider b\na.
         We also need to make appropriate changes for begin and end sentence markers
     */
-    public String bigram (String posterior, String context) {
-        return context + "\n" + posterior;
-    }
+    // public String bigram (String posterior, String context) {
+    //     return context + "\n" + posterior;
+    // }
     
+    /** Accumulate unigram and bigram counts for this sentence */
+    public void trainSentence (List<String> sentence) 
+    {
+        // First count an end start sentence token
+        //note here that prevToken is actually the token to the right of a word, because we are going right to left
+        String prevToken = "</S>";
+        DoubleValue unigramValue = unigramMap.get("</S>");
+        unigramValue.increment();
+        tokenCount++;
+        // For each token in sentence, accumulate a unigram and bigram count
+        for (int i=sentence.size()-1; i>=0; i--)
+        {
+            String token = sentence.get(i);
+            unigramValue = unigramMap.get(token);
+            // If this is the first time token is seen then count it
+            // as an unkown token (<UNK>) to handle out-of-vocabulary 
+            // items in testing
+            if (unigramValue == null) 
+            {
+                // Store token in unigram map with 0 count to indicate that
+                // token has been seen but not counted
+                unigramMap.put(token, new DoubleValue());
+                token = "<UNK>";
+                unigramValue = unigramMap.get(token);
+            }
+            unigramValue.increment();    // Count unigram
+            tokenCount++;               // Count token
+            // Make bigram string 
+            String bigram = bigram(prevToken, token);
+            DoubleValue bigramValue = bigramMap.get(bigram);
+            if (bigramValue == null) 
+            {
+                // If previously unseen bigram, then
+                // initialize it with a value
+                bigramValue = new DoubleValue();
+                bigramMap.put(bigram, bigramValue);
+            }
+            // Count bigram
+            bigramValue.increment();
+            prevToken = token;
+        }
+        // Account for end of sentence unigram
+        unigramValue = unigramMap.get("<S>");
+        unigramValue.increment();
+        tokenCount++;
+        // Account for end of sentence bigram
+        String bigram = bigram(prevToken, "<S>");
+        DoubleValue bigramValue = bigramMap.get(bigram);
+        if (bigramValue == null) 
+        {
+            bigramValue = new DoubleValue();
+            bigramMap.put(bigram, bigramValue);
+        }
+        bigramValue.increment();
+    }
     //by not having trainsentence left most is made unk
 
     /* Compute log probability of sentence given current model */
@@ -48,7 +103,7 @@ public class BackwardBigramModel extends BigramModel{
                 token = "<UNK>";
                 unigramVal = unigramMap.get(token);
             }
-            String bigram = bigram(token, prevToken);
+            String bigram = bigram(prevToken, token);
             printBigram(bigram);
             DoubleValue bigramVal = bigramMap.get(bigram);
             double logProb = Math.log(interpolatedProb(unigramVal, bigramVal));
@@ -57,7 +112,7 @@ public class BackwardBigramModel extends BigramModel{
         }
         // Check prediction of end of sentence token
         DoubleValue unigramVal = unigramMap.get("<S>");
-        String bigram = bigram("<S>", prevToken);
+        String bigram = bigram(prevToken, "<S>");
         printBigram(bigram);
         DoubleValue bigramVal = bigramMap.get(bigram);
         double logProb = Math.log(interpolatedProb(unigramVal, bigramVal));
@@ -81,7 +136,7 @@ public class BackwardBigramModel extends BigramModel{
             token = "<UNK>";
             unigramVal = unigramMap.get(token);
             }
-            String bigram = bigram(token, prevToken);
+            String bigram = bigram(prevToken, token);
             DoubleValue bigramVal = bigramMap.get(bigram);
             double logProb = Math.log(interpolatedProb(unigramVal, bigramVal));
             sentenceLogProb += logProb;
