@@ -92,6 +92,7 @@ public class BidirectionalBigramModel{
         return sentenceLogProb;
     }
 
+
     //interpolates
     public double interpolatedProb(DoubleValue unigramVal, DoubleValue forwardVal, DoubleValue backwardVal) 
     {
@@ -103,7 +104,7 @@ public class BidirectionalBigramModel{
             backw = backwardVal.getValue();
         return lambdau* unigramVal.getValue() + lambdaf * forw + lambdab * backw;
     }
-    
+
     public void test (List<List<String>> sentences) 
     {
         double totalLogProb = 0;
