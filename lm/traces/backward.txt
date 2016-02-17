@@ -2,26 +2,26 @@ dots$ java -cp ../.. nlp.lm.BackwardBigramModel /projects/nlp/penn-treebank3/tag
 # Train Sentences = 519 (# words = 3922) 
 # Test Sentences = 58 (# words = 431)
 Training...
-Perplexity = 9.043192013019798
-Word Perplexity = 11.680443791554506
+Perplexity = 9.0129362437796
+Word Perplexity = 11.636203016013203
 Testing...
-Perplexity = 19.341388622483773
-Word Perplexity = 27.124810818769507
+Perplexity = 19.364374738655066
+Word Perplexity = 27.16138806179997
 dots$ java -cp ../.. nlp.lm.BackwardBigramModel /projects/nlp/penn-treebank3/tagged/pos/wsj/ 0.1
 # Train Sentences = 43820 (# words = 995626) 
 # Test Sentences = 4869 (# words = 111718)
 Training...
-Perplexity = 74.26799183241476
-Word Perplexity = 86.65516421729026
+Perplexity = 74.26778753071389
+Word Perplexity = 86.6602647021424
 Testing...
-Perplexity = 219.71517777445175
-Word Perplexity = 266.58242877788786
+Perplexity = 219.51980597986474
+Word Perplexity = 266.3515745993808
 dots$ java -cp ../.. nlp.lm.BackwardBigramModel /projects/nlp/penn-treebank3/tagged/pos/brown/ 0.1
 # Train Sentences = 47207 (# words = 1079440) 
 # Test Sentences = 5245 (# words = 93530)
 Training...
-Perplexity = 93.51927720192262
-Word Perplexity = 110.78196649093694
+Perplexity = 93.50913083897301
+Word Perplexity = 110.78289581654053
 Testing...
-Perplexity = 231.30243689356243
-Word Perplexity = 299.82995708613305
+Perplexity = 231.20551767464033
+Word Perplexity = 299.68570342320015
