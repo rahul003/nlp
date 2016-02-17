@@ -11,23 +11,10 @@ import nlp.lm.DataManager;
 public class BackwardBigramModel extends BigramModel{
     // inherits BigramModel to use its functions, except the ones overridden below
 
-    /*  Sentence: b a
-        Forward : P(a|b) = n(ba)/n(b)
-        Backward: P(b|a) = n(ba)/n(a)
-    */
-    /** Return bigram string as two tokens separated by a newline
-        Note that the difference from BigramModel is that 
-        the arguments treated as posterior and context are interchanged.
-        This along with the change in BigramModel which now uses a function bigramContext 
-        to fetch context helps us build BackwardBigramModel using the same calcProbs function used in BigramModel
+    //performs same stuff as bigramModel except that the order is from right to left by reversing the loop
+    //i reverse the loop instead of reversing the data
+    //this is more efficient as whole data doesnt have to be reversed
 
-        This means that if earlier we considered a\nb as bigram now we consider b\na.
-        We also need to make appropriate changes for begin and end sentence markers
-    */
-    // public String bigram (String posterior, String context) {
-    //     return context + "\n" + posterior;
-    // }
-    
     /** Accumulate unigram and bigram counts for this sentence */
     public void trainSentence (List<String> sentence) 
     {
@@ -83,12 +70,13 @@ public class BackwardBigramModel extends BigramModel{
         }
         bigramValue.increment();
     }
-    //by not having trainsentence left most is made unk
 
-    /* Compute log probability of sentence given current model */
+    /* Compute log probability of sentence given current model 
+    similar style as above
+    */
     public double sentenceLogProb (List<String> sentence) 
     {
-        // Set start-sentence as initial token
+        // Set end-sentence as initial token
         String prevToken = "</S>";
         String token;
         double sentenceLogProb = 0;
