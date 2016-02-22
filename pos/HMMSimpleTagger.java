@@ -418,6 +418,15 @@ public class HMMSimpleTagger
 	 */
 	public static void main (String[] args) throws Exception
 	{
+
+		// File[] train_files = new File[1];
+		// train_files[0] = new File(args[0]);
+
+		// File[] test_files = new File[1];
+		// test_files[0] = new File(args[1]);
+		
+		// // Get list of sentences from the LDC POS tagged input files
+		// List<List<String>> sentences =  DataConverter.convertToTokenLists(files);
 		Reader trainingFile = null, testFile = null;
 		InstanceList trainingData = null, testData = null;
 		int numEvaluations = 0;

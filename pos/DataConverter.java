@@ -73,7 +73,7 @@ public class DataConverter {
 			// add a sentence end token </S>
 			if (tokenPos.endsWith("/.") && !tokenizer.hasMoreTokens()) 
 			{
-				System.out.println("Happened? "+tokenPos + " " + line);
+				// System.out.println("Happened? "+tokenPos + " " + line);
 				tokenList.add("</S>");
 			}
 		}
@@ -150,7 +150,6 @@ public class DataConverter {
 		return sentences;
 	}
 
-
 	public static List<List<String>> convertToLineSepTokens(File[] files) 
 	{ 
 		List<List<String>> sentences = new ArrayList<List<String>>();
@@ -185,15 +184,30 @@ public class DataConverter {
 		writer.close();
 	}
 	
-	/** Convert LDC POS tagged files to just lists of tokens for each setences 
-	 *  and print them out. */
+
 	public static void main(String[] args) throws IOException 
 	{
 		File[] files = new File[args.length-1];
 		for (int i = 0; i < files.length; i++) 
 			files[i] = new File(args[i]);
-		String new_filename = args[args.length-1]+".txt";
+
 		List<List<String>> sentences = convertToLineSepTokens(files); 
+		String new_filename = args[args.length-1]+".txt";
 		writeToFile(sentences, new_filename);
+
+
+		String[] names = files[0].list();
+		for(String name : names)
+		{
+		    if (new File(files[0]+"/"+name).isDirectory())
+		    {
+		        System.out.println(files[0]+"/"+name);
+				new_filename = args[args.length-1]+"/"+name+".txt";
+				File[] sub_files = new File[1];
+				sub_files[0] = new File(files[0]+"/"+name+"/");
+		        sentences = convertToLineSepTokens(files); 
+				writeToFile(sentences, new_filename);
+		    }
+		}
 	}
 }

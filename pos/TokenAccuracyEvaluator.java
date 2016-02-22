@@ -110,8 +110,8 @@ public class TokenAccuracyEvaluator extends TransducerEvaluator
 		//System.err.println ("TokenAccuracyEvaluator accuracy="+acc);
 		accuracy.put(description, acc);
 		logger.info (description +" accuracy="+acc);
-		if(description=="Testing")
-			logger.info (description +" oov accuracy="+oovacc);
+		// if(description=="Testing")
+		// 	logger.info (description +" oov accuracy="+oovacc);
 	}
 
 	/**
