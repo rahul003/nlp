@@ -112,8 +112,8 @@ public class DataConverter {
 			{
 				if (!sentence.isEmpty()) 
 				{
-					sentence.add("\n");
 					// Save completed sentence
+					sentence.add("\n");
 					sentences.add(sentence);
 					// and start a new sentence
 					sentence = new ArrayList<String>();
@@ -132,6 +132,7 @@ public class DataConverter {
 						tokens.remove(tokens.size()-1);
 						// and add final sentence tokens
 						sentence.addAll(tokens);
+						sentence.add("\n");
 						// Save completed sentence
 						sentences.add(sentence);
 						// and start a new sentence
@@ -191,6 +192,7 @@ public class DataConverter {
 		for (int i = 0; i < files.length; i++) 
 			files[i] = new File(args[i]);
 
+		System.out.println(args[0]);
 		List<List<String>> sentences = convertToLineSepTokens(files); 
 		String new_filename = args[args.length-1]+".txt";
 		writeToFile(sentences, new_filename);
