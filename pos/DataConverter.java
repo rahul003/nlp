@@ -5,7 +5,7 @@ import java.nio.*;
 import java.nio.charset.Charset;
 import java.nio.file.Path;
 import java.util.*;
-
+import 
 /** 
  *
  * @author Rahul Huilgol
@@ -16,10 +16,12 @@ public class DataConverter {
 
 	public File file = null;
 	protected BufferedReader reader = null;
-
-	public DataConverter(File file) 
+	protected WordFeatures wf = null; 
+	public DataConverter(File file, boolean moreFeats, WordFeatures wfeat)
 	{
 		this.file = file;
+		this.moreFeats = moreFeats;
+		this.wf = wfeat;
 		try {
 			this.reader = new BufferedReader(new FileReader(file));
 		}
@@ -87,16 +89,25 @@ public class DataConverter {
 	{
 		// POS tag follows the last slash
 		String new_line = "";
+		String word;
 		int slash = tokenPos.lastIndexOf("/");
 		if (slash < 0)      
 		{
 			System.out.println(tokenPos);
 		}
 		else
-			new_line = tokenPos.substring(0,slash) +" "+ tokenPos.substring(slash+1, tokenPos.length());
+		{
+			word = tokenPos.substring(0, slash);
+			new_line = word +" ";
+			if(this.moreFeats)
+			{
+				new_line += wf.getFeatures(word)
+			}
+			new_line += tokenPos.substring(slash+1, tokenPos.length());
+		}
+
 		return new_line;
 	}
-
 
 	/** Return a List of sentences each represented as a List of String tokens for 
 		the sentences in this file */
@@ -151,7 +162,7 @@ public class DataConverter {
 		return sentences;
 	}
 
-	public static List<List<String>> convertToLineSepTokens(File[] files) 
+	public static List<List<String>> convertToLineSepTokens(File[] files, Boolean moreFeats, WordFeatures wf) 
 	{ 
 		List<List<String>> sentences = new ArrayList<List<String>>();
 		for (int i = 0; i < files.length; i++) 
@@ -160,12 +171,12 @@ public class DataConverter {
 			if (!file.isDirectory()) 
 			{
 				if (!file.getName().contains("CHANGES.LOG"))
-					sentences.addAll(new DataConverter(file).tokenLists());
+					sentences.addAll(new DataConverter(file, moreFeats, wf).tokenLists());
 			}
 			else 
 			{
 				File[] dirFiles = file.listFiles();
-				sentences.addAll(convertToLineSepTokens(dirFiles));
+				sentences.addAll(convertToLineSepTokens(dirFiles, moreFeats, wf));
 			}
 			
 		}          
@@ -185,18 +196,37 @@ public class DataConverter {
 		writer.close();
 	}
 	
+	/*
+	args[0] is file/folder to convert
+	args[1] is new file location & name
+	args[2] is suffix file name
+	*/
 
-	public static void main(String[] args) throws IOException 
+	public static void coreConvert(String[] args, Boolean moreFeats)
 	{
-		File[] files = new File[args.length-1];
-		for (int i = 0; i < files.length; i++) 
-			files[i] = new File(args[i]);
+		File[] files = new File[1];
+		files[0] = new File(args[0]);
+		WordFeatures wf = null;
+
+		String id = "";
+		if(moreFeats)
+		{
+			id = "moreF";
+			if(args.length()>2)
+			{
+				wf = new WordFeatures();
+			}
+			else
+			{
+				System.out.println("Suffix file not given. Couldn't create");
+				return;
+			}
+		}
 
 		System.out.println(args[0]);
-		List<List<String>> sentences = convertToLineSepTokens(files); 
-		String new_filename = args[args.length-1]+".txt";
+		List<List<String>> sentences = convertToLineSepTokens(files, True, wf); 
+		String new_filename = args[1]+id+".txt";
 		writeToFile(sentences, new_filename);
-
 
 		String[] names = files[0].list();
 		for(String name : names)
@@ -204,12 +234,69 @@ public class DataConverter {
 		    if (new File(files[0]+"/"+name).isDirectory())
 		    {
 		        System.out.println(files[0]+"/"+name);
-				new_filename = args[args.length-1]+"/"+name+".txt";
+				new_filename = args[1] + id + "/"+name+".txt";
 				File[] sub_files = new File[1];
 				sub_files[0] = new File(files[0]+"/"+name+"/");
-		        sentences = convertToLineSepTokens(files); 
+		        sentences = convertToLineSepTokens(files, True, wf); 
 				writeToFile(sentences, new_filename);
 		    }
 		}
+	}
+
+	public static void main(String[] args) throws IOException 
+	{	
+		coreConvert(args, false);
+
+		if(args.length()>2)
+		{
+			coreConvert(args, true);
+		}
+	}
+}
+
+
+public class WordFeatures{
+
+	private HashSet suffixes = new HashSet();
+
+	public WordFeatures(String suffixes_path)
+	{
+		BufferedReader br = new BufferedReader(new FileReader(suffixes_path));
+		try {
+		    // StringBuilder sb = new StringBuilder();
+		    String line = br.readLine();
+
+		    while (line != null) {
+		        suffixes.add(line.trim().replaceAll("\n ", ""));
+		        line = br.readLine();
+		    }
+		} finally {
+		    br.close();
+		}
+	}
+
+	private boolean isLeadingDigit(final char c){
+    	return (c >= '0' && c <= '9');
+	}
+
+	public getFeatures(String word)
+	{
+		String rval = "";
+		if(isUpperCase(word.charAt(0)))
+			rval += "caps ";
+
+		for(String suf:suffixes)
+		{
+			if(word.endsWith(suf))
+				rval += suf + " ";
+		}
+
+		if(word.contains("-"))
+			rval += " hyph";
+
+		if(isLeadingDigit(word.charAt(0)))
+			rval += " numeroalpha";
+
+		return rval;
 	}
 }
