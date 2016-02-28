@@ -552,8 +552,6 @@ public class HMMSimpleTagger
 			}
 		}
 		
-		
-		
 		if (p.isTargetProcessing())
 		{
 			Alphabet targets = p.getTargetAlphabet();

@@ -207,7 +207,7 @@ public class DataConverter {
 				new_filename = args[args.length-1]+"/"+name+".txt";
 				File[] sub_files = new File[1];
 				sub_files[0] = new File(files[0]+"/"+name+"/");
-		        sentences = convertToLineSepTokens(files); 
+		        sentences = convertToLineSepTokens(sub_files); 
 				writeToFile(sentences, new_filename);
 		    }
 		}

@@ -18,6 +18,7 @@ package cc.mallet.fst;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.logging.Logger;
+import java.util.Iterator;
 
 import cc.mallet.types.Instance;
 import cc.mallet.types.InstanceList;
@@ -33,7 +34,7 @@ public class TokenAccuracyEvaluator extends TransducerEvaluator
 	private static Logger logger = MalletLogger.getLogger(TokenAccuracyEvaluator.class.getName());
 
 	private HashMap<String,Double> accuracy = new HashMap<String,Double>();
-	private HashSet train_tokens = new HashSet();
+	private static HashSet train_tokens = new HashSet();
 
 	public TokenAccuracyEvaluator (InstanceList[] instanceLists, String[] descriptions) {
 		super (instanceLists, descriptions);
@@ -64,19 +65,20 @@ public class TokenAccuracyEvaluator extends TransducerEvaluator
 		totalTokens = numCorrectTokens = 0;
 		totalOOV = numCorrectOOV = 0;
 
-		// if (description=="Training" && train_tokens.isEmpty())
-		// {
-		// 	System.out.println("Caching tokens during training");
-		// 	for (int i = 0; i < instances.size(); i++) 
-		// 	{
-		// 		Instance instance = instances.get(i);
-		// 		Sequence input = (Sequence) instance.getData();
-		// 		for(int j=0; j<input.size(); j++)
-		// 			// System.out.println(input.get(j));
-		// 			train_tokens.add(input.get(j));
-		// 	}
-		// }
-
+		if (description=="Training" && train_tokens.isEmpty())
+		{
+			System.out.println("Caching tokens during training");
+			for (int i = 0; i < instances.size(); i++) 
+			{
+				Instance instance = instances.get(i);
+				Sequence input = (Sequence) instance.getData();
+				for(int j=0; j<input.size(); j++)
+				{		
+						// System.out.println(input.get(j));
+					train_tokens.add(input.get(j).toString());
+				}
+			}
+		}
 		for (int i = 0; i < instances.size(); i++) {
 			Instance instance = instances.get(i);
 			Sequence input = (Sequence) instance.getData();
@@ -91,27 +93,28 @@ public class TokenAccuracyEvaluator extends TransducerEvaluator
 				totalTokens++;
 				if (trueOutput.get(j).equals(predOutput.get(j)))
 					numCorrectTokens++;
-				// if(description=="Testing")
-				// {
-				// 	if (!train_tokens.contains(input.get(j)))
-				// 	{
-				// 		totalOOV++;
-				// 		if (trueOutput.get(j).equals(predOutput.get(j)))
-				// 			numCorrectOOV++;
-				// 	}
-				// }
+
+				if(description=="Testing")
+				{
+					if (!train_tokens.contains(input.get(j).toString()))
+					{
+						totalOOV++;
+						if (trueOutput.get(j).equals(predOutput.get(j)))
+							numCorrectOOV++;
+					}
+				}
 
 			}
-			//System.err.println ("TokenAccuracyEvaluator "+i+" numCorrectTokens="+numCorrectTokens+" totalTokens="+totalTokens+" accuracy="+((double)numCorrectTokens)/totalTokens);
 		}
 		double acc = ((double)numCorrectTokens)/totalTokens;
 		double oovacc = ((double)numCorrectOOV)/totalOOV;
-
-		//System.err.println ("TokenAccuracyEvaluator accuracy="+acc);
+		double profoovCorr = ((double) numCorrectOOV/totalTokens);
+		double profoovTotal = ((double) totalOOV/totalTokens);
 		accuracy.put(description, acc);
 		logger.info (description +" accuracy="+acc);
-		// if(description=="Testing")
-		// 	logger.info (description +" oov accuracy="+oovacc);
+		if(description=="Testing")
+			logger.info (description +" oov accuracy="+oovacc + " ; profoovCorr:"+profoovCorr + "; profoovTotal: "+profoovTotal);
+			// logger.info(description + "totalTokens:"+totalTokens+"; numCorrectTokens:"+numCorrectTokens+"; totalOOV:"+totalOOV+"; numCorrectOOV:"+numCorrectOOV);
 	}
 
 	/**
