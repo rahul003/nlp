@@ -484,7 +484,7 @@ public class HMMSimpleTagger
 							new LineGroupIterator(testFile,
 								Pattern.compile("^\\s*$"), true));
 				} else
-				{
+				{	
 					Random r = new Random (randomSeedOption.value);
 					InstanceList[] trainingLists =
 						trainingData.split(

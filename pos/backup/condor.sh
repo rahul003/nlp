@@ -8,13 +8,13 @@ Executable = /usr/bin/java
 +Project = "INSTRUCTIONAL"
 +ProjectDescription = "CS388 Homework 2"
 
-Log = traces/crf_def_wsj_moreF.log
+Log = traces/crf_atis_0.log
 
 Notification = Always
 Notify_user = h.rahul@utexas.edu
 
-Arguments = cc.mallet.fst.HMMSimpleTagger --train true --model-file models/crf_def_wsj_moreF.ml --training-proportion 0.8 --test lab data/wsjmoreF.txt
+Arguments = cc.mallet.fst.SimpleTagger --train true --model-file models/crf_atis_0.ml --training-proportion 0.8 --test lab data/wsjShortestBothAll/00.txt data/wsjShortestBothAll/01.txt
 
-Output = traces/crf_def_wsj_moreF.out
-Error  = traces/crf_def_wsj_moreF.err
+Output = traces/crf_atis_0.out
+Error  = traces/crf_atis_0.err
 Queue 1

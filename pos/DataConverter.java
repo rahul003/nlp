@@ -213,7 +213,7 @@ public class DataConverter {
 		String id = "";
 		if(moreFeats)
 		{
-			id = "moreF";
+			// id = "moreF";
 			if(args.length>2)
 			{
 				wf = new WordFeatures(args[args.length-1]);
@@ -261,9 +261,10 @@ public class DataConverter {
 
 	public static void main(String[] args) throws IOException 
 	{	
-		System.out.println("Creating data files without extra features");
-		coreConvert(args, false);
+		// System.out.println("Creating data files without extra features");
+		// coreConvert(args, false);
 
+		//check id string above
 		if(args.length>2)
 		{
 			System.out.println("Creating data files with extra features");
