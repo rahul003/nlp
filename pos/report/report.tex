@@ -1,0 +1,52 @@
+\documentclass{article}
+\usepackage[margin=1in]{geometry} 
+\usepackage{graphicx, wrapfig}
+\usepackage{palatino}
+\usepackage{subcaption}
+\usepackage{multirow}
+\usepackage{booktabs}
+\begin{document}
+\title{\vspace{-4ex}HW2: POS Tagging with HMM and CRF}
+\author{Rahul R Huilgol (rrh2226)}
+\maketitle
+
+\abstract{
+In this homework, I compared Hidden Markov Model and Conditional Random Field at the task of Part of Speech tagging on ATIS and WSJ datasets. }
+\section{Introduction}
+
+
+\begin{table}[h]
+\centering
+\begin{tabular}{@{}lllll@{}}
+\toprule
+\textbf{}      & \textbf{}    &  & \multicolumn{2}{c}{\textbf{Word Perplexity}} \\ \midrule
+\textbf{Data}  & \textbf{Set} &  & \textit{Forward}     & \textit{Backward}     \\ \midrule
+\textbf{ATIS}  & train        &  & 10.59               & 11.64               \\ \midrule
+               & test         &  & 24.05               & 27.16                \\ \midrule
+\textbf{WSJ}   & train        &  & 88.89               & 86.66                \\ \midrule
+               & test         &  & 275.12               & 266.35               \\ \midrule
+\textbf{Brown} & train        &  & 113.36              & 110.78                \\ \midrule
+               & test         &  & 310.67              & 299.68               \\ \bottomrule
+\end{tabular}
+\caption{Comparing Word perplexities of Forward and Backward Bigram Models}
+\label{backvforw}
+\end{table}
+\section{Bidirectional Bigram Model}
+\begin{table}[h]
+\centering
+\begin{tabular}{@{}llllll@{}}
+\toprule
+\textbf{}      & \textbf{}    &  & \multicolumn{3}{c}{\textbf{Word Perplexity}}                  \\ \midrule
+\textbf{Data}  & \textbf{Set} &  & \textit{Forward} & \textit{Backward} & \textit{Bidirectional} \\ \midrule
+\textbf{ATIS}  & train        &  & 10.59           & 11.64             & 7.23                  \\ \midrule
+               & test         &  & 24.05           & 27.16            & 12.70                 \\ \midrule
+\textbf{WSJ}   & train        &  & 88.89           & 86.66            & 46.51                 \\ \midrule
+               & test         &  & 275.12           & 266.35           & 126.11                \\ \midrule
+\textbf{Brown} & train        &  & 113.36          & 110.78            & 61.47                  \\ \midrule
+               & test         &  & 310.67          & 299.68           & 167.49               \\ \bottomrule
+\end{tabular}
+\caption{Comparing Word perplexities of Forward, Backward and Bidirectional Bigram Models}
+\label{all}
+\end{table}
+\section{Conclusion}
+\end{document}
