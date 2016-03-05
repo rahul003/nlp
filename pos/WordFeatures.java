@@ -54,8 +54,8 @@ public class WordFeatures{
 		List<String> feats = new ArrayList<String>();
 		String rval = "";
 
-		// if(Character.isUpperCase(word.charAt(0)))
-		// 	feats.add("caps");
+		if(Character.isUpperCase(word.charAt(0)))
+			feats.add("caps");
 
 		Iterator<String> it = suffixes.iterator();
      	while(it.hasNext()){
@@ -77,16 +77,16 @@ public class WordFeatures{
         	}
      	}
 
-		// if(word.contains("-"))
-		// 	{
-		// 		// rval += " hyph ";
-		// 		feats.add("hyph");
-		// 	}
+		if(word.contains("-"))
+			{
+				// rval += " hyph ";
+				feats.add("hyph");
+			}
 
-		// if(isLeadingDigit(word.charAt(0))){
-		// 	feats.add("numeroalpha");
-		// 	// rval += " numeroalpha ";
-		// }
+		if(isLeadingDigit(word.charAt(0))){
+			feats.add("numeroalpha");
+			// rval += " numeroalpha ";
+		}
 
 		for(String s: feats)
 		{

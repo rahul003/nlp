@@ -10,12 +10,14 @@ f.close()
 
 model = "SimpleTagger"
 # model = "SimpleTagger"
-data = "atis"
+data = "atisCaps"
 
 if model=="SimpleTagger":
 	id = "crf_"+data
 else:
 	id = "hmm_"+data
+
+id+='v2'
 
 prefix = "Notification = Always\nNotify_user = h.rahul@utexas.edu\n"
 restarg = " --training-proportion 0.8 --test lab data/"+data+".txt\n"
