@@ -74,7 +74,6 @@ public class TokenAccuracyEvaluator extends TransducerEvaluator
 				Sequence input = (Sequence) instance.getData();
 				for(int j=0; j<input.size(); j++)
 				{		
-						// System.out.println(input.get(j));
 					train_tokens.add(input.get(j).toString());
 				}
 			}
@@ -85,7 +84,6 @@ public class TokenAccuracyEvaluator extends TransducerEvaluator
 			Sequence trueOutput = (Sequence) instance.getTarget();
 			assert (input.size() == trueOutput.size());
 
-			// System.err.println ("TokenAccuracyEvaluator "+i+" length="+input.size());
 			Sequence predOutput = transducer.transduce (input);
 			assert (predOutput.size() == trueOutput.size());
 
@@ -114,7 +112,7 @@ public class TokenAccuracyEvaluator extends TransducerEvaluator
 		logger.info (description +" accuracy="+acc);
 		if(description=="Testing")
 			logger.info (description +" oov accuracy="+oovacc + " ; profoovCorr:"+profoovCorr + "; profoovTotal: "+profoovTotal);
-			// logger.info(description + "totalTokens:"+totalTokens+"; numCorrectTokens:"+numCorrectTokens+"; totalOOV:"+totalOOV+"; numCorrectOOV:"+numCorrectOOV);
+		//leaving this here because this is what my trace files show. I ran the experiments a bit early. I was confused with what Prof. Mooney wanted from OOV rate, although first metric seemed most logical. I just included couple of other metrics so I dont have to rerun the experiments.
 	}
 
 	/**
