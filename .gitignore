@@ -1,2 +1,5 @@
 data/*
 *.class
+parse/data/*
+parse/libs/*
+parse/out/*
