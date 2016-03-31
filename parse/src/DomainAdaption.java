@@ -2,9 +2,13 @@ import edu.stanford.nlp.parser.lexparser.EvaluateTreebank;
 import edu.stanford.nlp.parser.lexparser.LexicalizedParser;
 import edu.stanford.nlp.parser.lexparser.Options;
 import edu.stanford.nlp.trees.MemoryTreebank;
+import edu.stanford.nlp.trees.Tree;
+import edu.stanford.nlp.trees.Treebank;
 
 import java.io.BufferedWriter;
 import java.io.FileNotFoundException;
+import java.io.OutputStream;
+import java.io.PrintStream;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -16,25 +20,16 @@ public class DomainAdaption {
     LexicalizedParser base_lp = null;
     LexicalizedParser adapted_lp = null;
 
-    MemoryTreebank seed_set = null;
-    MemoryTreebank selftrain_set = null;
-    MemoryTreebank test_set = null;
+    Treebank seed_set = null;
+    Treebank selftrain_set = null;
+    Treebank test_set = null;
 
-    public DomainAdaption(MemoryTreebank seed, MemoryTreebank selftrainingRaw, MemoryTreebank test){
-        long startTime = System.currentTimeMillis();
+    public DomainAdaption(Treebank seed, Treebank selftrainingRaw, Treebank test){
         seed_set = seed;
-        seed_set.textualSummary();
-        //Suprisingly not doing this causes null excpetion
         test_set = test;
-        test_set.textualSummary();
-
         train();
         create_selftrain_set(selftrainingRaw);
         retrain();
-
-        long endTime   = System.currentTimeMillis();
-        long totalTime = endTime - startTime;
-        System.out.println(totalTime);
     }
 
     public DomainAdaption(String path){
@@ -42,7 +37,7 @@ public class DomainAdaption {
         adapted_lp = LexicalizedParser.getParserFromSerializedFile("adapted_"+path);
     }
 
-    public void loadTestbank(MemoryTreebank test){
+    public void loadTestbank(Treebank test){
         test_set = test;
         test_set.textualSummary();
     }
@@ -52,18 +47,15 @@ public class DomainAdaption {
         adapted_lp.saveParserToSerialized("adapted_"+filepath);
     }
 
-    private void create_selftrain_set(MemoryTreebank selftraining) {
-        System.out.println("creating selftrain");
+    private void create_selftrain_set(Treebank selftraining) {
+        System.out.println("Creating selftrainset");
         selftrain_set = new MemoryTreebank();
-
-        for(int i=0; i<selftraining.size();i++)
-        {
+        for (Tree t: selftraining) {
+            selftrain_set.add(base_lp.parse(t.yieldHasWord()));
+        }
 //            ParserQuery q = base_lp.parserQuery();
-            selftrain_set.add(base_lp.parse(selftraining.get(i).yieldHasWord()));
 //            selftraining.get(2).pennPrint();
 //            q.getBestParse().pennPrint();
-        }
-        selftrain_set.textualSummary();
     }
 
     public void train(){
@@ -109,18 +101,18 @@ public class DomainAdaption {
     public static void main(String[] args) throws FileNotFoundException {
         boolean training = false;
         String trainTreebankName;
-        MemoryTreebank trainBank = null;
-        int train_num_sent;
+         Treebank trainBank = null;
+        int train_num_sent = Integer.MAX_VALUE;
 
         boolean adapting = false;
         String adaptTreebankName;
-        int adapt_num_sent;
-        MemoryTreebank adaptBank = null;
+        int adapt_num_sent = Integer.MAX_VALUE;
+        Treebank adaptBank = null;
 
         boolean testing = false;
         String testTreebankName;
-        int test_num_sent;
-        MemoryTreebank testBank = null;
+        int test_num_sent = Integer.MAX_VALUE;
+        Treebank testBank = null;
 
         boolean saveParser = false;
         String saveParserPath="";
@@ -144,10 +136,7 @@ public class DomainAdaption {
                 training = true;
                 trainTreebankName = args[argIndex+1];
 
-                if(args[argIndex+2].charAt(0)=='-') {
-                    train_num_sent = Integer.MAX_VALUE;
-                }
-                else {
+                if(args[argIndex+2].charAt(0)!='-') {
                     train_num_sent = Integer.parseInt(args[argIndex+2]);
                     argIndex++;
                 }
@@ -158,10 +147,7 @@ public class DomainAdaption {
                         args[argIndex].equalsIgnoreCase("-adaptTreebank")){
                 adapting = true;
                 adaptTreebankName = args[argIndex+1];
-                if(args[argIndex+2].charAt(0)=='-') {
-                    adapt_num_sent = Integer.MAX_VALUE;
-                }
-                else {
+                if(args[argIndex+2].charAt(0)!='-') {
                     adapt_num_sent = Integer.parseInt(args[argIndex+2]);
                     argIndex++;
                 }
@@ -172,13 +158,10 @@ public class DomainAdaption {
                     args[argIndex].equalsIgnoreCase("-testTreebank")){
                 testing = true;
                 testTreebankName = args[argIndex+1];
-                if(args[argIndex+2].charAt(0)=='-') {
-                    test_num_sent = Integer.MAX_VALUE;
-                }
-                else {
-                    test_num_sent = Integer.parseInt(args[argIndex+2]);
-                    argIndex++;
-                }
+                if(argIndex+2<args.length && args[argIndex+2].charAt(0)!='-') {
+                        test_num_sent = Integer.parseInt(args[argIndex+2]);
+                        argIndex++;
+                    }
                 testBank = DataPreProcessor.getTreebank(testTreebankName, test_num_sent, "test");
                 argIndex++;
             }
@@ -190,6 +173,7 @@ public class DomainAdaption {
             else if(args[argIndex].equalsIgnoreCase("-saveParser")){
                 saveParser = true;
                 saveParserPath = args[argIndex+1];
+                argIndex++;
             }
             else if(args[argIndex].equalsIgnoreCase("-testScores")){
                 saveTestScores = true;
@@ -202,10 +186,19 @@ public class DomainAdaption {
                 System.out.println("Required arguments for mode 1: -train, -adapt, -test .\n Can ignore number if you want to train on the whole treebank");
                 System.out.println("Required arguments for mode 2: -loadParser, -test");
                 System.out.println("Optional arguments: -testScores, -saveParser, -loadParser");
-                System.out.println("Treebanks supported: brown, wsj, wsj23");
+                System.out.println("Treebanks supported: brown, wsj0222, wsj23");
             }
             argIndex++;
         }
+
+
+        PrintStream err = System.err;
+        // now make all writes to the System.err stream silent
+        System.setErr(new PrintStream(new OutputStream() {
+            public void write(int b) {
+            }
+        }));
+
 
         BufferedWriter testScoresOut = null;
         if(saveTestScores) {
@@ -222,19 +215,24 @@ public class DomainAdaption {
             d.testBaseline(testScoresOut);
             d.testAdapted(testScoresOut);
         } else {
-            if(!adapting || !testing){
+            if(adapting && testing) {
+                DomainAdaption dom = new DomainAdaption(trainBank, adaptBank, testBank);
+            if(saveParser)
+                dom.saveParsersToSerialized(saveParserPath);
+
+            dom.testBaseline(testScoresOut);
+            dom.testAdapted(testScoresOut);
+            } else {
                 System.out.println("Invalid arguments for creating new model. Use -help to see help.");
                 return;
             }
-            DomainAdaption dom = new DomainAdaption(trainBank, adaptBank, testBank);
-            dom.saveParsersToSerialized(saveParserPath);
-            dom.testBaseline(testScoresOut);
-            dom.testAdapted(testScoresOut);
         }
 
         if(testScoresOut!=null) {
             Logger.closeOutfile(testScoresOut);
         }
+
+        System.setErr(err);
     }
 
 }
