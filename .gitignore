@@ -3,3 +3,7 @@ data/*
 parse/data/*
 parse/libs/*
 parse/out/*
+parse/scripts/submitted/*
+parse/models/*
+output/*
+pos/output/*
