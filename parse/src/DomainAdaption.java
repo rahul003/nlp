@@ -7,8 +7,6 @@ import edu.stanford.nlp.trees.Treebank;
 
 import java.io.BufferedWriter;
 import java.io.FileNotFoundException;
-import java.io.OutputStream;
-import java.io.PrintStream;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -33,8 +31,8 @@ public class DomainAdaption {
     }
 
     public DomainAdaption(String path){
-        base_lp = LexicalizedParser.getParserFromSerializedFile("base_"+path);
-        adapted_lp = LexicalizedParser.getParserFromSerializedFile("adapted_"+path);
+        base_lp = LexicalizedParser.getParserFromSerializedFile("models/base_"+path);
+        adapted_lp = LexicalizedParser.getParserFromSerializedFile("models/adapted_"+path);
     }
 
     public void loadTestbank(Treebank test){
@@ -43,8 +41,8 @@ public class DomainAdaption {
     }
 
     public void saveParsersToSerialized(String filepath){
-        base_lp.saveParserToSerialized("base_"+filepath);
-        adapted_lp.saveParserToSerialized("adapted_"+filepath);
+        base_lp.saveParserToSerialized("models/base_"+filepath);
+        adapted_lp.saveParserToSerialized("models/adapted_"+filepath);
     }
 
     private void create_selftrain_set(Treebank selftraining) {
@@ -191,15 +189,6 @@ public class DomainAdaption {
             argIndex++;
         }
 
-
-        PrintStream err = System.err;
-        // now make all writes to the System.err stream silent
-        System.setErr(new PrintStream(new OutputStream() {
-            public void write(int b) {
-            }
-        }));
-
-
         BufferedWriter testScoresOut = null;
         if(saveTestScores) {
             Logger.openOutfile(testScoresOut, saveTestScoresPath);
@@ -232,7 +221,6 @@ public class DomainAdaption {
             Logger.closeOutfile(testScoresOut);
         }
 
-        System.setErr(err);
     }
 
 }
