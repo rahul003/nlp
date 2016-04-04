@@ -22,25 +22,29 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="DomainAdaption.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="DomainAdaption.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/DomainAdaption.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.4779412">
-              <caret line="37" column="0" selection-start-line="37" selection-start-column="0" selection-end-line="37" selection-end-column="0" />
+            <state vertical-scroll-proportion="0.0">
+              <caret line="34" column="5" selection-start-line="34" selection-start-column="5" selection-end-line="34" selection-end-column="5" />
               <folding>
                 <element signature="imports" expanded="true" />
+                <element signature="e#1207#1208#0" expanded="true" />
+                <element signature="e#1238#1239#0" expanded="true" />
+                <element signature="e#1296#1297#0" expanded="true" />
+                <element signature="e#1367#1368#0" expanded="true" />
+                <element signature="e#3575#3591#0" expanded="false" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="DataPreProcessor.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="DataPreProcessor.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/DataPreProcessor.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="187" column="0" selection-start-line="187" selection-start-column="0" selection-end-line="187" selection-end-column="0" />
+            <state vertical-scroll-proportion="3.123077">
+              <caret line="250" column="5" selection-start-line="250" selection-start-column="5" selection-end-line="250" selection-end-column="5" />
               <folding>
-                <element signature="method#convertBrown#0;class#DataPreProcessor#0" expanded="false" />
                 <element signature="method#collectWSJ#0;class#DataPreProcessor#0" expanded="false" />
                 <element signature="method#makeTreebank#0;class#DataPreProcessor#0" expanded="false" />
                 <element signature="method#getWsj23#0;class#DataPreProcessor#0" expanded="false" />
@@ -48,7 +52,7 @@
                 <element signature="method#getBrown10#0;class#DataPreProcessor#0" expanded="false" />
                 <element signature="method#getBrown90#0;class#DataPreProcessor#0" expanded="false" />
                 <element signature="method#getBrownTrial#0;class#DataPreProcessor#0" expanded="false" />
-                <element signature="e#7626#7674#0" expanded="false" />
+                <element signature="e#7635#7683#0" expanded="false" />
               </folding>
             </state>
           </provider>
@@ -76,8 +80,8 @@
         <option value="$PROJECT_DIR$/src/brown.java" />
         <option value="$PROJECT_DIR$/src/PartialTreebank.java" />
         <option value="$PROJECT_DIR$/data/brown_90.txt" />
-        <option value="$PROJECT_DIR$/src/DataPreProcessor.java" />
         <option value="$PROJECT_DIR$/src/DomainAdaption.java" />
+        <option value="$PROJECT_DIR$/src/DataPreProcessor.java" />
       </list>
     </option>
   </component>
@@ -152,20 +156,6 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="parse" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="parse" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="data" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
         </subPane>
       </pane>
     </panes>
@@ -176,7 +166,7 @@
     <property name="project.structure.proportion" value="0.0" />
     <property name="project.structure.side.proportion" value="0.0" />
   </component>
-  <component name="RunManager" selected="Application.DomainAdaption">
+  <component name="RunManager" selected="Application.DataPreProcessor">
     <configuration default="true" type="#org.jetbrains.idea.devkit.run.PluginConfigurationType" factoryName="Plugin">
       <module name="" />
       <option name="VM_PARAMETERS" value="-Xmx512m -Xms256m -XX:MaxPermSize=250m -ea" />
@@ -453,7 +443,7 @@
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
       <option name="MAIN_CLASS_NAME" value="DomainAdaption" />
       <option name="VM_PARAMETERS" value="" />
-      <option name="PROGRAM_PARAMETERS" value="-train brown 1000 -adapt wsj0222 -test wsj23" />
+      <option name="PROGRAM_PARAMETERS" value=" -train brown 10000 -adapt wsj0222 -test wsj23 -saveParser br7k_wsj0222_wsj23.mdl" />
       <option name="WORKING_DIRECTORY" value="file://$PROJECT_DIR$" />
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
       <option name="ALTERNATIVE_JRE_PATH" />
@@ -484,7 +474,7 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1364" height="734" extended-state="4" />
-    <editor active="true" />
+    <editor active="false" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -493,10 +483,10 @@
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3980424" sideWeight="0.5030628" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2903752" sideWeight="0.49693722" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.42577487" sideWeight="0.49693722" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32952693" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.18816389" sideWeight="0.488746" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.18816389" sideWeight="0.488746" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Run with VisualVM" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.2488263" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -545,6 +535,11 @@
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
+            <element signature="e#1207#1208#0" expanded="true" />
+            <element signature="e#1238#1239#0" expanded="true" />
+            <element signature="e#1296#1297#0" expanded="true" />
+            <element signature="e#1367#1368#0" expanded="true" />
+            <element signature="e#3575#3591#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -572,7 +567,6 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="71" column="60" selection-start-line="71" selection-start-column="60" selection-end-line="71" selection-end-column="60" />
           <folding>
-            <element signature="method#convertBrown#0;class#DataPreProcessor#0" expanded="false" />
             <element signature="method#collectWSJ#0;class#DataPreProcessor#0" expanded="false" />
             <element signature="method#makeTreebank#0;class#DataPreProcessor#0" expanded="false" />
             <element signature="method#getWsj23#0;class#DataPreProcessor#0" expanded="false" />
@@ -580,7 +574,7 @@
             <element signature="method#getBrown10#0;class#DataPreProcessor#0" expanded="false" />
             <element signature="method#getBrown90#0;class#DataPreProcessor#0" expanded="false" />
             <element signature="method#getBrownTrial#0;class#DataPreProcessor#0" expanded="false" />
-            <element signature="e#7626#7674#0" expanded="false" />
+            <element signature="e#7635#7683#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -591,6 +585,11 @@
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
+            <element signature="e#1207#1208#0" expanded="true" />
+            <element signature="e#1238#1239#0" expanded="true" />
+            <element signature="e#1296#1297#0" expanded="true" />
+            <element signature="e#1367#1368#0" expanded="true" />
+            <element signature="e#3575#3591#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -618,7 +617,6 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="71" column="60" selection-start-line="71" selection-start-column="60" selection-end-line="71" selection-end-column="60" />
           <folding>
-            <element signature="method#convertBrown#0;class#DataPreProcessor#0" expanded="false" />
             <element signature="method#collectWSJ#0;class#DataPreProcessor#0" expanded="false" />
             <element signature="method#makeTreebank#0;class#DataPreProcessor#0" expanded="false" />
             <element signature="method#getWsj23#0;class#DataPreProcessor#0" expanded="false" />
@@ -626,7 +624,7 @@
             <element signature="method#getBrown10#0;class#DataPreProcessor#0" expanded="false" />
             <element signature="method#getBrown90#0;class#DataPreProcessor#0" expanded="false" />
             <element signature="method#getBrownTrial#0;class#DataPreProcessor#0" expanded="false" />
-            <element signature="e#7626#7674#0" expanded="false" />
+            <element signature="e#7635#7683#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -637,6 +635,11 @@
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
+            <element signature="e#1207#1208#0" expanded="true" />
+            <element signature="e#1238#1239#0" expanded="true" />
+            <element signature="e#1296#1297#0" expanded="true" />
+            <element signature="e#1367#1368#0" expanded="true" />
+            <element signature="e#3575#3591#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -653,7 +656,6 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="133" column="5" selection-start-line="133" selection-start-column="5" selection-end-line="133" selection-end-column="5" />
           <folding>
-            <element signature="method#convertBrown#0;class#DataPreProcessor#0" expanded="false" />
             <element signature="method#collectWSJ#0;class#DataPreProcessor#0" expanded="false" />
             <element signature="method#makeTreebank#0;class#DataPreProcessor#0" expanded="false" />
             <element signature="method#getWsj23#0;class#DataPreProcessor#0" expanded="false" />
@@ -661,7 +663,7 @@
             <element signature="method#getBrown10#0;class#DataPreProcessor#0" expanded="false" />
             <element signature="method#getBrown90#0;class#DataPreProcessor#0" expanded="false" />
             <element signature="method#getBrownTrial#0;class#DataPreProcessor#0" expanded="false" />
-            <element signature="e#7626#7674#0" expanded="false" />
+            <element signature="e#7635#7683#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -672,6 +674,11 @@
           <caret line="15" column="54" selection-start-line="15" selection-start-column="54" selection-end-line="15" selection-end-column="54" />
           <folding>
             <element signature="imports" expanded="true" />
+            <element signature="e#1207#1208#0" expanded="true" />
+            <element signature="e#1238#1239#0" expanded="true" />
+            <element signature="e#1296#1297#0" expanded="true" />
+            <element signature="e#1367#1368#0" expanded="true" />
+            <element signature="e#3575#3591#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -689,7 +696,6 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="25" column="53" selection-start-line="25" selection-start-column="53" selection-end-line="25" selection-end-column="53" />
           <folding>
-            <element signature="method#convertBrown#0;class#DataPreProcessor#0" expanded="false" />
             <element signature="method#collectWSJ#0;class#DataPreProcessor#0" expanded="false" />
             <element signature="method#makeTreebank#0;class#DataPreProcessor#0" expanded="false" />
             <element signature="method#getWsj23#0;class#DataPreProcessor#0" expanded="false" />
@@ -697,7 +703,7 @@
             <element signature="method#getBrown10#0;class#DataPreProcessor#0" expanded="false" />
             <element signature="method#getBrown90#0;class#DataPreProcessor#0" expanded="false" />
             <element signature="method#getBrownTrial#0;class#DataPreProcessor#0" expanded="false" />
-            <element signature="e#7626#7674#0" expanded="false" />
+            <element signature="e#7635#7683#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -708,6 +714,11 @@
           <caret line="15" column="37" selection-start-line="15" selection-start-column="37" selection-end-line="15" selection-end-column="37" />
           <folding>
             <element signature="imports" expanded="true" />
+            <element signature="e#1207#1208#0" expanded="true" />
+            <element signature="e#1238#1239#0" expanded="true" />
+            <element signature="e#1296#1297#0" expanded="true" />
+            <element signature="e#1367#1368#0" expanded="true" />
+            <element signature="e#3575#3591#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -888,13 +899,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/id.scores">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://$PROJECT_DIR$/libs/stanford-parser-full-2015-12-09/stanford-parser-3.6.0-sources.jar!/edu/stanford/nlp/trees/LabeledScoredTreeNode.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -953,12 +957,26 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/DataPreProcessor.java">
+    <entry file="file://$PROJECT_DIR$/src/DomainAdaption.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="187" column="0" selection-start-line="187" selection-start-column="0" selection-end-line="187" selection-end-column="0" />
+          <caret line="34" column="5" selection-start-line="34" selection-start-column="5" selection-end-line="34" selection-end-column="5" />
           <folding>
-            <element signature="method#convertBrown#0;class#DataPreProcessor#0" expanded="false" />
+            <element signature="imports" expanded="true" />
+            <element signature="e#1207#1208#0" expanded="true" />
+            <element signature="e#1238#1239#0" expanded="true" />
+            <element signature="e#1296#1297#0" expanded="true" />
+            <element signature="e#1367#1368#0" expanded="true" />
+            <element signature="e#3575#3591#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/DataPreProcessor.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="3.123077">
+          <caret line="250" column="5" selection-start-line="250" selection-start-column="5" selection-end-line="250" selection-end-column="5" />
+          <folding>
             <element signature="method#collectWSJ#0;class#DataPreProcessor#0" expanded="false" />
             <element signature="method#makeTreebank#0;class#DataPreProcessor#0" expanded="false" />
             <element signature="method#getWsj23#0;class#DataPreProcessor#0" expanded="false" />
@@ -966,17 +984,7 @@
             <element signature="method#getBrown10#0;class#DataPreProcessor#0" expanded="false" />
             <element signature="method#getBrown90#0;class#DataPreProcessor#0" expanded="false" />
             <element signature="method#getBrownTrial#0;class#DataPreProcessor#0" expanded="false" />
-            <element signature="e#7626#7674#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/DomainAdaption.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.4779412">
-          <caret line="37" column="0" selection-start-line="37" selection-start-column="0" selection-end-line="37" selection-end-column="0" />
-          <folding>
-            <element signature="imports" expanded="true" />
+            <element signature="e#7635#7683#0" expanded="false" />
           </folding>
         </state>
       </provider>

@@ -66,12 +66,13 @@ public class DataPreProcessor {
         op.doPCFG = true;
         op.setOptions("-goodPCFG", "-evals", "tsv");
         op.testOptions.verbose = true;
-        MemoryTreebank train = op.tlpParams.memoryTreebank();
-        MemoryTreebank test = op.tlpParams.memoryTreebank();
+
         String path = "data/brown/";
         File genres = new File(path);
         File[] listOfGenres = genres.listFiles();
         for(File g: listOfGenres){
+            MemoryTreebank train = op.tlpParams.memoryTreebank();
+            MemoryTreebank test = op.tlpParams.memoryTreebank();
             int train_count = 0;
             int test_count = 0;
             File[] listOfDataFiles = g.listFiles();
@@ -245,8 +246,8 @@ public class DataPreProcessor {
     public static void main(String[] args) throws IOException
     {
 //        getWsj0222();
-//        convertBrown();
-        collectWSJ();
+        convertBrown();
+//        collectWSJ();
     }
 
 

@@ -43,9 +43,9 @@ public class DomainAdaption {
         test_set = test;
     }
 
-//    public void saveParserToSerialized(){
-//        base_lp.saveParserToSerialized("models/base_tests");
-//    }
+    public void saveParserToSerialized(String filepath){
+        base_lp.saveParserToSerialized("models/base_"+filepath);
+    }
 
     public void saveParsersToSerialized(String filepath){
         base_lp.saveParserToSerialized("models/base_"+filepath);
@@ -232,7 +232,7 @@ public class DomainAdaption {
                 //only testing and training
                 DomainAdaption dom = new DomainAdaption(trainBank, testBank);
                 if(saveParser)
-                    dom.saveParsersToSerialized(saveParserPath);
+                    dom.saveParserToSerialized(saveParserPath);
                 dom.testBaseline();
             } else {
                     System.out.println("Invalid arguments for creating new model. Use -help to see help.");
