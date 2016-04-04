@@ -1,4 +1,11 @@
 import os, sys
+
+f = open('scripts/header_condorscript.txt','r')
+header = f.read()
+f.close()
+q = "Queue 1\n"
+
+
 #run in projects folder
 """
 wsj0222 as seed
