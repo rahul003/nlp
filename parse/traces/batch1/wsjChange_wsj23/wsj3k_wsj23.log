@@ -1,0 +1,53 @@
+000 (2560.000.000) 03/31 03:58:28 Job submitted from host: <128.83.144.174:54071>
+...
+007 (2560.000.000) 03/31 04:00:23 Shadow exception!
+	Can no longer talk to condor_starter <128.83.130.161:34242>
+	0  -  Run Bytes Sent By Job
+	0  -  Run Bytes Received By Job
+...
+007 (2560.000.000) 03/31 04:00:23 Shadow exception!
+	Can no longer talk to condor_starter <128.83.130.161:34242>
+	0  -  Run Bytes Sent By Job
+	0  -  Run Bytes Received By Job
+...
+007 (2560.000.000) 03/31 04:00:23 Shadow exception!
+	Can no longer talk to condor_starter <128.83.130.161:34242>
+	0  -  Run Bytes Sent By Job
+	0  -  Run Bytes Received By Job
+...
+007 (2560.000.000) 03/31 04:00:23 Shadow exception!
+	Can no longer talk to condor_starter <128.83.130.161:34242>
+	0  -  Run Bytes Sent By Job
+	0  -  Run Bytes Received By Job
+...
+007 (2560.000.000) 03/31 04:00:24 Shadow exception!
+	Can no longer talk to condor_starter <128.83.130.161:34242>
+	0  -  Run Bytes Sent By Job
+	0  -  Run Bytes Received By Job
+...
+001 (2560.000.000) 03/31 04:03:45 Job executing on host: <128.83.144.134:43026>
+...
+006 (2560.000.000) 03/31 04:03:54 Image size of job updated: 6583964
+	333  -  MemoryUsage of job (MB)
+	340064  -  ResidentSetSize of job (KB)
+...
+006 (2560.000.000) 03/31 04:08:55 Image size of job updated: 6583964
+	1537  -  MemoryUsage of job (MB)
+	1573520  -  ResidentSetSize of job (KB)
+...
+005 (2560.000.000) 03/31 04:12:42 Job terminated.
+	(1) Normal termination (return value 0)
+		Usr 0 00:09:30, Sys 0 00:00:02  -  Run Remote Usage
+		Usr 0 00:00:00, Sys 0 00:00:00  -  Run Local Usage
+		Usr 0 00:09:30, Sys 0 00:00:02  -  Total Remote Usage
+		Usr 0 00:00:00, Sys 0 00:00:00  -  Total Local Usage
+	0  -  Run Bytes Sent By Job
+	0  -  Run Bytes Received By Job
+	0  -  Total Bytes Sent By Job
+	0  -  Total Bytes Received By Job
+	Partitionable Resources :    Usage  Request Allocated
+	   Cpus                 :                 1         1
+	   Disk (KB)            :       10       10   2250156
+	   Gpus                 :                           0
+	   Memory (MB)          :     1537        1      4028
+...
