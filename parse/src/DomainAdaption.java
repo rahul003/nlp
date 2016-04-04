@@ -30,6 +30,12 @@ public class DomainAdaption {
         retrain();
     }
 
+    public DomainAdaption(Treebank seed, Treebank test){
+        seed_set = seed;
+        test_set = test;
+        train();
+    }
+
     public DomainAdaption(String path){
         base_lp = LexicalizedParser.getParserFromSerializedFile("models/base_"+path);
         adapted_lp = LexicalizedParser.getParserFromSerializedFile("models/adapted_"+path);
@@ -40,6 +46,10 @@ public class DomainAdaption {
         test_set.textualSummary();
     }
 
+    public void saveParserToSerialized(){
+        base_lp.saveParserToSerialized("models/base_tests");
+    }
+
     public void saveParsersToSerialized(String filepath){
         base_lp.saveParserToSerialized("models/base_"+filepath);
         adapted_lp.saveParserToSerialized("models/adapted_"+filepath);
@@ -48,8 +58,18 @@ public class DomainAdaption {
     private void create_selftrain_set(Treebank selftraining) {
         System.out.println("Creating selftrainset");
         selftrain_set = new MemoryTreebank();
+        int c=0;
         for (Tree t: selftraining) {
-            selftrain_set.add(base_lp.parse(t.yieldHasWord()));
+            if(c==0)
+            {
+                c++;
+                continue;
+            }
+            Tree parsed = base_lp.parseTree(t.yieldHasWord());
+
+//            Tree parsed = base_lp.parseTree(Sentence.toCoreLabelList(t.yieldWords()));
+            if(parsed!=null)
+                selftrain_set.add(parsed);
         }
 //            ParserQuery q = base_lp.parserQuery();
 //            selftraining.get(2).pennPrint();
@@ -62,7 +82,7 @@ public class DomainAdaption {
         op.doDep = false;
         op.doPCFG = true;
         op.setOptions("-goodPCFG", "-evals", "tsv");
-        op.testOptions.verbose = false;
+        op.testOptions.verbose = true;
         base_lp = LexicalizedParser.trainFromTreebank(seed_set,op);
     }
 
@@ -72,16 +92,21 @@ public class DomainAdaption {
         op.doDep = false;
         op.doPCFG = true;
         op.setOptions("-goodPCFG", "-evals", "tsv");
-        op.testOptions.verbose = false;
+        op.testOptions.verbose = true;
         adapted_lp = LexicalizedParser.getParserFromTreebank(seed_set, selftrain_set, 1., null, op,null, null );
     }
 
     public void testBaseline(){
-        testBaseline(null);
+        EvaluateTreebank evalBase = new EvaluateTreebank(base_lp);
+        String baseline_result = "F-1 score Baseline: "+evalBase.testOnTreebank(test_set);
+        System.out.println(baseline_result);
     }
 
     public void testAdapted(){
-        testAdapted(null);
+        EvaluateTreebank eval = new EvaluateTreebank(adapted_lp);
+        String result = "F-1 score Adapted: "+eval.testOnTreebank(test_set);
+        System.out.println(result);
+
     }
 
     public void testBaseline(BufferedWriter outFile){
@@ -189,11 +214,6 @@ public class DomainAdaption {
             argIndex++;
         }
 
-        BufferedWriter testScoresOut = null;
-        if(saveTestScores) {
-            Logger.openOutfile(testScoresOut, saveTestScoresPath);
-        }
-
         if(!training){
             if(!testing || !loadParser) {
                 System.out.println("Invalid arguments for loading model. Use -help to see help.");
@@ -201,26 +221,27 @@ public class DomainAdaption {
             }
             DomainAdaption d = new DomainAdaption(loadParserPath);
             d.loadTestbank(testBank);
-            d.testBaseline(testScoresOut);
-            d.testAdapted(testScoresOut);
+            d.testBaseline();
+            d.testAdapted();
         } else {
             if(adapting && testing) {
                 DomainAdaption dom = new DomainAdaption(trainBank, adaptBank, testBank);
-            if(saveParser)
-                dom.saveParsersToSerialized(saveParserPath);
-
-            dom.testBaseline(testScoresOut);
-            dom.testAdapted(testScoresOut);
+                if(saveParser)
+                    dom.saveParsersToSerialized(saveParserPath);
+                dom.testBaseline();
+                dom.testAdapted();
+            } else if(testing) {
+                //only testing and training
+                DomainAdaption dom = new DomainAdaption(trainBank, testBank);
+                if(saveParser)
+                    dom.saveParsersToSerialized(saveParserPath);
+                dom.testBaseline();
             } else {
-                System.out.println("Invalid arguments for creating new model. Use -help to see help.");
-                return;
+                    System.out.println("Invalid arguments for creating new model. Use -help to see help.");
+                    return;
+                }
             }
-        }
-
-        if(testScoresOut!=null) {
-            Logger.closeOutfile(testScoresOut);
         }
 
     }
 
-}

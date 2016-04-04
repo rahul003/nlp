@@ -1,2 +1,1 @@
-run in production directory
 java -classpath "parse:../../../parse/libs/stanford-parser-full-2015-12-09/stanford-parser.jar:../../../parse/libs/stanford-parser-full-2015-12-09/slf4j-api.jar:../../../parse/libs/stanford-parser-full-2015-12-09/ejml-0.23.jar:../../../parse/libs/stanford-parser-full-2015-12-09/slf4j-simple.jar" DomainAdaption
