@@ -1,0 +1,50 @@
+000 (011.000.000) 04/03 21:39:47 Job submitted from host: <128.83.144.114:55725>
+...
+001 (011.000.000) 04/03 21:40:06 Job executing on host: <128.83.120.252:35504>
+...
+006 (011.000.000) 04/03 21:40:15 Image size of job updated: 19718080
+	18  -  MemoryUsage of job (MB)
+	17884  -  ResidentSetSize of job (KB)
+...
+006 (011.000.000) 04/03 21:45:16 Image size of job updated: 20977564
+	5547  -  MemoryUsage of job (MB)
+	5679164  -  ResidentSetSize of job (KB)
+...
+006 (011.000.000) 04/03 23:05:23 Image size of job updated: 20979628
+	5547  -  MemoryUsage of job (MB)
+	5679164  -  ResidentSetSize of job (KB)
+...
+005 (011.000.000) 04/03 23:24:05 Job terminated.
+	(1) Normal termination (return value 0)
+		Usr 0 01:47:14, Sys 0 00:00:40  -  Run Remote Usage
+		Usr 0 00:00:00, Sys 0 00:00:00  -  Run Local Usage
+		Usr 0 01:47:14, Sys 0 00:00:40  -  Total Remote Usage
+		Usr 0 00:00:00, Sys 0 00:00:00  -  Total Local Usage
+	0  -  Run Bytes Sent By Job
+	0  -  Run Bytes Received By Job
+	0  -  Total Bytes Sent By Job
+	0  -  Total Bytes Received By Job
+	Partitionable Resources :    Usage  Request Allocated
+	   Cpus                 :                 1         1
+	   Disk (KB)            :       10       10    473522
+	   Gpus                 :                           0
+	   Memory (MB)          :     5547        1      2684
+...
+001 (2723.000.000) 04/03 23:58:32 Job executing on host: <128.83.144.5:52290>
+...
+006 (2723.000.000) 04/03 23:58:41 Image size of job updated: 37384400
+	283  -  MemoryUsage of job (MB)
+	288776  -  ResidentSetSize of job (KB)
+...
+006 (2723.000.000) 04/04 00:03:41 Image size of job updated: 37384400
+	8810  -  MemoryUsage of job (MB)
+	9020508  -  ResidentSetSize of job (KB)
+...
+006 (2723.000.000) 04/04 00:08:42 Image size of job updated: 37384400
+	10342  -  MemoryUsage of job (MB)
+	10589272  -  ResidentSetSize of job (KB)
+...
+006 (2723.000.000) 04/04 00:13:43 Image size of job updated: 37384400
+	10412  -  MemoryUsage of job (MB)
+	10661000  -  ResidentSetSize of job (KB)
+...
