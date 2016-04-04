@@ -1,5 +1,7 @@
 data/*
 *.class
+parse/traces/*
+parse/traces.tar
 parse/data/*
 parse/libs/*
 parse/out/*
