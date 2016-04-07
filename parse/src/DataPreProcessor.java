@@ -9,11 +9,13 @@ import java.io.*;
 public class DataPreProcessor {
 
     public static Treebank getTreebank(String name, int num_sentences, String type){
+    	//this function returns num_sentences of name data
+    	//if brown is called, with type=test, brown10 is used
+    	//brown is called, with other type, brown90 is used-
         Options op = new Options();
         op.doDep = false;
         op.doPCFG = true;
         op.setOptions("-goodPCFG", "-evals", "tsv");
-        op.testOptions.verbose = true;
         Treebank m = op.tlpParams.memoryTreebank();
 
         if(name.equals("brown")){
@@ -21,6 +23,7 @@ public class DataPreProcessor {
             File genres = new File(path);
             File[] listOfGenres = genres.listFiles();
             for(File g: listOfGenres){
+            	//if n sentences reqd, fetch n/8 from each genre
                 Treebank r;
                 if(type.equals("test"))
                     r = getBrown10(g.toString());
@@ -65,8 +68,6 @@ public class DataPreProcessor {
         op.doDep = false;
         op.doPCFG = true;
         op.setOptions("-goodPCFG", "-evals", "tsv");
-        op.testOptions.verbose = true;
-
         String path = "data/brown/";
         File genres = new File(path);
         File[] listOfGenres = genres.listFiles();
@@ -80,6 +81,7 @@ public class DataPreProcessor {
                 String[] parts = f.toString().split("/");
                 String filename = parts[parts.length-1];
                 if(filename.equals("ck08.mrg") || filename.equals("cl02.mrg") || filename.equals("cl23.mrg") || filename.equals("cl24.mrg")){
+                	//move these problematic trees to test set
                     int num_s = test.size();
                     test.loadPath(f);
                     test_count+=(test.size()-num_s);
@@ -97,9 +99,9 @@ public class DataPreProcessor {
                 test.add(train.get(train.size()-1));
                 train.remove(train.size()-1);
                 train_count--;
-//                System.out.println(train_count+ " " + train.size());
             }
-
+            //one test and train set for each genre.
+          	//so from each genre i can pick equal number of sentences
             PrintWriter out = new PrintWriter(g+"/brown_90.txt");
             out.println(train.toString());
             out.close();
@@ -108,14 +110,6 @@ public class DataPreProcessor {
             out.println(test.toString());
             out.close();
         }
-
-//        PrintWriter out = new PrintWriter("data/brown_90.txt");
-//        out.println(train.toString());
-//        out.close();
-//
-//        out = new PrintWriter("data/brown_10.txt");
-//        out.println(test.toString());
-//        out.close();
     }
 
     public static void collectWSJ() throws FileNotFoundException {
@@ -123,7 +117,6 @@ public class DataPreProcessor {
         op.doDep = false;
         op.doPCFG = true;
         op.setOptions("-goodPCFG", "-evals", "tsv");
-        op.testOptions.verbose = true;
         MemoryTreebank wsj0222 = op.tlpParams.memoryTreebank();
         MemoryTreebank wsj23 = op.tlpParams.memoryTreebank();
         String path = "data/wsj/";
@@ -132,8 +125,9 @@ public class DataPreProcessor {
         for(File s: listOfSections){
             String[] parts = s.toString().split("/");
             String secname = parts[parts.length-1];
-            if(secname.equals("MERGE.LOG") || secname.startsWith("wsj") || secname.equals("00") || secname.equals("01") || secname.equals("24"))
+            if(secname.equals("MERGE.LOG") || secname.startsWith("wsj") || secname.equals("00") || secname.equals("01") || secname.equals("24")){
                 continue;
+            }
 
             File[] listOfDataFiles = s.listFiles();
             for(File f: listOfDataFiles){
@@ -144,18 +138,18 @@ public class DataPreProcessor {
             }
         }
 
-        PrintWriter out = new PrintWriter("data/wsj/wsj_0222.txt");
-        out.println(wsj0222.toString());
-        out.close();
+       PrintWriter out = new PrintWriter("data/wsj/wsj_0222.txt");
+       out.println(wsj0222.toString());
+       out.close();
 
-        out = new PrintWriter("data/wsj/wsj_23.txt");
-        out.println(wsj23.toString());
-        out.close();
+       out = new PrintWriter("data/wsj/wsj_23.txt");
+       out.println(wsj23.toString());
+       out.close();
     }
 
     public static Treebank makeTreebank(String treebankPath, Options op, FileFilter filt) {
         System.err.println("Training a parser from treebank dir: " + treebankPath);
-        Treebank trainTreebank = op.tlpParams.diskTreebank();
+        Treebank trainTreebank = op.tlpParams.memoryTreebank();
         System.err.print("Reading trees...");
         if (filt == null) {
             trainTreebank.loadPath(treebankPath);
@@ -171,7 +165,6 @@ public class DataPreProcessor {
         op.doDep = false;
         op.doPCFG = true;
         op.setOptions("-goodPCFG", "-evals", "tsv");
-        op.testOptions.verbose = true;
         Treebank wsj = makeTreebank("data/wsj/wsj_23.txt",op,null);
         return wsj;
     }
@@ -181,7 +174,6 @@ public class DataPreProcessor {
         op.doDep = false;
         op.doPCFG = true;
         op.setOptions("-goodPCFG", "-evals", "tsv");
-        op.testOptions.verbose = true;
         Treebank wsj = makeTreebank("data/wsj/wsj_0222.txt",op,null);
         return wsj;
     }
@@ -191,7 +183,6 @@ public class DataPreProcessor {
         op.doDep = false;
         op.doPCFG = true;
         op.setOptions("-goodPCFG", "-evals", "tsv");
-        op.testOptions.verbose = true;
         Treebank brown10 = makeTreebank(genre+"/brown_10.txt",op,null);
         return brown10;
     }
@@ -201,53 +192,14 @@ public class DataPreProcessor {
         op.doDep = false;
         op.doPCFG = true;
         op.setOptions("-goodPCFG", "-evals", "tsv");
-        op.testOptions.verbose = true;
         Treebank brown90 = makeTreebank(genre+"/brown_90.txt",op,null);
         return brown90;
     }
 
-    public static Treebank getBrownTrial(){
-        Options op = new Options();
-        op.doDep = false;
-        op.doPCFG = true;
-        op.setOptions("-goodPCFG", "-evals", "tsv");
-        op.testOptions.verbose = true;
-        Treebank brownt = makeTreebank("data/brown/cp",op,null);
-        return brownt;
-    }
-    //    public static MemoryTreebank getBrown90(){
-//        MemoryTreebank m = new MemoryTreebank();
-//        m.loadPath("data/brown_90.txt");
-//        return m;
-//    }
-
-//    public static MemoryTreebank getBrown10(){
-//        MemoryTreebank m = new MemoryTreebank();
-//        m.loadPath("data/brown_10.txt");
-//        return m;
-//    }
-
-//    public static MemoryTreebank getBrown10(int num_sentences){
-//        MemoryTreebank m = getBrown10();
-//        while(m.size()>num_sentences){
-//            m.remove(m.size()-1);
-//        }
-//        return m;
-//    }
-
-//    public static MemoryTreebank getBrown90(int num_sentences){
-//        MemoryTreebank m = getBrown90();
-//        while(m.size()>num_sentences){
-//            m.remove(m.size()-1);
-//        }
-//        return m;
-//    }
-
     public static void main(String[] args) throws IOException
     {
-//        getWsj0222();
-        convertBrown();
-//        collectWSJ();
+       convertBrown();
+        // collectWSJ();
     }
 
 

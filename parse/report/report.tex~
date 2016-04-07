@@ -1,0 +1,48 @@
+\documentclass{article}
+\usepackage[margin=0.7in]{geometry} 
+\usepackage{graphicx, wrapfig}
+\usepackage{palatino}
+\usepackage{subcaption}
+\usepackage{multirow}
+\usepackage{booktabs}
+\begin{document}
+\title{\vspace{-4ex}HW3: Unsupervised domain adaption for Statistical parsing}
+\author{Rahul Huilgol (rrh2226)}
+\date{}
+\maketitle
+\vspace{-5mm}
+\section{Introduction}
+\section{Experimental setup}
+The parser used for this experiment was Lexicalized Parser from Stanford NLP library. Two datasets from Penn Treebank were used, Brown and Wall Street Journal (WSJ). Brown data is composed of 8 genres. In the experiment when I consider $N$ sentences, I construct this set of $N$ sentences by choosing $N/8$ from each genre. WSJ data is composed of 24 sections. Sections 00, 01 and 24 are ignored in this homework. Whenever WSJ has been used for training and self-training, data from sections 02 to 22 were used. When WSJ was used for testing, section 23 was used.
+
+
+A class DomainAdaption was constructed, which builds two LexicalizedParser objects, one called \textit{base} and other \textit{adapted}. Various argument options 
+\section{Results}
+\subsection{Phase : WSJ seed}
+\begin{figure}[h]
+   \centering
+    \includegraphics[width=0.9\linewidth]{plots/q4_3.png}
+    \caption{Trained with WSJ as seed, tested in domain and after adapting}
+   \label{fig:q4_3}
+\end{figure}
+\begin{figure}[h]
+   \centering
+    \includegraphics[width=0.9\linewidth]{plots/q5.png}
+    \caption{Variation with increase of size of Brown data used for self-training}
+   \label{fig:q5}
+\end{figure}
+\subsection{Phase : Brown seed}
+\section{Conclusion}
+\begin{figure}[h]
+   \centering
+    \includegraphics[width=0.9\linewidth]{plots/q6_3.png}
+    \caption{Trained with Brown as seed, tested in domain and after adapting}
+   \label{fig:q6_3}
+\end{figure}
+\begin{figure}[h]
+   \centering
+    \includegraphics[width=0.9\linewidth]{plots/q6c.png}
+    \caption{Variation with increase of size of WSJ data used for self-training}
+   \label{fig:q6c}
+\end{figure}
+\end{document}

@@ -29,12 +29,14 @@ public class DomainAdaption {
     }
 
     public DomainAdaption(Treebank seed, Treebank test){
+    	//when no self-training
         seed_set = seed;
         test_set = test;
         train();
     }
 
     public DomainAdaption(String path){
+    	//just load parsers for testing further
         base_lp = LexicalizedParser.getParserFromSerializedFile("models/base_"+path);
         adapted_lp = LexicalizedParser.getParserFromSerializedFile("models/adapted_"+path);
     }
@@ -58,17 +60,14 @@ public class DomainAdaption {
         op.doDep = false;
         op.doPCFG = true;
         op.setOptions("-goodPCFG", "-evals", "tsv");
-        op.testOptions.verbose = true;
         selftrain_set  = op.tlpParams.memoryTreebank();
         int c=0;
         for (Tree t: selftraining) {
-            if(c==0)
-            {
+            if(c==0){
                 c++;
                 continue;
             }
             Tree parsed = base_lp.parseTree(t.yieldHasWord());
-//            Tree parsed = base_lp.parseTree(Sentence.toCoreLabelList(t.yieldWords()));
             if(parsed!=null)
                 selftrain_set.add(parsed);
         }
@@ -80,7 +79,6 @@ public class DomainAdaption {
         op.doDep = false;
         op.doPCFG = true;
         op.setOptions("-goodPCFG", "-evals", "tsv");
-        op.testOptions.verbose = true;
         base_lp = LexicalizedParser.trainFromTreebank(seed_set,op);
     }
 
@@ -90,7 +88,6 @@ public class DomainAdaption {
         op.doDep = false;
         op.doPCFG = true;
         op.setOptions("-goodPCFG", "-evals", "tsv");
-        op.testOptions.verbose = true;
         adapted_lp = LexicalizedParser.getParserFromTreebank(seed_set, selftrain_set, 1., null, op,null, null );
     }
 
@@ -111,23 +108,25 @@ public class DomainAdaption {
 
     }
 
-    //no longer used
-//    public void testBaseline(BufferedWriter outFile){
-//        EvaluateTreebank evalBase = new EvaluateTreebank(base_lp);
-//        String baseline_result = "F-1 score Baseline: "+evalBase.testOnTreebank(test_set);
-//        Logger.log(outFile, baseline_result);
-//    }
-//
-//    public void testAdapted(BufferedWriter outFile){
-//        EvaluateTreebank eval = new EvaluateTreebank(adapted_lp);
-//        String result = "F-1 score Adapted: "+eval.testOnTreebank(test_set);
-//        Logger.log(outFile, result);
-//    }
-
     public static void main(String[] args) throws FileNotFoundException {
+    	"""
+    	Indicate argument name (with a leading hyphen), followed by argument value(s)
+    	-train trainBankname num_sentences(optional) -adapt adaptBankname num_sentences(optional) -test testBankname num_sentences(optional). 
+    	Can ignore number if you want to train on the whole treebank
+    	
+    	Required arguments for mode 1 to create new parser with selftraining: -train, -adapt, -test 
+    	Required arguments for mode 2 to create new parser without selftraining: -train, -test 
+
+    	Required arguments for mode 3 to load parser: -loadParser, -test.
+    	Load parser takes id of model (in models folder, without 'base' or 'adapted' in prefix of model name. For example models/base_trial.mdl would be given as argument trail.mdl
+    	
+    	Optional arguments: -saveParser, -loadParser , followed by name of model file
+    	Treebanks supported: brown, wsj0222, wsj23
+    	"""
+
         boolean training = false;
         String trainTreebankName;
-         Treebank trainBank = null;
+        Treebank trainBank = null;
         int train_num_sent = Integer.MAX_VALUE;
 
         boolean adapting = false;
@@ -145,9 +144,6 @@ public class DomainAdaption {
 
         boolean loadParser = false;
         String loadParserPath="";
-
-//        boolean saveTestScores = false;
-//        String saveTestScoresPath="";
 
         int argIndex = 0;
         if (args.length < 1) {
@@ -203,10 +199,11 @@ public class DomainAdaption {
             }
             else if(args[argIndex].equalsIgnoreCase("-help")){
                 System.out.println("Indicate argument name (with a leading hyphen), followed by argument value(s)");
-                System.out.println("-train trainBankname num_sentences(optional) -adapt adaptBankname num_sentences(optional) -test testBankname num_sentences(optional) -output testresults_filepath");
-                System.out.println("Required arguments for mode 1: -train, -adapt, -test .\n Can ignore number if you want to train on the whole treebank");
-                System.out.println("Required arguments for mode 2: -loadParser, -test");
-                System.out.println("Optional arguments: -saveParser, -loadParser . loadparser takes id of model (in models folder without base or adapted strings in it)");
+                System.out.println("-train trainBankname num_sentences(optional) -adapt adaptBankname num_sentences(optional) -test testBankname num_sentences(optional)\n Can ignore number if you want to train on the whole treebank");
+                System.out.println("Required arguments for mode 1 to create new parser with selftraining: -train, -adapt, -test ");
+                System.out.println("Required arguments for mode 2 to create new parser without selftraining: -train, -test ");
+                System.out.println("Required arguments for mode 3 to load parser: -loadParser, -test \n load parser takes id of model (in models folder, without 'base' or 'adapted' in prefix of model name. For example models/base_trial.mdl would be given as argument trail.mdl");
+                System.out.println("Optional arguments: -saveParser, -loadParser , followed by name of model file");
                 System.out.println("Treebanks supported: brown, wsj0222, wsj23");
             }
             argIndex++;
